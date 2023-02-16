@@ -1,0 +1,212 @@
+{
+  "format" : "10.0.0",
+  "id" : "1865BA0763310472",
+  "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "deepl.translate.Data"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "CallSubStart",
+      "name" : "document(File)",
+      "config" : {
+        "callSignature" : "document",
+        "input" : {
+          "params" : [
+            { "name" : "file", "type" : "java.io.File" }
+          ],
+          "map" : {
+            "out.file" : "param.file"
+          }
+        },
+        "tags" : "connector"
+      },
+      "visual" : {
+        "at" : { "x" : 344, "y" : 216 }
+      },
+      "connect" : { "id" : "f22", "to" : "f4" }
+    }, {
+      "id" : "f1",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 1032, "y" : 216 }
+      }
+    }, {
+      "id" : "f4",
+      "type" : "RestClientCall",
+      "name" : "upload",
+      "config" : {
+        "bodyForm" : {
+          "source_lang" : "",
+          "target_lang" : "com.deepl.api.v2.client.TargetLanguage.DE.getValue()",
+          "file" : "in.file",
+          "filename" : "in.file.getName()",
+          "formality" : "",
+          "glossary_id" : ""
+        },
+        "path" : "/document",
+        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "method" : "POST",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.uploaded" : "result"
+        },
+        "bodyObjectType" : "com.deepl.api.v2.client.DocumentBody",
+        "resultType" : "com.deepl.api.v2.client.InlineResponse2001",
+        "bodyInputType" : "FORM",
+        "bodyMediaType" : "multipart/form-data"
+      },
+      "visual" : {
+        "at" : { "x" : 480, "y" : 216 }
+      },
+      "connect" : { "id" : "f14", "to" : "f13" }
+    }, {
+      "id" : "f6",
+      "type" : "RestClientCall",
+      "name" : "translate",
+      "config" : {
+        "bodyForm" : {
+          "source_lang" : "",
+          "target_lang" : "com.deepl.api.v2.client.TargetLanguage.DE.getValue()",
+          "formality" : "",
+          "glossary_id" : "",
+          "text" : "in.input.lines()",
+          "split_sentences" : "",
+          "preserve_formatting" : "",
+          "tag_handling" : "",
+          "non_splitting_tags" : "",
+          "outline_detection" : "",
+          "splitting_tags" : "",
+          "ignore_tags" : ""
+        },
+        "path" : "/translate",
+        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "method" : "POST",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "bodyObjectType" : "com.deepl.api.v2.client.TranslateBody",
+        "resultType" : "com.deepl.api.v2.client.InlineResponse200",
+        "bodyInputType" : "FORM",
+        "bodyMediaType" : "application/x-www-form-urlencoded"
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 424 }
+      },
+      "connect" : { "id" : "f7", "to" : "f5" }
+    }, {
+      "id" : "f13",
+      "type" : "RestClientCall",
+      "name" : "check",
+      "config" : {
+        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+        "method" : "POST",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "bodyObjectType" : "com.deepl.api.v2.client.DocumentDocumentIdBody",
+        "bodyInputType" : "FORM",
+        "bodyForm" : {
+          "source_lang" : "",
+          "formality" : "",
+          "glossary_id" : "",
+          "document_key" : "in.uploaded.documentKey"
+        },
+        "path" : "/document/{document_id}",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.check" : "result"
+        },
+        "templateParams" : {
+          "document_id" : "in.uploaded.documentId"
+        },
+        "resultType" : "com.deepl.api.v2.client.InlineResponse2002",
+        "bodyMediaType" : "application/x-www-form-urlencoded"
+      },
+      "visual" : {
+        "at" : { "x" : 648, "y" : 216 }
+      },
+      "connect" : { "id" : "f12", "to" : "f8" }
+    }, {
+      "id" : "f8",
+      "type" : "Alternative",
+      "visual" : {
+        "at" : { "x" : 784, "y" : 216 }
+      },
+      "connect" : [
+        { "id" : "f18", "to" : "f16", "condition" : "in.check.status == com.deepl.api.v2.client.InlineResponse2002.StatusEnum.DONE" },
+        { "id" : "f19", "to" : "f15", "via" : [ { "x" : 784, "y" : 328 } ] }
+      ]
+    }, {
+      "id" : "f16",
+      "type" : "RestClientCall",
+      "name" : "download",
+      "config" : {
+        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+        "method" : "POST",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "bodyObjectType" : "com.deepl.api.v2.client.DocumentDocumentIdBody",
+        "bodyInputType" : "FORM",
+        "responseCode" : [
+          "import java.nio.file.StandardCopyOption;",
+          "import java.nio.file.Files;",
+          "File res = new File(\"translated.docx\");",
+          "Files.copy(result, res.getJavaFile().toPath(), StandardCopyOption.REPLACE_EXISTING);",
+          "out.translated = res;"
+        ],
+        "bodyForm" : {
+          "source_lang" : "",
+          "formality" : "",
+          "glossary_id" : "",
+          "document_key" : "in.uploaded.documentKey"
+        },
+        "path" : "/document/{document_id}/result",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "templateParams" : {
+          "document_id" : "in.uploaded.documentId"
+        },
+        "resultType" : "java.io.InputStream",
+        "bodyMediaType" : "application/x-www-form-urlencoded"
+      },
+      "visual" : {
+        "at" : { "x" : 904, "y" : 216 }
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    }, {
+      "id" : "f15",
+      "type" : "Script",
+      "name" : "wait",
+      "config" : {
+        "output" : {
+          "code" : "Thread.sleep(5000);"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 712, "y" : 328 }
+      },
+      "connect" : { "id" : "f17", "to" : "f13" }
+    }, {
+      "id" : "f20",
+      "type" : "CallSubStart",
+      "name" : "text(String)",
+      "config" : {
+        "callSignature" : "text",
+        "input" : {
+          "params" : [
+            { "name" : "text", "type" : "String" }
+          ],
+          "map" : {
+            "out.input" : "param.text"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 344, "y" : 424 }
+      },
+      "connect" : { "id" : "f21", "to" : "f6" }
+    }, {
+      "id" : "f5",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 640, "y" : 424 }
+      }
+    } ]
+}
