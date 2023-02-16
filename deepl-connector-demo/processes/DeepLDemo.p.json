@@ -10,7 +10,8 @@
       "name" : "translate.ivp",
       "config" : {
         "callSignature" : "translate",
-        "outLink" : "translate.ivp"
+        "outLink" : "translate.ivp",
+        "tags" : "demo"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
@@ -20,7 +21,7 @@
       "id" : "f1",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 352, "y" : 64 }
+        "at" : { "x" : 376, "y" : 64 }
       }
     }, {
       "id" : "f3",
@@ -37,6 +38,9 @@
             "param.text" : "\"Hello World\"",
             "param.targetLanguage" : "com.deepl.api.v2.client.TargetLanguage.DE"
           }
+        },
+        "output" : {
+          "code" : "ivy.log.info(\"Deutsche Übersetzung: \"+result.translation);"
         }
       },
       "visual" : {
