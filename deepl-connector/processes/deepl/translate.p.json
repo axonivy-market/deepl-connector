@@ -8,21 +8,31 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "CallSubStart",
-      "name" : "document(File)",
+      "name" : "document(File,TargetLanguage)",
       "config" : {
         "callSignature" : "document",
         "input" : {
           "params" : [
-            { "name" : "file", "type" : "java.io.File" }
+            { "name" : "file", "type" : "java.io.File", "desc" : "A file to translate (e.g. docx, pdf, pptx)" },
+            { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage", "desc" : "The language to translate to" }
           ],
           "map" : {
             "out.file" : "param.file"
           }
         },
+        "result" : {
+          "params" : [
+            { "name" : "translated", "type" : "java.io.File" }
+          ],
+          "map" : {
+            "result.translated" : "in.translated.getJavaFile()"
+          }
+        },
         "tags" : "connector"
       },
       "visual" : {
-        "at" : { "x" : 344, "y" : 216 }
+        "at" : { "x" : 344, "y" : 216 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
       },
       "connect" : { "id" : "f22", "to" : "f4" }
     }, {
@@ -38,7 +48,7 @@
       "config" : {
         "bodyForm" : {
           "source_lang" : "",
-          "target_lang" : "com.deepl.api.v2.client.TargetLanguage.DE.getValue()",
+          "target_lang" : "in.langTarget.getValue()",
           "file" : "in.file",
           "filename" : "in.file.getName()",
           "formality" : "",
@@ -68,7 +78,7 @@
       "config" : {
         "bodyForm" : {
           "source_lang" : "",
-          "target_lang" : "com.deepl.api.v2.client.TargetLanguage.DE.getValue()",
+          "target_lang" : "in.langTarget.getValue()",
           "formality" : "",
           "glossary_id" : "",
           "text" : "in.input.lines()",
@@ -186,20 +196,31 @@
     }, {
       "id" : "f20",
       "type" : "CallSubStart",
-      "name" : "text(String)",
+      "name" : "text(String,TargetLanguage)",
       "config" : {
         "callSignature" : "text",
         "input" : {
           "params" : [
-            { "name" : "text", "type" : "String" }
+            { "name" : "text", "type" : "String", "desc" : "The text to translate" },
+            { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage", "desc" : "The wished target language" }
           ],
           "map" : {
-            "out.input" : "param.text"
+            "out.input" : "param.text",
+            "out.langTarget" : "param.targetLanguage"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "translation", "type" : "String" }
+          ],
+          "map" : {
+            "result.translation" : "in.output"
           }
         }
       },
       "visual" : {
-        "at" : { "x" : 344, "y" : 424 }
+        "at" : { "x" : 344, "y" : 424 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
       },
       "connect" : { "id" : "f21", "to" : "f6" }
     }, {
