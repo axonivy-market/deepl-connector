@@ -1,11 +1,15 @@
-# MY-PRODUCT-NAME
+# DeepL Connector
 
-YOUR DESCRIPTION GOES HERE
+Translate with charm and low code!
 
 ## Demo
 
-YOUR DEMO DESCRIPTION GOES HERE
+Translates texts or documents via API.
 
 ## Setup
 
-YOUR SETUP DESCRIPTION GOES HERE
+Get a free developer account from DeepL.com 
+Copy the API-Key of your account into
+
+`config/variables.yaml` under
+`variables.deepl-connector.apiKey`
