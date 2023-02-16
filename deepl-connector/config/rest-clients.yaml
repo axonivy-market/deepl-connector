@@ -3,6 +3,7 @@ RestClients:
   deepl (DeepL API Documentation):
     UUID: d0a119ea-f566-47be-8cc8-c6681c129161
     Url: https://api-free.deepl.com/v2
+    Icon: res:/webContent/logo/deepl-logo-blue.png
     Features:
     - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
     - org.glassfish.jersey.media.multipart.MultiPartFeature
