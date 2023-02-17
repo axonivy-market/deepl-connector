@@ -1,0 +1,9 @@
+Data #class
+deepl.translate #namespace
+file java.io.File #field
+uploaded com.deepl.api.v2.client.InlineResponse2001 #field
+check com.deepl.api.v2.client.InlineResponse2002 #field
+translated File #field
+input String #field
+output String #field
+langTarget com.deepl.api.v2.client.TargetLanguage #field

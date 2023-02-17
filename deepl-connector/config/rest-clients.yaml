@@ -1,0 +1,15 @@
+RestClients:
+  #The DeepL API provides programmatic access to DeepL’s machine translation technology.
+  deepl:
+    UUID: d0a119ea-f566-47be-8cc8-c6681c129161
+    Url: https://api-free.deepl.com/v2
+    Icon: res:/webContent/logo/deepl-logo-blue.png
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - org.glassfish.jersey.media.multipart.MultiPartFeature
+    - com.axonivy.connector.deepl.DeepLAuthFeature
+    Properties:
+      AUTH.deepLKey: ${ivy.var.deepl-connector.authKey}
+    OpenAPI:
+      SpecUrl: https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml
+      Namespace: com.deepl.api.v2.client
