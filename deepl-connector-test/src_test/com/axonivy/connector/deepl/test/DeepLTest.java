@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.axonivy.connector.deepl.mock.DeepLServiceMock;
+import com.deepl.api.v2.client.TargetLanguage;
 
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
@@ -21,7 +22,7 @@ public class DeepLTest{
   private static final BpmProcess DEEPL = BpmProcess.path("deepl/translate");
 
   private interface Start {
-    BpmElement TRANSLATE = DEEPL.elementName("text(String,TargetLanguage)");
+    BpmElement TRANSLATE = DEEPL.elementName("text(String,String)");
   }
 
   @BeforeEach
@@ -36,7 +37,7 @@ public class DeepLTest{
     ExecutionResult result = bpmClient.start()
       .subProcess(Start.TRANSLATE)
       .withParam("text", "Hello World")
-      //.withParam("targetLang", TargetLanguage.DE)
+      .withParam("targetLanguage", TargetLanguage.DE.getValue())
       .execute();
     deepl.translate.Data data = result.data().last();
     assertThat(data.getOutput()).isEqualTo("Hallo Welt");
