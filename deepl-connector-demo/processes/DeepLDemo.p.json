@@ -28,15 +28,15 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:text(String,com.deepl.api.v2.client.TargetLanguage)",
+        "processCall" : "deepl/translate:text(String,String)",
         "call" : {
           "params" : [
             { "name" : "text", "type" : "String" },
-            { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage" }
+            { "name" : "targetLanguage", "type" : "String" }
           ],
           "map" : {
             "param.text" : "\"Hello World\"",
-            "param.targetLanguage" : "com.deepl.api.v2.client.TargetLanguage.DE"
+            "param.targetLanguage" : "com.deepl.api.v2.client.TargetLanguage.DE.getValue()"
           }
         },
         "output" : {

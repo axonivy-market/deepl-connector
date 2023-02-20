@@ -191,23 +191,26 @@
     }, {
       "id" : "f20",
       "type" : "CallSubStart",
-      "name" : "text(String,TargetLanguage)",
+      "name" : "text(String,String)",
       "config" : {
         "callSignature" : "text",
         "input" : {
           "params" : [
             { "name" : "text", "type" : "String", "desc" : "The text to translate" },
-            { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage", "desc" : "The wished target language" }
+            { "name" : "targetLanguage", "type" : "String", "desc" : "The wished target language" }
           ],
           "map" : {
             "out.input" : "param.text"
           },
           "code" : [
             "import com.deepl.api.v2.client.TargetLanguage;",
-            "if (!param.#targetLanguage is initialized) {",
-            "  param.targetLanguage = TargetLanguage.DE;",
+            "",
+            "if (param.targetLanguage.isBlank()){",
+            "  param.targetLanguage = TargetLanguage.DE.getValue();",
+            "  ivy.log.info(\"parameter 'targetLanguage' undefined, assuming 'DE'\");",
+            "  ",
             "}",
-            "out.langTarget = param.targetLanguage;"
+            "out.langTarget = TargetLanguage.valueOf(param.targetLanguage);"
           ]
         },
         "result" : {
