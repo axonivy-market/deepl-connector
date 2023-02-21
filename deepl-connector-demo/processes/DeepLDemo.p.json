@@ -16,37 +16,24 @@
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },
-      "connect" : { "id" : "f4", "to" : "f3" }
+      "connect" : { "id" : "f2", "to" : "f4" }
     }, {
       "id" : "f1",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 376, "y" : 64 }
+        "at" : { "x" : 416, "y" : 64 }
       }
     }, {
-      "id" : "f3",
-      "type" : "SubProcessCall",
+      "id" : "f4",
+      "type" : "DialogCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:text(String,com.deepl.api.v2.client.TargetLanguage)",
-        "call" : {
-          "params" : [
-            { "name" : "text", "type" : "String" },
-            { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage" }
-          ],
-          "map" : {
-            "param.text" : "\"Hello World\"",
-            "param.targetLanguage" : "com.deepl.api.v2.client.TargetLanguage.DE"
-          }
-        },
-        "output" : {
-          "code" : "ivy.log.info(\"Deutsche Übersetzung: \"+result.translation);"
-        }
+        "dialogId" : "com.axonivy.connector.deepl.demo.translate",
+        "startMethod" : "start()"
       },
       "visual" : {
-        "at" : { "x" : 224, "y" : 64 },
-        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
+        "at" : { "x" : 248, "y" : 64 }
       },
-      "connect" : { "id" : "f2", "to" : "f1" }
+      "connect" : { "id" : "f7", "to" : "f1" }
     } ]
 }
