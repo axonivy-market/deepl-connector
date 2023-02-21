@@ -1,0 +1,12 @@
+translateData #class
+com.axonivy.connector.deepl.demo.translate #namespace
+data com.axonivy.connector.deepl.demo.Data #field
+data PERSISTENT #fieldModifier
+languages java.util.List<com.deepl.api.v2.client.TargetLanguage> #field
+languages PERSISTENT #fieldModifier
+translate com.deepl.api.v2.client.TargetLanguage #field
+translate PERSISTENT #fieldModifier
+inputText String #field
+inputText PERSISTENT #fieldModifier
+outputText String #field
+outputText PERSISTENT #fieldModifier
