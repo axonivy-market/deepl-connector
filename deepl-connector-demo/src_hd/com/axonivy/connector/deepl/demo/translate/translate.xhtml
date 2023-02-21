@@ -7,7 +7,7 @@
 	xmlns:pe="http://primefaces.org/ui/extensions">
 <h:body>
 	<ui:composition template="/layouts/frame-10.xhtml">
-		<ui:define name="title">translate</ui:define>
+		<ui:define name="title">DeepL translation demo</ui:define>
 		<ui:define name="content">
 
 			<h:form id="form">
@@ -15,8 +15,8 @@
 				<div style="display: flex; align-items: flex-end;">
 					<div style="display: flex; flex-direction: column;">
 						<p:outputLabel for="inputText" value="inputText" />
-						<p:inputTextarea rows="6" cols="33" id="inputText"
-							value="#{data.data.inputText}" />
+						<p:inputTextarea id="inputText" value="#{data.data.inputText}"
+							style="width: 300px; height: 200px;" autoResize="false" />
 					</div>
 					<div style="display: flex; flex-direction: column;">
 						<div>
@@ -29,8 +29,9 @@
 							<p:outputLabel for="outputText" value="outputText" />
 						</div>
 
-						<p:inputTextarea rows="6" cols="33" id="outputText"
-							value="#{data.data.OutputText}" />
+						<p:inputTextarea style="width: 300px; height: 200px;"
+							id="outputText" value="#{data.data.outputText}"
+							autoResize="false" />
 					</div>
 				</div>
 				<div class="command-btns" style="justify-content: left;">
