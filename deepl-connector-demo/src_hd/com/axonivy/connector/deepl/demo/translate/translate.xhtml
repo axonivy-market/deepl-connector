@@ -11,12 +11,13 @@
 		<ui:define name="content">
 
 			<h:form id="form">
-
+				<h1>Translate your Text</h1>
 				<div style="display: flex; align-items: flex-end;">
 					<div style="display: flex; flex-direction: column;">
 						<p:outputLabel for="inputText" value="inputText" />
 						<p:inputTextarea id="inputText" value="#{data.inputText}"
-							style="width: 45vw; height: 50vh; resize: none;" autoResize="false" />
+							style="width: 45vw; height: 50vh; resize: none;"
+							autoResize="false" />
 					</div>
 					<div style="display: flex; flex-direction: column;">
 						<div>
@@ -28,7 +29,6 @@
 							</p:selectOneMenu>
 							<p:outputLabel for="outputText" value="outputText" />
 						</div>
-
 						<p:inputTextarea style="width: 45vw; height: 50vh; resize: none;"
 							id="outputText" value="#{data.outputText}" autoResize="false" />
 					</div>
@@ -38,7 +38,6 @@
 						value="translate" update="form" icon="si si-chat-translate" />
 				</div>
 			</h:form>
-
 		</ui:define>
 	</ui:composition>
 </h:body>
