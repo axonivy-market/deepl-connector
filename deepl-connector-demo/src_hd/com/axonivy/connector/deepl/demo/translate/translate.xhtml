@@ -12,25 +12,28 @@
 
 			<h:form id="form">
 
-				<p:outputLabel for="inputText" value="inputText"
-					style="padding-right: 30%" />
-				<p:outputLabel for="outputText" value="outputText" />
+				<div style="display: flex; align-items: flex-end;">
+					<div style="display: flex; flex-direction: column;">
+						<p:outputLabel for="inputText" value="inputText" />
+						<p:inputTextarea rows="6" cols="33" id="inputText"
+							value="#{data.data.inputText}" />
+					</div>
+					<div style="display: flex; flex-direction: column;">
+						<div>
+							<p:selectOneMenu id="language" value="#{data.translate}"
+								converter="ivy.ListItem">
+								<f:selectItems value="#{data.languages}" var="language"
+									itemValue="#{language}" itemLabel="#{language.getValue()}">
+								</f:selectItems>
+							</p:selectOneMenu>
+							<p:outputLabel for="outputText" value="outputText" />
+						</div>
 
-				<p:outputLabel for="@next" value="language" />
-				<p:selectOneMenu id="language" value="#{data.translate}"
-					converter="ivy.ListItem">
-					<f:selectItems value="#{data.languages}" var="language"
-						itemValue="#{language}" itemLabel="#{language.getValue()}" >
-					</f:selectItems>
-				</p:selectOneMenu>
-				<div style="display: flex;">
-					<p:inputTextarea rows="6" cols="33" id="inputText"
-						value="#{data.data.inputText}" />
-					<p:inputTextarea rows="6" cols="33" id="outputText"
-						value="#{data.data.OutputText}" />
+						<p:inputTextarea rows="6" cols="33" id="outputText"
+							value="#{data.data.OutputText}" />
+					</div>
 				</div>
-
-				<div class="command-btns">
+				<div class="command-btns" style="justify-content: left;">
 					<p:commandButton id="translate" actionListener="#{logic.translate}"
 						value="translate" update="form" icon="si si-chat-translate" />
 				</div>
