@@ -1,8 +1,4 @@
 Data #class
 com.axonivy.connector.deepl.demo #namespace
-inputText String #field
-inputText PERSISTENT #fieldModifier
-outputText String #field
-outputText PERSISTENT #fieldModifier
 language com.deepl.api.v2.client.TargetLanguage #field
 language PERSISTENT #fieldModifier

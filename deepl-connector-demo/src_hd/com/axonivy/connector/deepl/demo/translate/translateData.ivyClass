@@ -6,3 +6,7 @@ languages java.util.List<com.deepl.api.v2.client.TargetLanguage> #field
 languages PERSISTENT #fieldModifier
 translate com.deepl.api.v2.client.TargetLanguage #field
 translate PERSISTENT #fieldModifier
+inputText String #field
+inputText PERSISTENT #fieldModifier
+outputText String #field
+outputText PERSISTENT #fieldModifier
