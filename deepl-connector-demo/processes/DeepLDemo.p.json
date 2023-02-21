@@ -29,21 +29,7 @@
       "name" : "translate",
       "config" : {
         "dialogId" : "com.axonivy.connector.deepl.demo.translate",
-        "startMethod" : "start(com.axonivy.connector.deepl.demo.Data)",
-        "output" : {
-          "map" : {
-            "out" : "result.data",
-            "out.language" : "result.data.language"
-          }
-        },
-        "call" : {
-          "params" : [
-            { "name" : "data", "type" : "com.axonivy.connector.deepl.demo.Data" }
-          ],
-          "map" : {
-            "param.data" : "in"
-          }
-        }
+        "startMethod" : "start()"
       },
       "visual" : {
         "at" : { "x" : 248, "y" : 64 }

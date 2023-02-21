@@ -8,30 +8,18 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "HtmlDialogStart",
-      "name" : "start(Data)",
+      "name" : "start()",
       "config" : {
         "callSignature" : "start",
         "input" : {
-          "params" : [
-            { "name" : "data", "type" : "com.axonivy.connector.deepl.demo.Data" }
-          ],
           "map" : {
-            "out.data" : "param.data",
-            "out.data.inputText" : "\"Hello world\"",
-            "out.data.language" : "com.deepl.api.v2.client.TargetLanguage.DE"
+            "out.data.language" : "com.deepl.api.v2.client.TargetLanguage.DE",
+            "out.inputText" : "\"Hello world\""
           },
           "code" : [
             "import com.deepl.api.v2.client.TargetLanguage;",
             "out.languages = TargetLanguage.values();"
           ]
-        },
-        "result" : {
-          "params" : [
-            { "name" : "data", "type" : "com.axonivy.connector.deepl.demo.Data" }
-          ],
-          "map" : {
-            "result.data" : "in.data"
-          }
         },
         "guid" : "1866E2B2931590DB"
       },
@@ -71,7 +59,7 @@
         "output" : {
           "map" : {
             "out" : "in",
-            "out.data.outputText" : "result.translation"
+            "out.outputText" : "result.translation"
           }
         },
         "call" : {
@@ -80,7 +68,7 @@
             { "name" : "targetLanguage", "type" : "String" }
           ],
           "map" : {
-            "param.text" : "in.data.inputText",
+            "param.text" : "in.inputText",
             "param.targetLanguage" : "in.translate.getValue()"
           }
         }
