@@ -71,9 +71,8 @@
         "output" : {
           "map" : {
             "out" : "in",
-            "out.data.OutputText" : "result.translation"
-          },
-          "code" : "ivy.log.info(\"Deutsche Übersetzung: \"+result.translation);"
+            "out.data.outputText" : "result.translation"
+          }
         },
         "call" : {
           "params" : [
