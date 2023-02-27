@@ -32,7 +32,8 @@
         "startMethod" : "start()"
       },
       "visual" : {
-        "at" : { "x" : 248, "y" : 64 }
+        "at" : { "x" : 248, "y" : 64 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f7", "to" : "f1" }
     } ]
