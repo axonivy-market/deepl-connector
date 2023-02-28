@@ -1,0 +1,107 @@
+{
+  "format" : "10.0.0",
+  "id" : "18692879E2E47E00",
+  "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.connector.deepl.demo.Uploader.UploaderData"
+  },
+  "elements" : [ {
+      "id" : "f6",
+      "type" : "HtmlDialogStart",
+      "name" : "start()",
+      "config" : {
+        "callSignature" : "start",
+        "input" : {
+          "code" : [
+            "import com.deepl.api.v2.client.TargetLanguage;",
+            "out.languages = TargetLanguage.values();"
+          ]
+        },
+        "result" : {
+          "params" : [
+            { "name" : "file", "type" : "File" }
+          ],
+          "map" : {
+            "result.file" : "in.ivyFile"
+          }
+        },
+        "guid" : "186928C0C594B9C3"
+      },
+      "visual" : {
+        "at" : { "x" : 552, "y" : 408 },
+        "labelOffset" : { "x" : 8, "y" : 35 }
+      },
+      "connect" : { "id" : "f11", "to" : "f7" }
+    }, {
+      "id" : "f7",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 680, "y" : 408 }
+      }
+    }, {
+      "id" : "f16",
+      "type" : "Script",
+      "name" : "set file content and name",
+      "config" : {
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.showContent" : "false"
+          },
+          "code" : "in.filePath = in.ivyFile.getAbsolutePath();"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 720, "y" : 584 },
+        "size" : { "width" : 144, "height" : 60 }
+      },
+      "connect" : { "id" : "f1", "to" : "f0" }
+    }, {
+      "id" : "f13",
+      "type" : "HtmlDialogEventStart",
+      "name" : "fileUpload",
+      "config" : {
+        "guid" : "186928C0C59F098D"
+      },
+      "visual" : {
+        "at" : { "x" : 560, "y" : 584 },
+        "labelOffset" : { "x" : 11, "y" : 32 }
+      },
+      "connect" : { "id" : "f17", "to" : "f16" }
+    }, {
+      "id" : "f14",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 1040, "y" : 584 }
+      }
+    }, {
+      "id" : "f0",
+      "type" : "SubProcessCall",
+      "name" : "translate",
+      "config" : {
+        "processCall" : "deepl/translate:Document(File,String,File)",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.ivyFile" : "in.ivyFile"
+          }
+        },
+        "call" : {
+          "params" : [
+            { "name" : "file", "type" : "File" },
+            { "name" : "targetLanguage", "type" : "String" },
+            { "name" : "ivyFile", "type" : "File" }
+          ],
+          "map" : {
+            "param.targetLanguage" : "in.translate.getValue()",
+            "param.ivyFile" : "in.ivyFile"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 904, "y" : 584 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
+      },
+      "connect" : { "id" : "f3", "to" : "f14" }
+    } ]
+}

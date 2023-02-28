@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+	<ui:composition template="/layouts/frame-10.xhtml">
+		<ui:define name="title">InvoiceViewer</ui:define>
+		<ui:define name="content">
+
+
+			<h:form id="form" enctype="multipart/form-data">
+				<p:messages />
+				<br />
+				<h:panelGrid columns="2" rendered="#{data.invoice.file ne null}">
+					<p:outputLabel for="doclink" value="Link to PDF document: " />
+					<p:link id="doclink" href="#{ivy.html.fileref(data.invoice.file)}"
+						value="#{data.invoice.file.name}" />
+				</h:panelGrid>
+
+				<br />
+				<h:panelGrid columns="2" rendered="#{data.invoice.file ne null}">
+					<p:outputLabel
+						value="Detected Fields: #{data.invoice.indexed.indexData.field.size()}" />
+					<p:dataTable value="#{data.invoice.indexed.indexData.field}"
+						var="field">
+						<p:column headerText="Name">
+							<p:outputLabel value="#{field.name}" />
+						</p:column>
+						<p:column headerText="Value">
+							<p:outputLabel value="#{field.value.get(0).getText()}" />
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+
+				<br />
+				<h:panelGrid columns="2" width="100%"
+					rendered="#{data.invoice.file ne null}">
+					<p:outputLabel for="viewer"
+						value="Primefaces Extension Document Viewer" />
+					<h:outputLabel value="Browser native PDF Viewer (iframe)" />
+
+					<pe:documentViewer id="viewer"
+						url="#{ivy.html.fileref(data.invoice.file)}" height="500" />
+					<iframe src="embedded-viewer.xhtml" width="100%" height="500" />
+				</h:panelGrid>
+			</h:form>
+
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

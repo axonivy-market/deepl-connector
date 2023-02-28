@@ -6,36 +6,6 @@
     "data" : "deepl.translate.Data"
   },
   "elements" : [ {
-      "id" : "f0",
-      "type" : "CallSubStart",
-      "name" : "document(File,TargetLanguage)",
-      "config" : {
-        "callSignature" : "document",
-        "input" : {
-          "params" : [
-            { "name" : "file", "type" : "java.io.File", "desc" : "A file to translate (e.g. docx, pdf, pptx)" },
-            { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage", "desc" : "The language to translate to" }
-          ],
-          "map" : {
-            "out.file" : "param.file"
-          }
-        },
-        "result" : {
-          "params" : [
-            { "name" : "translated", "type" : "java.io.File" }
-          ],
-          "map" : {
-            "result.translated" : "in.translated.getJavaFile()"
-          }
-        },
-        "tags" : "connector"
-      },
-      "visual" : {
-        "at" : { "x" : 344, "y" : 216 },
-        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
-      },
-      "connect" : { "id" : "f22", "to" : "f4" }
-    }, {
       "id" : "f1",
       "type" : "CallSubEnd",
       "visual" : {
@@ -46,29 +16,36 @@
       "type" : "RestClientCall",
       "name" : "upload",
       "config" : {
+        "bodyObjectMapping" : {
+          "param.file" : "in.ivyFile"
+        },
+        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+        "method" : "POST",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "bodyObjectType" : "com.deepl.api.v2.client.DocumentBody",
+        "bodyInputType" : "FORM",
         "bodyForm" : {
           "source_lang" : "",
           "target_lang" : "in.langTarget.getValue()",
           "file" : "in.file",
           "filename" : "in.file.getName()",
           "formality" : "",
-          "glossary_id" : ""
+          "glossary_id" : "",
+          "" : ""
         },
         "path" : "/document",
-        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
         "clientErrorCode" : "ivy:error:rest:client",
-        "method" : "POST",
-        "statusErrorCode" : "ivy:error:rest:client",
         "responseMapping" : {
+          "out" : "in",
+          "out.file" : "in.file",
+          "out.ivyFile" : "in.ivyFile",
           "out.uploaded" : "result"
         },
-        "bodyObjectType" : "com.deepl.api.v2.client.DocumentBody",
         "resultType" : "com.deepl.api.v2.client.InlineResponse2001",
-        "bodyInputType" : "FORM",
         "bodyMediaType" : "multipart/form-data"
       },
       "visual" : {
-        "at" : { "x" : 480, "y" : 216 },
+        "at" : { "x" : 488, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f14", "to" : "f13" }
@@ -93,7 +70,7 @@
         "responseCode" : "out.output = result.get(\"translations\").get(0).get(\"text\").asText();"
       },
       "visual" : {
-        "at" : { "x" : 472, "y" : 424 },
+        "at" : { "x" : 496, "y" : 424 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f7", "to" : "f5" }
@@ -171,7 +148,7 @@
         "bodyMediaType" : "application/x-www-form-urlencoded"
       },
       "visual" : {
-        "at" : { "x" : 904, "y" : 216 },
+        "at" : { "x" : 912, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f2", "to" : "f1" }
@@ -233,5 +210,89 @@
       "visual" : {
         "at" : { "x" : 640, "y" : 424 }
       }
+    }, {
+      "id" : "f3",
+      "type" : "CallSubStart",
+      "name" : "DocumentSample(File,String,File)",
+      "config" : {
+        "callSignature" : "DocumentSample",
+        "input" : {
+          "params" : [
+            { "name" : "file", "type" : "File", "desc" : "A file to translate (e.g. docx, pdf, pptx)" },
+            { "name" : "targetLanguage", "type" : "String", "desc" : "The language to translate to" },
+            { "name" : "ivyFile", "type" : "File" }
+          ],
+          "map" : {
+            "out.file" : "param.file.getJavaFile()",
+            "out.ivyFile" : "param.ivyFile"
+          },
+          "code" : [
+            "import com.deepl.api.v2.client.TargetLanguage;",
+            "",
+            "if (param.targetLanguage.isBlank()){",
+            "  param.targetLanguage = TargetLanguage.DE.getValue();",
+            "  ivy.log.info(\"parameter 'targetLanguage' undefined, assuming 'DE'\");",
+            "  ",
+            "}",
+            "out.langTarget = TargetLanguage.valueOf(param.targetLanguage);"
+          ]
+        },
+        "result" : {
+          "params" : [
+            { "name" : "translated", "type" : "File" }
+          ],
+          "map" : {
+            "result.translated" : "in.translated"
+          }
+        },
+        "tags" : "connector"
+      },
+      "visual" : {
+        "at" : { "x" : 384, "y" : 104 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
+      },
+      "connect" : { "id" : "f9", "to" : "f4" }
+    }, {
+      "id" : "f10",
+      "type" : "CallSubStart",
+      "name" : "Document(File,String,File)",
+      "config" : {
+        "callSignature" : "Document",
+        "input" : {
+          "params" : [
+            { "name" : "file", "type" : "File", "desc" : "A file to translate (e.g. docx, pdf, pptx)" },
+            { "name" : "targetLanguage", "type" : "String", "desc" : "The language to translate to" },
+            { "name" : "ivyFile", "type" : "File" }
+          ],
+          "map" : {
+            "out.file" : "param.ivyFile.getJavaFile()",
+            "out.ivyFile" : "param.ivyFile"
+          },
+          "code" : [
+            "import com.deepl.api.v2.client.TargetLanguage;",
+            "",
+            "if (param.targetLanguage.isBlank()){",
+            "  param.targetLanguage = TargetLanguage.DE.getValue();",
+            "  ivy.log.info(\"parameter 'targetLanguage' undefined, assuming 'DE'\");",
+            "  ",
+            "}",
+            "out.langTarget = TargetLanguage.valueOf(param.targetLanguage);"
+          ]
+        },
+        "result" : {
+          "params" : [
+            { "name" : "translated", "type" : "File" }
+          ],
+          "map" : {
+            "result.translated" : "in.translated"
+          }
+        },
+        "tags" : "connector"
+      },
+      "visual" : {
+        "at" : { "x" : 336, "y" : 216 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
+      },
+      "connect" : { "id" : "f22", "to" : "f4" }
     } ]
 }
