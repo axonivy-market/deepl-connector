@@ -10,3 +10,5 @@ translate com.deepl.api.v2.client.TargetLanguage #field
 translate PERSISTENT #fieldModifier
 ivyFile File #field
 ivyFile PERSISTENT #fieldModifier
+invoice com.axonivy.connector.deepl.demo.Data #field
+invoice PERSISTENT #fieldModifier

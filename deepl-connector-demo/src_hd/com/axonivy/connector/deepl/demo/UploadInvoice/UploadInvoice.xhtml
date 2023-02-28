@@ -31,8 +31,17 @@
 					ajax="false" id="fileUploadButton" icon="fa-solid fa-cloud-upload" />
 				<br />
 				<br />
-			</h:form>
+				<h:panelGrid columns="2" width="100%"
+					rendered="#{data.invoice.file ne null}">
+					<p:outputLabel for="viewer"
+						value="Primefaces Extension Document Viewer" />
+					<h:outputLabel value="Browser native PDF Viewer (iframe)" />
 
+					<pe:documentViewer id="viewer"
+						url="#{ivy.html.fileref(data.invoice.file)}" height="500" />
+					<iframe src="embedded-viewer.xhtml" width="100%" height="500" />
+				</h:panelGrid>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>
