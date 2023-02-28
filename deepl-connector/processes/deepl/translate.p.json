@@ -129,7 +129,7 @@
         "responseCode" : [
           "import java.nio.file.StandardCopyOption;",
           "import java.nio.file.Files;",
-          "File res = new File(\"translated.docx\");",
+          "File res = new File(\"translated.pdf\");",
           "Files.copy(result, res.getJavaFile().toPath(), StandardCopyOption.REPLACE_EXISTING);",
           "out.translated = res;"
         ],
@@ -141,6 +141,9 @@
         },
         "path" : "/document/{document_id}/result",
         "clientErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.translated" : "in.translated"
+        },
         "templateParams" : {
           "document_id" : "in.uploaded.documentId"
         },

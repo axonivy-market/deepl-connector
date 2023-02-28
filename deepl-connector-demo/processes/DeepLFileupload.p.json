@@ -55,18 +55,6 @@
       "name" : "UploadInvoice",
       "config" : {
         "dialogId" : "com.axonivy.connector.deepl.demo.UploadInvoice",
-        "startMethod" : "start()"
-      },
-      "visual" : {
-        "at" : { "x" : 248, "y" : 472 }
-      },
-      "connect" : { "id" : "f4", "to" : "f5" }
-    }, {
-      "id" : "f6",
-      "type" : "DialogCall",
-      "name" : "DocumentViewer",
-      "config" : {
-        "dialogId" : "com.axonivy.connector.deepl.demo.InvoiceViewer",
         "startMethod" : "start(com.axonivy.connector.deepl.demo.Data)",
         "call" : {
           "params" : [
@@ -75,8 +63,9 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 344, "y" : 632 }
-      }
+        "at" : { "x" : 248, "y" : 472 }
+      },
+      "connect" : { "id" : "f4", "to" : "f5" }
     }, {
       "id" : "f2",
       "type" : "TaskEnd",

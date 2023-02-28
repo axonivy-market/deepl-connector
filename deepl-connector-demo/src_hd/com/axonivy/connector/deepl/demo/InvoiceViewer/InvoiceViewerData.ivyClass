@@ -1,4 +1,0 @@
-InvoiceViewerData #class
-com.axonivy.connector.deepl.demo.InvoiceViewer #namespace
-invoice com.axonivy.connector.deepl.demo.Data #field
-invoice PERSISTENT #fieldModifier

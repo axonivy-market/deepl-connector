@@ -8,10 +8,16 @@
   "elements" : [ {
       "id" : "f6",
       "type" : "HtmlDialogStart",
-      "name" : "start()",
+      "name" : "start(Data)",
       "config" : {
         "callSignature" : "start",
         "input" : {
+          "params" : [
+            { "name" : "invoice", "type" : "com.axonivy.connector.deepl.demo.Data" }
+          ],
+          "map" : {
+            "out.invoice" : "param.invoice"
+          },
           "code" : [
             "import com.deepl.api.v2.client.TargetLanguage;",
             "out.languages = TargetLanguage.values();"
@@ -23,12 +29,12 @@
         "at" : { "x" : 560, "y" : 496 },
         "labelOffset" : { "x" : 8, "y" : 35 }
       },
-      "connect" : { "id" : "f11", "to" : "f7" }
+      "connect" : { "id" : "f10", "to" : "f9" }
     }, {
       "id" : "f7",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 688, "y" : 496 }
+        "at" : { "x" : 816, "y" : 496 }
       }
     }, {
       "id" : "f16",
@@ -88,12 +94,36 @@
         "at" : { "x" : 904, "y" : 584 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
-      "connect" : { "id" : "f2", "to" : "f4" }
+      "connect" : { "id" : "f3", "to" : "f2" }
+    }, {
+      "id" : "f2",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 1048, "y" : 584 }
+      }
     }, {
       "id" : "f4",
-      "type" : "HtmlDialogExit",
+      "type" : "HtmlDialogEventStart",
+      "name" : "event",
+      "config" : {
+        "guid" : "18698739B6F60E9A"
+      },
       "visual" : {
-        "at" : { "x" : 1064, "y" : 584 }
+        "at" : { "x" : 560, "y" : 664 }
+      },
+      "connect" : { "id" : "f8", "to" : "f5" }
+    }, {
+      "id" : "f5",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 752, "y" : 664 }
       }
+    }, {
+      "id" : "f9",
+      "type" : "Script",
+      "visual" : {
+        "at" : { "x" : 688, "y" : 496 }
+      },
+      "connect" : { "id" : "f11", "to" : "f7" }
     } ]
 }
