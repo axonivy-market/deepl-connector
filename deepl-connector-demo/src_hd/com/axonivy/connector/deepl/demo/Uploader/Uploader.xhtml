@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+	<ui:composition template="/layouts/frame-10.xhtml">
+		<ui:define name="title">Uploader</ui:define>
+		<ui:define name="content">
+
+			<h3>Translate your file</h3>
+
+			<h:form enctype="multipart/form-data" id="demoForm">
+				<h:outputText value="1. Select a PDF invoice for processing" />
+				<br />
+				<br />
+				<p:fileUpload value="#{data.ivyFile}" mode="simple"
+					style="width:500px" id="fileUpload" />
+				<br />
+				<p:selectOneMenu id="language" value="#{data.translate}"
+					converter="ivy.ListItem">
+					<f:selectItems value="#{data.languages}" var="language"
+						itemValue="#{language}" itemLabel="#{language.getValue()}">
+					</f:selectItems>
+				</p:selectOneMenu>
+				<br />
+				<h:panelGrid>
+					<p:commandButton value="Upload"
+						actionListener="#{logic.fileUpload}" ajax="false"
+						id="fileUploadButton" icon="fa-solid fa-cloud-upload" />
+				</h:panelGrid>
+				<br />
+				<br />
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

@@ -1,0 +1,122 @@
+{
+  "format" : "10.0.0",
+  "id" : "1869282391F7B705",
+  "config" : {
+    "data" : "com.axonivy.connector.deepl.demo.Data"
+  },
+  "elements" : [ {
+      "id" : "f3",
+      "type" : "RequestStart",
+      "name" : "uploadSampleInvoice.ivp",
+      "config" : {
+        "callSignature" : "uploadSampleInvoice",
+        "outLink" : "uploadSampleInvoice.ivp",
+        "tags" : "demo"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 152 },
+        "labelOffset" : { "x" : 21, "y" : 40 }
+      },
+      "connect" : { "id" : "f0", "to" : "f9" }
+    }, {
+      "id" : "f5",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 384, "y" : 472 }
+      }
+    }, {
+      "id" : "f8",
+      "type" : "Script",
+      "name" : [
+        "log recoginzed",
+        "fields"
+      ],
+      "config" : {
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "in.file"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 384, "y" : 280 },
+        "size" : { "width" : 128, "height" : 60 }
+      },
+      "connect" : { "id" : "f18", "to" : "f13" }
+    }, {
+      "id" : "f10",
+      "type" : "RequestStart",
+      "name" : "uploadInvoice.ivp",
+      "config" : {
+        "callSignature" : "uploadInvoice",
+        "outLink" : "uploadInvoice.ivp"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 280 },
+        "labelOffset" : { "x" : 9, "y" : 35 }
+      },
+      "connect" : { "id" : "f1", "to" : "f11" }
+    }, {
+      "id" : "f11",
+      "type" : "DialogCall",
+      "name" : "Uploader",
+      "config" : {
+        "dialogId" : "com.axonivy.connector.deepl.demo.Uploader",
+        "startMethod" : "start()",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "result.file"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 280 }
+      },
+      "connect" : { "id" : "f7", "to" : "f8" }
+    }, {
+      "id" : "f13",
+      "type" : "DialogCall",
+      "name" : "DocumentViewer",
+      "config" : {
+        "dialogId" : "com.axonivy.connector.deepl.demo.InvoiceViewer",
+        "startMethod" : "start(com.axonivy.connector.deepl.demo.Data)",
+        "call" : {
+          "params" : [
+            { "name" : "invoice", "type" : "com.axonivy.connector.deepl.demo.Data" }
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 384, "y" : 376 }
+      },
+      "connect" : { "id" : "f16", "to" : "f5" }
+    }, {
+      "id" : "f9",
+      "type" : "DialogCall",
+      "name" : "UploadSample",
+      "config" : {
+        "dialogId" : "com.axonivy.connector.deepl.demo.UplodeSample",
+        "startMethod" : "start(File)",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "result.file"
+          }
+        },
+        "call" : {
+          "params" : [
+            { "name" : "file", "type" : "File" }
+          ],
+          "map" : {
+            "param.file" : "in.file"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 384, "y" : 152 }
+      },
+      "connect" : { "id" : "f2", "to" : "f8" }
+    } ]
+}
