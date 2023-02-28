@@ -64,7 +64,7 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:DocumentSample(File,String,File)",
+        "processCall" : "deepl/translate:DocumentSample(File,String)",
         "output" : {
           "map" : {
             "out" : "in",
@@ -75,13 +75,11 @@
         "call" : {
           "params" : [
             { "name" : "file", "type" : "File" },
-            { "name" : "targetLanguage", "type" : "String" },
-            { "name" : "ivyFile", "type" : "File" }
+            { "name" : "targetLanguage", "type" : "String" }
           ],
           "map" : {
             "param.file" : "in.file",
-            "param.targetLanguage" : "in.translate.getValue()",
-            "param.ivyFile" : "in.ivyFile"
+            "param.targetLanguage" : "in.translate.getValue()"
           }
         }
       },

@@ -213,18 +213,16 @@
     }, {
       "id" : "f3",
       "type" : "CallSubStart",
-      "name" : "DocumentSample(File,String,File)",
+      "name" : "DocumentSample(File,String)",
       "config" : {
         "callSignature" : "DocumentSample",
         "input" : {
           "params" : [
             { "name" : "file", "type" : "File", "desc" : "A file to translate (e.g. docx, pdf, pptx)" },
-            { "name" : "targetLanguage", "type" : "String", "desc" : "The language to translate to" },
-            { "name" : "ivyFile", "type" : "File" }
+            { "name" : "targetLanguage", "type" : "String", "desc" : "The language to translate to" }
           ],
           "map" : {
-            "out.file" : "param.file.getJavaFile()",
-            "out.ivyFile" : "param.ivyFile"
+            "out.file" : "param.file.getJavaFile()"
           },
           "code" : [
             "import com.deepl.api.v2.client.TargetLanguage;",
