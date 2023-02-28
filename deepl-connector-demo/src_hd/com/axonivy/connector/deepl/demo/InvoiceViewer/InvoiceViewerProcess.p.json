@@ -25,12 +25,12 @@
         "at" : { "x" : 472, "y" : 336 },
         "labelOffset" : { "x" : 8, "y" : 35 }
       },
-      "connect" : { "id" : "f11", "to" : "f10" }
+      "connect" : { "id" : "f0", "to" : "f7" }
     }, {
       "id" : "f7",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 728, "y" : 336 }
+        "at" : { "x" : 608, "y" : 336 }
       }
     }, {
       "id" : "f8",
@@ -50,12 +50,5 @@
       "visual" : {
         "at" : { "x" : 600, "y" : 432 }
       }
-    }, {
-      "id" : "f10",
-      "type" : "Script",
-      "visual" : {
-        "at" : { "x" : 600, "y" : 336 }
-      },
-      "connect" : { "id" : "f13", "to" : "f7" }
     } ]
 }

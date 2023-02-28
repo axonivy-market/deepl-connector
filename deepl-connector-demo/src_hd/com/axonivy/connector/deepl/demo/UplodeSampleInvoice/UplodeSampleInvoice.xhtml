@@ -16,8 +16,6 @@
 				<h:outputText value="1. Select a PDF invoice for processing" />
 				<br />
 				<br />
-				<p:fileUpload value="#{data.ivyFile}" mode="simple"
-					style="width:500px" id="fileUpload" />
 				<br />
 				<p:selectOneMenu id="language" value="#{data.translate}"
 					converter="ivy.ListItem">
@@ -26,11 +24,13 @@
 					</f:selectItems>
 				</p:selectOneMenu>
 				<br />
-				<h:panelGrid>
+				<br />
+				<p:fileUpload value="#{data.ivyFile}" mode="simple"
+					style="width:500px" id="fileUpload" />
+				<br />
 					<p:commandButton value="Upload"
 						actionListener="#{logic.fileUpload}" ajax="false"
 						id="fileUploadButton" icon="fa-solid fa-cloud-upload" />
-				</h:panelGrid>
 				<br />
 				<br />
 			</h:form>
