@@ -1,7 +1,5 @@
-UploaderData #class
-com.axonivy.connector.deepl.demo.Uploader #namespace
-ivyFile File #field
-ivyFile PERSISTENT #fieldModifier
+UplodeSampleInvoiceData #class
+com.axonivy.connector.deepl.demo.UplodeSampleInvoice #namespace
 showContent Boolean #field
 showContent PERSISTENT #fieldModifier
 filePath String #field
@@ -10,3 +8,7 @@ languages java.util.List<com.deepl.api.v2.client.TargetLanguage> #field
 languages PERSISTENT #fieldModifier
 translate com.deepl.api.v2.client.TargetLanguage #field
 translate PERSISTENT #fieldModifier
+file File #field
+file PERSISTENT #fieldModifier
+ivyFile File #field
+ivyFile PERSISTENT #fieldModifier

@@ -2,7 +2,5 @@ Data #class
 com.axonivy.connector.deepl.demo #namespace
 language com.deepl.api.v2.client.TargetLanguage #field
 language PERSISTENT #fieldModifier
-indexed String #field
-indexed PERSISTENT #fieldModifier
 file File #field
 file PERSISTENT #fieldModifier

@@ -10,14 +10,11 @@
 		<ui:define name="title">Uploader</ui:define>
 		<ui:define name="content">
 
-			<h3>Translate your file</h3>
+			<h3>Translate your Invoice</h3>
 
 			<h:form enctype="multipart/form-data" id="demoForm">
-				<h:outputText value="1. Select a PDF invoice for processing" />
+				<h:outputText value="Select a Invoice for processing" />
 				<br />
-				<br />
-				<p:fileUpload value="#{data.ivyFile}" mode="simple"
-					style="width:500px" id="fileUpload" />
 				<br />
 				<p:selectOneMenu id="language" value="#{data.translate}"
 					converter="ivy.ListItem">
@@ -26,11 +23,12 @@
 					</f:selectItems>
 				</p:selectOneMenu>
 				<br />
-				<h:panelGrid>
-					<p:commandButton value="Upload"
-						actionListener="#{logic.fileUpload}" ajax="false"
-						id="fileUploadButton" icon="fa-solid fa-cloud-upload" />
-				</h:panelGrid>
+				<br />
+				<p:fileUpload value="#{data.ivyFile}" mode="simple"
+					style="width:500px" id="fileUpload" />
+				<br />
+				<p:commandButton value="Upload" actionListener="#{logic.fileUpload}"
+					ajax="false" id="fileUploadButton" icon="fa-solid fa-cloud-upload" />
 				<br />
 				<br />
 			</h:form>
