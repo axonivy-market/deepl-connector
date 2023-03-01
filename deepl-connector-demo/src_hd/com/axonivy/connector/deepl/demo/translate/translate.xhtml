@@ -22,11 +22,16 @@
 					<div style="display: flex; flex-direction: column;">
 						<div>
 							<p:selectOneMenu id="language" value="#{data.translate}"
-								converter="ivy.ListItem">
+								converter="ivy.ListItem" >
 								<f:selectItems value="#{data.languages}" var="language"
-									itemValue="#{language}" itemLabel="#{language.getValue()}">
-								</f:selectItems>
+									itemValue="#{language}" 
+									itemLabel="#{language.name()} [#{language.key()}]" />
+								<p:ajax update="langVariant" event="change"/>
 							</p:selectOneMenu>
+							<p:outputLabel 
+								id="langVariant"
+								value="#{data.translate.variant}" /> 
+							<br/>
 							<p:outputLabel for="outputText" value="outputText" />
 						</div>
 						<p:inputTextarea style="width: 45vw; height: 50vh; resize: none;"
