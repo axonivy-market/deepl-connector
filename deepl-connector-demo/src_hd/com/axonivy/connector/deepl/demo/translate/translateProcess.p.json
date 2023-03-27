@@ -17,8 +17,8 @@
             "out.inputText" : "\"Hello world\""
           },
           "code" : [
-            "import com.deepl.api.v2.client.TargetLanguage;",
-            "out.languages = TargetLanguage.values();"
+            "",
+            "out.languages = com.axonivy.connector.deepl.LanguageInfo.all();"
           ]
         },
         "guid" : "1866E2B2931590DB"
@@ -69,7 +69,7 @@
           ],
           "map" : {
             "param.text" : "in.inputText",
-            "param.targetLanguage" : "in.translate.getValue()"
+            "param.targetLanguage" : "in.translate.key()"
           }
         }
       },
