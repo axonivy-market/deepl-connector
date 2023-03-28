@@ -1,0 +1,16 @@
+UploadInvoiceData #class
+com.axonivy.connector.deepl.demo.UploadInvoice #namespace
+showContent Boolean #field
+showContent PERSISTENT #fieldModifier
+filePath String #field
+filePath PERSISTENT #fieldModifier
+languages List<com.axonivy.connector.deepl.LanguageInfo.Lang> #field
+languages PERSISTENT #fieldModifier
+translate com.axonivy.connector.deepl.LanguageInfo.Lang #field
+translate PERSISTENT #fieldModifier
+ivyFile File #field
+ivyFile PERSISTENT #fieldModifier
+file File #field
+file PERSISTENT #fieldModifier
+translated File #field
+translated PERSISTENT #fieldModifier
