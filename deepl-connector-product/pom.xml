@@ -35,17 +35,18 @@
         <version>1.7</version>
         <executions>
           <execution>
+          	<id>inject.variables.yaml.to.readme</id>
             <phase>generate-sources</phase>
             <configuration>
               <skip>${skip-readme}</skip>
-              <tasks>
+              <target>
                 <copy todir="${project.build.directory}">
                   <fileset dir="../../" includes="doc/**" />
                 </copy>
                 <copy file="README.md" tofile="${project.build.directory}/README.md" />
                 <loadfile property="variables.yaml" srcFile="${variables.yaml.file}" encoding="UTF-8" />
                 <replace file="${project.build.directory}/README.md" token="@variables.yaml@" value="${variables.yaml}" />
-              </tasks>
+              </target>
             </configuration>
             <goals>
               <goal>run</goal>
