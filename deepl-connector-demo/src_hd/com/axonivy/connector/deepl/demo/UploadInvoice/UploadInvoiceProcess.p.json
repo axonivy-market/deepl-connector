@@ -8,20 +8,11 @@
   "elements" : [ {
       "id" : "f6",
       "type" : "HtmlDialogStart",
-      "name" : "start(Data)",
+      "name" : "uploadInvoice()",
       "config" : {
         "callSignature" : "start",
         "input" : {
-          "params" : [
-            { "name" : "invoice", "type" : "com.axonivy.connector.deepl.demo.Data" }
-          ],
-          "map" : {
-            "out.invoice" : "param.invoice"
-          },
-          "code" : [
-            "import com.deepl.api.v2.client.TargetLanguage;",
-            "out.languages = TargetLanguage.values();"
-          ]
+          "code" : "out.languages = com.axonivy.connector.deepl.LanguageInfo.all();"
         },
         "guid" : "186928C0C594B9C3"
       },
@@ -29,7 +20,7 @@
         "at" : { "x" : 560, "y" : 496 },
         "labelOffset" : { "x" : 8, "y" : 35 }
       },
-      "connect" : { "id" : "f10", "to" : "f9" }
+      "connect" : { "id" : "f4", "to" : "f7" }
     }, {
       "id" : "f7",
       "type" : "HtmlDialogEnd",
@@ -50,7 +41,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 720, "y" : 584 },
+        "at" : { "x" : 704, "y" : 584 },
         "size" : { "width" : 144, "height" : 60 }
       },
       "connect" : { "id" : "f1", "to" : "f0" }
@@ -75,7 +66,8 @@
         "output" : {
           "map" : {
             "out" : "in",
-            "out.ivyFile" : "in.ivyFile"
+            "out.ivyFile" : "in.ivyFile",
+            "out.translated" : "result.translated"
           }
         },
         "call" : {
@@ -85,7 +77,7 @@
             { "name" : "ivyFile", "type" : "File" }
           ],
           "map" : {
-            "param.targetLanguage" : "in.translate.getValue()",
+            "param.targetLanguage" : "in.translate.key()",
             "param.ivyFile" : "in.ivyFile"
           }
         }
@@ -102,28 +94,70 @@
         "at" : { "x" : 1048, "y" : 584 }
       }
     }, {
-      "id" : "f4",
+      "id" : "f15",
       "type" : "HtmlDialogEventStart",
-      "name" : "event",
+      "name" : "fileUploadTemplate",
       "config" : {
-        "guid" : "18698739B6F60E9A"
+        "guid" : "18722511F883455A"
       },
       "visual" : {
-        "at" : { "x" : 560, "y" : 664 }
+        "at" : { "x" : 560, "y" : 664 },
+        "labelOffset" : { "x" : 11, "y" : 32 }
+      },
+      "connect" : { "id" : "f21", "to" : "f19" }
+    }, {
+      "id" : "f18",
+      "type" : "SubProcessCall",
+      "name" : "translate",
+      "config" : {
+        "processCall" : "deepl/translate:DocumentSample(File,String)",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "in.file",
+            "out.translated" : "result.translated"
+          }
+        },
+        "call" : {
+          "params" : [
+            { "name" : "file", "type" : "File" },
+            { "name" : "targetLanguage", "type" : "String" }
+          ],
+          "map" : {
+            "param.file" : "in.file",
+            "param.targetLanguage" : "in.translate.key()"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 904, "y" : 664 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f8", "to" : "f5" }
+    }, {
+      "id" : "f19",
+      "type" : "Script",
+      "name" : [
+        "load sample",
+        "invoice"
+      ],
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.connector.deepl.FileLoaderUtil;",
+            "out.file = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 688, "y" : 664 }
+      },
+      "connect" : { "id" : "f22", "to" : "f18" }
     }, {
       "id" : "f5",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 752, "y" : 664 }
+        "at" : { "x" : 1056, "y" : 664 }
       }
-    }, {
-      "id" : "f9",
-      "type" : "Script",
-      "visual" : {
-        "at" : { "x" : 688, "y" : 496 }
-      },
-      "connect" : { "id" : "f11", "to" : "f7" }
     } ]
 }
