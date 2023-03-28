@@ -218,7 +218,7 @@
       "type" : "CallSubStart",
       "name" : "Document(File,String)",
       "config" : {
-        "callSignature" : "DocumentSample",
+        "callSignature" : "Document",
         "input" : {
           "params" : [
             { "name" : "file", "type" : "File", "desc" : "A file to translate (e.g. docx, pdf, pptx)" },
