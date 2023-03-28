@@ -7,3 +7,6 @@ translated File #field
 input String #field
 output String #field
 langTarget com.deepl.api.v2.client.TargetLanguage #field
+indexData javax.persistence.Index #field
+ivyFile File #field
+ivyFile PERSISTENT #fieldModifier
