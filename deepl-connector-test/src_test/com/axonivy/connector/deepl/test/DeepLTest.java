@@ -29,7 +29,7 @@ public class DeepLTest{
 
   private interface Start {
     BpmElement TRANSLATE = DEEPL.elementName("text(String,String)");
-    BpmElement DOCUMENT = DEEPL.elementName("DocumentSample(File,String)");
+    BpmElement DOCUMENT = DEEPL.elementName("Document(File,String)");
   }
 
   @BeforeEach

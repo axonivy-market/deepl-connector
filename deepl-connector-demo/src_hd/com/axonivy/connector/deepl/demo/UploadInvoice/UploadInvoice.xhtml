@@ -15,7 +15,7 @@
 			<h:form enctype="multipart/form-data" id="demoForm"
 				style="display: flex;  ">
 				<div>
-					<h:outputText value="Select a Invoice for processing" />
+					<h:outputText value="Select an invoice for processing" />
 					<br />
 					<p:selectOneMenu id="language" value="#{data.translate}"
 						converter="ivy.ListItem">
@@ -43,7 +43,7 @@
 				<h:panelGrid rendered="#{data.file ne null}">
 					<h:outputLabel value="Browser native PDF Viewer (iframe)" />
 					<pe:documentViewer id="viewer"
-						url="#{ivy.html.fileref(data.translated)}" height="350%"
+						url="#{ivy.html.fileref(data.file)}" height="350%"
 						width="120%" />
 				</h:panelGrid>
 			</div>
