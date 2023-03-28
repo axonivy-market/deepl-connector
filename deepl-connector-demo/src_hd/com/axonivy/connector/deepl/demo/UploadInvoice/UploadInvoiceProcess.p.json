@@ -37,14 +37,14 @@
             "out" : "in",
             "out.showContent" : "false"
           },
-          "code" : "in.filePath = in.ivyFile.getAbsolutePath();"
+          "code" : "in.filePath = in.ivyfile.getAbsolutePath();"
         }
       },
       "visual" : {
         "at" : { "x" : 704, "y" : 584 },
         "size" : { "width" : 144, "height" : 60 }
       },
-      "connect" : { "id" : "f1", "to" : "f0" }
+      "connect" : { "id" : "f9", "to" : "f0" }
     }, {
       "id" : "f13",
       "type" : "HtmlDialogEventStart",
@@ -62,60 +62,11 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:Document(File,String,File)",
-        "output" : {
-          "map" : {
-            "out" : "in",
-            "out.ivyFile" : "in.ivyFile",
-            "out.translated" : "result.translated"
-          }
-        },
-        "call" : {
-          "params" : [
-            { "name" : "file", "type" : "File" },
-            { "name" : "targetLanguage", "type" : "String" },
-            { "name" : "ivyFile", "type" : "File" }
-          ],
-          "map" : {
-            "param.targetLanguage" : "in.translate.key()",
-            "param.ivyFile" : "in.ivyFile"
-          }
-        }
-      },
-      "visual" : {
-        "at" : { "x" : 904, "y" : 584 },
-        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
-      },
-      "connect" : { "id" : "f3", "to" : "f2" }
-    }, {
-      "id" : "f2",
-      "type" : "HtmlDialogEnd",
-      "visual" : {
-        "at" : { "x" : 1048, "y" : 584 }
-      }
-    }, {
-      "id" : "f15",
-      "type" : "HtmlDialogEventStart",
-      "name" : "fileUploadTemplate",
-      "config" : {
-        "guid" : "18722511F883455A"
-      },
-      "visual" : {
-        "at" : { "x" : 560, "y" : 664 },
-        "labelOffset" : { "x" : 11, "y" : 32 }
-      },
-      "connect" : { "id" : "f21", "to" : "f19" }
-    }, {
-      "id" : "f18",
-      "type" : "SubProcessCall",
-      "name" : "translate",
-      "config" : {
         "processCall" : "deepl/translate:DocumentSample(File,String)",
         "output" : {
           "map" : {
             "out" : "in",
-            "out.file" : "in.file",
-            "out.translated" : "result.translated"
+            "out.file" : "result.translated"
           }
         },
         "call" : {
@@ -130,10 +81,28 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 904, "y" : 664 },
+        "at" : { "x" : 896, "y" : 584 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
-      "connect" : { "id" : "f8", "to" : "f5" }
+      "connect" : { "id" : "f3", "to" : "f2" }
+    }, {
+      "id" : "f2",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 1024, "y" : 584 }
+      }
+    }, {
+      "id" : "f15",
+      "type" : "HtmlDialogEventStart",
+      "name" : "fileUploadTemplate",
+      "config" : {
+        "guid" : "18722511F883455A"
+      },
+      "visual" : {
+        "at" : { "x" : 560, "y" : 664 },
+        "labelOffset" : { "x" : 11, "y" : 32 }
+      },
+      "connect" : { "id" : "f21", "to" : "f19" }
     }, {
       "id" : "f19",
       "type" : "Script",
@@ -152,12 +121,40 @@
       "visual" : {
         "at" : { "x" : 688, "y" : 664 }
       },
-      "connect" : { "id" : "f22", "to" : "f18" }
+      "connect" : { "id" : "f10", "to" : "f1" }
+    }, {
+      "id" : "f1",
+      "type" : "SubProcessCall",
+      "name" : "translate",
+      "config" : {
+        "processCall" : "deepl/translate:DocumentSample(File,String)",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "result.translated"
+          }
+        },
+        "call" : {
+          "params" : [
+            { "name" : "file", "type" : "File" },
+            { "name" : "targetLanguage", "type" : "String" }
+          ],
+          "map" : {
+            "param.file" : "in.file",
+            "param.targetLanguage" : "in.translate.key()"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 896, "y" : 664 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
+      },
+      "connect" : { "id" : "f8", "to" : "f5" }
     }, {
       "id" : "f5",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 1056, "y" : 664 }
+        "at" : { "x" : 1024, "y" : 664 }
       }
     } ]
 }

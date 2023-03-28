@@ -216,7 +216,7 @@
     }, {
       "id" : "f3",
       "type" : "CallSubStart",
-      "name" : "DocumentSample(File,String)",
+      "name" : "Document(File,String)",
       "config" : {
         "callSignature" : "DocumentSample",
         "input" : {
@@ -249,51 +249,9 @@
         "tags" : "connector"
       },
       "visual" : {
-        "at" : { "x" : 344, "y" : 152 },
-        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
-      },
-      "connect" : { "id" : "f9", "to" : "f4" }
-    }, {
-      "id" : "f10",
-      "type" : "CallSubStart",
-      "name" : "Document(File,String,File)",
-      "config" : {
-        "callSignature" : "Document",
-        "input" : {
-          "params" : [
-            { "name" : "file", "type" : "File", "desc" : "A file to translate (e.g. docx, pdf, pptx)" },
-            { "name" : "targetLanguage", "type" : "String", "desc" : "The language to translate to" },
-            { "name" : "ivyFile", "type" : "File" }
-          ],
-          "map" : {
-            "out.file" : "param.ivyFile.getJavaFile()",
-            "out.ivyFile" : "param.ivyFile"
-          },
-          "code" : [
-            "import com.deepl.api.v2.client.TargetLanguage;",
-            "",
-            "if (param.targetLanguage.isBlank()){",
-            "  param.targetLanguage = TargetLanguage.DE.getValue();",
-            "  ivy.log.info(\"parameter 'targetLanguage' undefined, assuming 'DE'\");",
-            "  ",
-            "}",
-            "out.langTarget = TargetLanguage.valueOf(param.targetLanguage);"
-          ]
-        },
-        "result" : {
-          "params" : [
-            { "name" : "translated", "type" : "File" }
-          ],
-          "map" : {
-            "result.translated" : "in.translated"
-          }
-        },
-        "tags" : "connector"
-      },
-      "visual" : {
         "at" : { "x" : 336, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
       },
-      "connect" : { "id" : "f22", "to" : "f4" }
+      "connect" : { "id" : "f9", "to" : "f4" }
     } ]
 }
