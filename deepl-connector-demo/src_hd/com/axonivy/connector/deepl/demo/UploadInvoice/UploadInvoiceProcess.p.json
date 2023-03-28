@@ -62,7 +62,7 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:DocumentSample(File,String)",
+        "processCall" : "deepl/translate:Document(File,String)",
         "output" : {
           "map" : {
             "out" : "in",
@@ -127,7 +127,7 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:DocumentSample(File,String)",
+        "processCall" : "deepl/translate:Document(File,String)",
         "output" : {
           "map" : {
             "out" : "in",
