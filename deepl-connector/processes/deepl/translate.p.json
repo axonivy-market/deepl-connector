@@ -26,7 +26,7 @@
         "bodyInputType" : "FORM",
         "bodyForm" : {
           "source_lang" : "",
-          "target_lang" : "in.langTarget.getValue()",
+          "target_lang" : "in.langTarget",
           "file" : "in.file",
           "filename" : "in.file.getName()",
           "formality" : "",
@@ -55,8 +55,8 @@
       "name" : "translate",
       "config" : {
         "bodyForm" : {
-          "target_lang" : "in.langTarget.getValue()",
-          "text" : "in.input"
+          "target_lang" : "in.langTarget",
+          "text" : "in.input.lines().toList()"
         },
         "path" : "/translate",
         "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
