@@ -3,7 +3,7 @@
   "id" : "1866E2B2931CFAA5",
   "kind" : "HTML_DIALOG",
   "config" : {
-    "data" : "com.axonivy.connector.deepl.demo.translate.translateData"
+    "data" : "com.axonivy.connector.deepl.demo.TextTranslate.TextTranslateData"
   },
   "elements" : [ {
       "id" : "f0",

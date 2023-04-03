@@ -7,9 +7,9 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "translate.ivp",
+      "name" : "TextTranslate.ivp",
       "config" : {
-        "callSignature" : "translate",
+        "callSignature" : "TextTranslate",
         "outLink" : "translate.ivp",
         "tags" : "demo"
       },
@@ -26,9 +26,9 @@
     }, {
       "id" : "f4",
       "type" : "DialogCall",
-      "name" : "translate",
+      "name" : "TextTranslate",
       "config" : {
-        "dialogId" : "com.axonivy.connector.deepl.demo.translate",
+        "dialogId" : "com.axonivy.connector.deepl.demo.TextTranslate",
         "startMethod" : "start()"
       },
       "visual" : {
@@ -36,5 +36,37 @@
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f7", "to" : "f1" }
+    }, {
+      "id" : "f5",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 416, "y" : 144 }
+      }
+    }, {
+      "id" : "f10",
+      "type" : "RequestStart",
+      "name" : "FileTranslate.ivp",
+      "config" : {
+        "callSignature" : "FileTranslate",
+        "outLink" : "FileTranslate.ivp"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 144 },
+        "labelOffset" : { "x" : 9, "y" : 35 }
+      },
+      "connect" : { "id" : "f6", "to" : "f11" }
+    }, {
+      "id" : "f11",
+      "type" : "DialogCall",
+      "name" : "FileTranslate",
+      "config" : {
+        "dialogId" : "com.axonivy.connector.deepl.demo.FileTranslate",
+        "startMethod" : "start()"
+      },
+      "visual" : {
+        "at" : { "x" : 248, "y" : 144 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
+      },
+      "connect" : { "id" : "f3", "to" : "f5" }
     } ]
 }

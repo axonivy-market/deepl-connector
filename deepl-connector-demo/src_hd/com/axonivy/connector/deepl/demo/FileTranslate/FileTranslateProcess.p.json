@@ -3,7 +3,7 @@
   "id" : "18692879E2E47E00",
   "kind" : "HTML_DIALOG",
   "config" : {
-    "data" : "com.axonivy.connector.deepl.demo.UploadInvoice.UploadInvoiceData"
+    "data" : "com.axonivy.connector.deepl.demo.FileTranslate.FileTranslateData"
   },
   "elements" : [ {
       "id" : "f6",
