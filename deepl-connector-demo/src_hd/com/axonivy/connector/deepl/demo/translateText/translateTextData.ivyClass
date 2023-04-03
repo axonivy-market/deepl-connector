@@ -1,5 +1,5 @@
-translateData #class
-com.axonivy.connector.deepl.demo.translate #namespace
+translateTextData #class
+com.axonivy.connector.deepl.demo.translateText #namespace
 data com.axonivy.connector.deepl.demo.Data #field
 data PERSISTENT #fieldModifier
 languages java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang> #field

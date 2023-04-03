@@ -10,21 +10,19 @@
 		<ui:define name="title">Uploader</ui:define>
 		<ui:define name="content">
 
-			<h3>Translate your invoice</h3>
+			<h3>Translate your file</h3>
 
-			<h:form enctype="multipart/form-data" id="demoForm"
-				style="display: flex;  ">
-				<div>
-					<h:outputText value="Select an invoice for processing" />
-					<br />
-					<p:selectOneMenu id="language" value="#{data.translate}"
-						converter="ivy.ListItem">
-						<f:selectItems value="#{data.languages}" var="language"
-							itemValue="#{language}"
-							itemLabel="#{language.name()} [#{language.key()}]" />
+			<p:selectOneMenu id="language" value="#{data.translate}" converter="ivy.ListItem">
+						<f:selectItems value="#{data.languages}" var="language" itemValue="#{language}" itemLabel="#{language.name()} [#{language.key()}]" />
 						<p:ajax update="langVariant" event="change" />
 						<p:outputLabel id="langVariant" value="#{data.translate.variant}" />
 					</p:selectOneMenu>
+			<h:form enctype="multipart/form-data" id="demoForm"
+				style="display: flex;  ">
+				<div>
+					<br />
+					<h:outputText value="Select a file for processing" /><br />
+					<h:outputText value=".docx .pptx .txt PDF HTML" />
 					<br />
 					<br />
 					<p:fileUpload value="#{data.ivyFile}" mode="simple" id="fileUpload" />
@@ -33,7 +31,8 @@
 						actionListener="#{logic.fileUpload}" ajax="false"
 						id="fileUploadButton" icon="fa-solid fa-cloud-upload" />
 					<br /> <br />
-					<p:commandButton value="Template"
+					<h:outputText value="no file to translate? Try our example" /><br />
+					<p:commandButton value="Example file"
 						actionListener="#{logic.fileUploadTemplate}" ajax="false"
 						id="templateButton" icon="fa-solid fa-cloud-upload" />
 					<br />
