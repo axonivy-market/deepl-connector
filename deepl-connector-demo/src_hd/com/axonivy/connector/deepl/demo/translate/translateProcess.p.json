@@ -55,7 +55,7 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:text(String,String)",
+        "processCall" : "deepl/translate:text(String,com.deepl.api.v2.client.TargetLanguage)",
         "output" : {
           "map" : {
             "out" : "in",
@@ -65,7 +65,7 @@
         "call" : {
           "params" : [
             { "name" : "text", "type" : "String" },
-            { "name" : "targetLanguage", "type" : "String" }
+            { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage" }
           ],
           "map" : {
             "param.text" : "in.inputText",

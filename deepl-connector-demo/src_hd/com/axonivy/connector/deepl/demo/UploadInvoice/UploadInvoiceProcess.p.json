@@ -62,7 +62,7 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:Document(File,String)",
+        "processCall" : "deepl/translate:Document(File,com.deepl.api.v2.client.TargetLanguage)",
         "output" : {
           "map" : {
             "out" : "in",
@@ -72,7 +72,7 @@
         "call" : {
           "params" : [
             { "name" : "file", "type" : "File" },
-            { "name" : "targetLanguage", "type" : "String" }
+            { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage" }
           ],
           "map" : {
             "param.file" : "in.file",
@@ -127,7 +127,7 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:Document(File,String)",
+        "processCall" : "deepl/translate:Document(File,com.deepl.api.v2.client.TargetLanguage)",
         "output" : {
           "map" : {
             "out" : "in",
@@ -137,7 +137,7 @@
         "call" : {
           "params" : [
             { "name" : "file", "type" : "File" },
-            { "name" : "targetLanguage", "type" : "String" }
+            { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage" }
           ],
           "map" : {
             "param.file" : "in.file",
