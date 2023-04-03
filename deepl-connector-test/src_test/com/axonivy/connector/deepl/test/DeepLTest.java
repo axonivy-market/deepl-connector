@@ -28,8 +28,8 @@ public class DeepLTest{
   private static final BpmProcess DEEPL = BpmProcess.path("deepl/translate");
 
   private interface Start {
-    BpmElement TRANSLATE = DEEPL.elementName("text(String,String)");
-    BpmElement DOCUMENT = DEEPL.elementName("Document(File,String)");
+    BpmElement TRANSLATE = DEEPL.elementName("text(String,TargetLanguage)");
+    BpmElement DOCUMENT = DEEPL.elementName("Document(File,TargetLanguage)");
   }
 
   @BeforeEach
@@ -50,7 +50,7 @@ public class DeepLTest{
     ExecutionResult result = bpmClient.start()
       .subProcess(Start.TRANSLATE)
       .withParam("text", "Hello World")
-      .withParam("targetLanguage", TargetLanguage.DE.getValue())
+      .withParam("targetLanguage", TargetLanguage.DE)
       .execute();
     deepl.translate.Data data = result.data().last();
     assertThat(data.getOutput()).isEqualTo("Hallo Welt");
@@ -63,7 +63,7 @@ public class DeepLTest{
     ExecutionResult result = bpmClient.start()
       .subProcess(Start.DOCUMENT)
       .withParam("file", original)
-      .withParam("targetLanguage", TargetLanguage.DE.getValue())
+      .withParam("targetLanguage", TargetLanguage.DE)
       .execute();
     deepl.translate.Data data = result.data().last();
     File translated = data.getTranslated();
