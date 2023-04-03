@@ -1,5 +1,5 @@
-FileTranslateData #class
-com.axonivy.connector.deepl.demo.FileTranslate #namespace
+translateFileData #class
+com.axonivy.connector.deepl.demo.translateFile #namespace
 showContent Boolean #field
 showContent PERSISTENT #fieldModifier
 filePath String #field

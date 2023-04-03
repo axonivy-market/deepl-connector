@@ -15,13 +15,7 @@
 				<div style="display: flex; align-items: flex-end;">
 					<div style="display: flex; flex-direction: column;">
 						<div>
-							<p:selectOneMenu id="language1" value="#{data}"
-								converter="ivy.ListItem" >
-								<f:selectItems value="#{data.languages}" var="language"
-									itemLabel="#{language.name()} [#{language.key()}]" />
-							</p:selectOneMenu>
-							<br/>
-							<p:outputLabel for="inputText" value="Translate from this languages" />
+							<p:outputLabel for="inputText" value="Input text in any language" />
 						</div>
 						<p:inputTextarea id="inputText" value="#{data.inputText}"
 							style="width: 45vw; height: 50vh; resize: none;"
@@ -29,18 +23,17 @@
 					</div>
 					<div style="display: flex; flex-direction: column;">
 						<div>
+							<p:outputLabel for="outputText" value="Select target language" />
+							<br />
 							<p:selectOneMenu id="language" value="#{data.translate}"
-								converter="ivy.ListItem" >
+								converter="ivy.ListItem">
 								<f:selectItems value="#{data.languages}" var="language"
-									itemValue="#{language}" 
+									itemValue="#{language}"
 									itemLabel="#{language.name()} [#{language.key()}]" />
-								<p:ajax update="langVariant" event="change"/>
+								<p:ajax update="langVariant" event="change" />
 							</p:selectOneMenu>
-							<p:outputLabel 
-								id="langVariant"
-								value="#{data.translate.variant}" /> 
-							<br/>
-							<p:outputLabel for="outputText" value="Translate into these languages" />
+							<p:outputLabel id="langVariant" value="#{data.translate.variant}" />
+
 						</div>
 						<p:inputTextarea style="width: 45vw; height: 50vh; resize: none;"
 							id="outputText" value="#{data.outputText}" autoResize="false" />
