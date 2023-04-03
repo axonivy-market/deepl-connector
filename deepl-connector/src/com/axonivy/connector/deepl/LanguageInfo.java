@@ -11,7 +11,7 @@ public class LanguageInfo {
     return LANGUAGES.stream()
       .filter(lang -> Objects.equal(lang.key(), tLang.getValue()))
       .findAny()
-      .orElseGet(()->new Lang(tLang.getValue(), ""));
+      .orElseGet(()->new Lang(tLang , ""));
   }
 
   public static List<Lang> all() {
@@ -19,45 +19,41 @@ public class LanguageInfo {
   }
 
   private static List<Lang> LANGUAGES = List.of(
-    new Lang("BG", "Bulgarian"),
-    new Lang("CS", "Czech"),
-    new Lang("DA", "Danish"),
-    new Lang("DE", "German"),
-    new Lang("EL", "Greek"),
-    new Lang("EN", "English",
-            "unspecified variant for backward compatibility; please select `EN-GB` or `EN-US` instead"),
-    new Lang("EN-GB", "English", "British"),
-    new Lang("EN-US", "English", "American"),
-    new Lang("ES", "Spanish"),
-    new Lang("ET", "Estonian"),
-    new Lang("FI", "Finnish"),
-    new Lang("FR", "French"),
-    new Lang("HU", "Hungarian"),
-    new Lang("ID", "Indonesian"),
-    new Lang("IT", "Italian"),
-    new Lang("JA", "Japanese"),
-    new Lang("KO", "Korean"),
-    new Lang("LT", "Lithuanian"),
-    new Lang("LV", "Latvian"),
-    new Lang("NB", "Norwegian", "Bokmål"),
-    new Lang("NL", "Dutch"),
-    new Lang("PL", "Polish"),
-    new Lang("PT", "Portuguese",
-            "unspecified variant for backward compatibility; please select `PT-BR` or `PT-PT` instead"),
-    new Lang("PT-BR", "Portuguese", "Brazilian"),
-    new Lang("PT-PT", "Portuguese", "all Portuguese varieties excluding Brazilian Portuguese"),
-    new Lang("RO", "Romanian"),
-    new Lang("RU", "Russian"),
-    new Lang("SK", "Slovak"),
-    new Lang("SL", "Slovenian"),
-    new Lang("SV", "Swedish"),
-    new Lang("TR", "Turkish"),
-    new Lang("UK", "Ukrainian"),
-    new Lang("ZH", "Chinese", "simplified"));
-
-  public record Lang(String key, String name, String variant) {
-
-    public Lang(String key, String name) {
+    new Lang(TargetLanguage.BG, "Bulgarian"),
+    new Lang(TargetLanguage.CS, "Czech"),
+    new Lang(TargetLanguage.DA, "Danish"),
+    new Lang(TargetLanguage.DE, "German"),
+    new Lang(TargetLanguage.EL, "Greek"),
+    new Lang(TargetLanguage.EN_GB, "English", "British"),
+    new Lang(TargetLanguage.EN_US, "English", "American"),
+    new Lang(TargetLanguage.ES, "Spanish"),
+    new Lang(TargetLanguage.ET, "Estonian"),
+    new Lang(TargetLanguage.FI, "Finnish"),
+    new Lang(TargetLanguage.FR, "French"),
+    new Lang(TargetLanguage.HU, "Hungarian"),
+    new Lang(TargetLanguage.ID, "Indonesian"),
+    new Lang(TargetLanguage.IT, "Italian"),
+    new Lang(TargetLanguage.JA, "Japanese"),
+    new Lang(TargetLanguage.KO, "Korean"),
+    new Lang(TargetLanguage.LT, "Lithuanian"),
+    new Lang(TargetLanguage.LV, "Latvian"),
+    new Lang(TargetLanguage.NB, "Norwegian", "Bokmål"),
+    new Lang(TargetLanguage.NL, "Dutch"),
+    new Lang(TargetLanguage.PL, "Polish"),
+    new Lang(TargetLanguage.PT_BR, "Portuguese", "Brazilian"),
+    new Lang(TargetLanguage.PT_PT, "Portuguese", "all Portuguese varieties excluding Brazilian Portuguese"),
+    new Lang(TargetLanguage.RO, "Romanian"),
+    new Lang(TargetLanguage.RU, "Russian"),
+    new Lang(TargetLanguage.SK, "Slovak"),
+    new Lang(TargetLanguage.SL, "Slovenian"),
+    new Lang(TargetLanguage.SV, "Swedish"),
+    new Lang(TargetLanguage.TR, "Turkish"),
+    new Lang(TargetLanguage.UK, "Ukrainian"),
+    new Lang(TargetLanguage.ZH, "Chinese", "simplified"));
+  
+  public record Lang(TargetLanguage key, String name, String variant) {
+	  
+    public Lang(TargetLanguage key, String name) {
       this(key, name, null);
     }
 
