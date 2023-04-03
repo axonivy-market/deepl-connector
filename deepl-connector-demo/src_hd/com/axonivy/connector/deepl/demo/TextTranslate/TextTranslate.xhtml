@@ -14,7 +14,15 @@
 				<h1>Translate your Text</h1>
 				<div style="display: flex; align-items: flex-end;">
 					<div style="display: flex; flex-direction: column;">
-						<p:outputLabel for="inputText" value="inputText" />
+						<div>
+							<p:selectOneMenu id="language1" value="#{data}"
+								converter="ivy.ListItem" >
+								<f:selectItems value="#{data.languages}" var="language"
+									itemLabel="#{language.name()} [#{language.key()}]" />
+							</p:selectOneMenu>
+							<br/>
+							<p:outputLabel for="inputText" value="Translate from this languages" />
+						</div>
 						<p:inputTextarea id="inputText" value="#{data.inputText}"
 							style="width: 45vw; height: 50vh; resize: none;"
 							autoResize="false" />
@@ -32,7 +40,7 @@
 								id="langVariant"
 								value="#{data.translate.variant}" /> 
 							<br/>
-							<p:outputLabel for="outputText" value="outputText" />
+							<p:outputLabel for="outputText" value="Translate into these languages" />
 						</div>
 						<p:inputTextarea style="width: 45vw; height: 50vh; resize: none;"
 							id="outputText" value="#{data.outputText}" autoResize="false" />
