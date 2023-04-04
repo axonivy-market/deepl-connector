@@ -9,22 +9,27 @@
 	<ui:composition template="/layouts/frame-10.xhtml">
 		<ui:define name="title">Uploader</ui:define>
 		<ui:define name="content">
+		
+			<h:form id="form">
+				<h3>Translate your file</h3>
 
-			<h3>Translate your file</h3>
-
-			<p:selectOneMenu id="language" value="#{data.translate}" converter="ivy.ListItem">
-						<f:selectItems value="#{data.languages}" var="language" itemValue="#{language}" itemLabel="#{language.name()} [#{language.key()}]" />
+				<div>
+					<p:selectOneMenu id="language" value="#{data.translate}"
+						converter="ivy.ListItem">
+						<f:selectItems value="#{data.languages}" var="language"
+							itemValue="#{language}"
+							itemLabel="#{language.name()} [#{language.key()}]" />
 						<p:ajax update="langVariant" event="change" />
-						<p:outputLabel id="langVariant" value="#{data.translate.variant}" />
 					</p:selectOneMenu>
-			<h:form enctype="multipart/form-data" id="demoForm"
-				style="display: flex;  ">
+					<p:outputLabel id="langVariant" value="#{data.translate.variant}" />
+
+				</div>
 				<div>
 					<br />
-					<h:outputText value="Select a file for processing" /><br />
+					<h:outputText value="Select a file for processing" />
+					<br />
 					<h:outputText value=".docx .pptx .txt PDF HTML" />
-					<br />
-					<br />
+					<br /> <br />
 					<p:fileUpload value="#{data.ivyFile}" mode="simple" id="fileUpload" />
 					<br />
 					<p:commandButton value="Upload"
@@ -34,7 +39,8 @@
 					<h:outputText value="no file to translate? Try our example" /><br />
 					<p:commandButton value="Example file"
 						actionListener="#{logic.fileUploadTemplate}" ajax="false"
-						id="templateButton" icon="fa-solid fa-cloud-upload" />
+						update="form" id="templateButton"
+						icon="fa-solid fa-cloud-upload" />
 					<br />
 				</div>
 			</h:form>
