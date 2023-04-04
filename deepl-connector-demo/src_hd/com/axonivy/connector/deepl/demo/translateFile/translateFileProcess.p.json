@@ -14,6 +14,14 @@
         "input" : {
           "code" : "out.languages = com.axonivy.connector.deepl.LanguageInfo.all();"
         },
+        "result" : {
+          "params" : [
+            { "name" : "file", "type" : "File" }
+          ],
+          "map" : {
+            "result.file" : "in.ivyFile"
+          }
+        },
         "guid" : "186928C0C594B9C3"
       },
       "visual" : {
@@ -35,6 +43,7 @@
         "output" : {
           "map" : {
             "out" : "in",
+            "out.file" : "in.ivyFile",
             "out.showContent" : "false"
           },
           "code" : "in.filePath = in.ivyfile.getAbsolutePath();"

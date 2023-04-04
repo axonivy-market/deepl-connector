@@ -225,7 +225,8 @@
             { "name" : "targetLanguage", "type" : "com.deepl.api.v2.client.TargetLanguage", "desc" : "The language to translate to" }
           ],
           "map" : {
-            "out.file" : "param.file.getJavaFile()"
+            "out.file" : "param.file.getJavaFile()",
+            "out.ivyFile" : "param.file"
           },
           "code" : [
             "import com.deepl.api.v2.client.TargetLanguage;",
