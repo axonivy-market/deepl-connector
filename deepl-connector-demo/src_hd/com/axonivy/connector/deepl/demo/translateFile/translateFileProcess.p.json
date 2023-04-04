@@ -12,7 +12,11 @@
       "config" : {
         "callSignature" : "start",
         "input" : {
-          "code" : "out.languages = com.axonivy.connector.deepl.LanguageInfo.all();"
+          "code" : [
+            "out.languages = com.axonivy.connector.deepl.LanguageInfo.all();",
+            "import com.axonivy.connector.deepl.FileLoaderUtil;",
+            "out.exampleFile = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");"
+          ]
         },
         "result" : {
           "params" : [

@@ -14,3 +14,5 @@ file File #field
 file PERSISTENT #fieldModifier
 translated File #field
 translated PERSISTENT #fieldModifier
+exampleFile File #field
+exampleFile PERSISTENT #fieldModifier
