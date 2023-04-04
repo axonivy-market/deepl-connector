@@ -48,7 +48,13 @@
       "name" : "translateFile.ivp",
       "config" : {
         "callSignature" : "translateFile",
-        "outLink" : "translateFile.ivp"
+        "outLink" : "translateFile.ivp",
+        "input" : {
+          "code" : [
+            "import com.axonivy.connector.deepl.FileLoaderUtil;",
+            "out.file = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");"
+          ]
+        }
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 144 },
