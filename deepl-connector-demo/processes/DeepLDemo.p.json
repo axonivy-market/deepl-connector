@@ -61,7 +61,13 @@
       "name" : "translateFile",
       "config" : {
         "dialogId" : "com.axonivy.connector.deepl.demo.translateFile",
-        "startMethod" : "start()"
+        "startMethod" : "start()",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "result.file"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 248, "y" : 144 },
