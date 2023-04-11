@@ -23,14 +23,14 @@
 					</div>
 					<div style="display: flex; flex-direction: column;">
 						<div>
-							<p:outputLabel for="outputText" value="Select target language" />
 							<br />
 							<p:selectOneMenu id="language" value="#{data.translate}"
 								converter="ivy.ListItem">
+								<f:selectItem itemLabel="Select target language" itemValue="" />
 								<f:selectItems value="#{data.languages}" var="language"
 									itemValue="#{language}"
 									itemLabel="#{language.name()} [#{language.key()}]" />
-								<p:ajax update="langVariant" event="change" />
+								<p:ajax update="langVariant translate" event="change" />
 							</p:selectOneMenu>
 							<p:outputLabel id="langVariant" value="#{data.translate.variant}" />
 
@@ -41,7 +41,7 @@
 				</div>
 				<div class="command-btns" style="justify-content: left;">
 					<p:commandButton id="translate" actionListener="#{logic.translate}"
-						value="translate" update="form" icon="si si-chat-translate" />
+						value="translate" update="form" icon="si si-chat-translate" disabled="#{empty data.translate}" />
 				</div>
 			</h:form>
 		</ui:define>
