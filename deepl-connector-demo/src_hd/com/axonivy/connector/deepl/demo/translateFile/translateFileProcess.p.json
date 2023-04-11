@@ -50,7 +50,15 @@
             "out.file" : "in.ivyFile",
             "out.showContent" : "false"
           },
-          "code" : "in.filePath = in.ivyfile.getAbsolutePath();"
+          "code" : [
+            "import ch.ivyteam.ivy.bpm.error.BpmError;",
+            "",
+            "in.filePath = in.ivyfile.getAbsolutePath();",
+            "",
+            "if (in.file.exists() == false)  {",
+            "BpmError.create(\"you:forgot:to:upload:a:file\").withMessage(\"Please upload a file\").throwError();",
+            "} "
+          ]
         }
       },
       "visual" : {
@@ -94,7 +102,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 896, "y" : 584 },
+        "at" : { "x" : 944, "y" : 584 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f3", "to" : "f2" }
@@ -102,7 +110,7 @@
       "id" : "f2",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 1024, "y" : 584 }
+        "at" : { "x" : 1072, "y" : 584 }
       }
     }, {
       "id" : "f15",
@@ -119,14 +127,12 @@
     }, {
       "id" : "f19",
       "type" : "Script",
-      "name" : [
-        "load sample",
-        "invoice"
-      ],
+      "name" : "load sample invoice",
       "config" : {
         "output" : {
           "code" : [
             "import com.axonivy.connector.deepl.FileLoaderUtil;",
+            "",
             "out.file = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");"
           ]
         }
@@ -159,7 +165,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 896, "y" : 664 },
+        "at" : { "x" : 944, "y" : 664 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f8", "to" : "f5" }
@@ -167,7 +173,7 @@
       "id" : "f5",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 1024, "y" : 664 }
+        "at" : { "x" : 1072, "y" : 664 }
       }
     } ]
 }

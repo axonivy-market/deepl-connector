@@ -20,7 +20,8 @@
 						<f:selectItems value="#{data.languages}" var="language"
 							itemValue="#{language}"
 							itemLabel="#{language.name()} [#{language.key()}]" />
-						<p:ajax update="langVariant" event="change" />
+						<p:ajax update="fileUploadButton templateButton langVariant"
+							event="change" />
 					</p:selectOneMenu>
 					<p:outputLabel id="langVariant" value="#{data.translate.variant}" />
 
@@ -36,24 +37,24 @@
 					<br /> <br />
 					<p:commandButton value="Upload"
 						actionListener="#{logic.fileUpload}" ajax="false"
-						id="fileUploadButton" icon="fa-solid fa-cloud-upload" />
+						id="fileUploadButton" icon="fa-solid fa-cloud-upload"
+						disabled="#{empty data.translate}" />
 					<br /> <br />
 					<h:outputText value="No file to translate? Try our example" />
 					<br />
 					<p:commandButton value="Example file"
 						actionListener="#{logic.fileUploadTemplate}" ajax="false"
-						update="form" id="templateButton"
-						icon="fa-solid fa-cloud-upload" />
-					
-						 <a href="#{ivy.html.fileref(data.exampleFile)}">Example file</a>
-					<br />
+						update="form" id="templateButton" icon="fa-solid fa-cloud-upload"
+						disabled="#{empty data.translate}" />
+
+					<a href="#{ivy.html.fileref(data.exampleFile)}">Example file</a> <br />
 				</div>
 			</h:form>
 			<div>
-				<h:panelGrid rendered="#{data.file ne null}">
+				<h:panelGrid width="100%" rendered="#{data.file ne null}">
 					<h:outputLabel value="Browser native PDF Viewer (iframe)" />
 					<pe:documentViewer id="viewer" url="#{ivy.html.fileref(data.file)}"
-						height="640%" width="220%" zoom="page-width" />
+						height="500" zoom="page-width" />
 				</h:panelGrid>
 			</div>
 		</ui:define>
