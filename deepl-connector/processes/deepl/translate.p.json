@@ -26,7 +26,7 @@
         "bodyInputType" : "FORM",
         "bodyForm" : {
           "source_lang" : "",
-          "target_lang" : "in.langTarget",
+          "target_lang" : "in.langTarget.getValue()",
           "file" : "in.file",
           "filename" : "in.file.getName()",
           "formality" : "",
