@@ -83,7 +83,7 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:Document(File,com.deepl.api.v2.client.TargetLanguage)",
+        "processCall" : "deepl/translate:document(File,com.deepl.api.v2.client.TargetLanguage)",
         "output" : {
           "map" : {
             "out" : "in",
@@ -146,7 +146,7 @@
       "type" : "SubProcessCall",
       "name" : "translate",
       "config" : {
-        "processCall" : "deepl/translate:Document(File,com.deepl.api.v2.client.TargetLanguage)",
+        "processCall" : "deepl/translate:document(File,com.deepl.api.v2.client.TargetLanguage)",
         "output" : {
           "map" : {
             "out" : "in",
