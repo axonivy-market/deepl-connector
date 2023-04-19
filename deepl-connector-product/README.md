@@ -11,14 +11,17 @@ Say goodbye to language barriers in process automation with Axon Ivy's translati
 ## Demo
 
 The document translation demo shows how easy it has become, to translate documents throughout your workflow, into the language of your end user.
+
 ![deepl-doc-demo](img/docTranslationDemo.png)
 
 Of course pure text translations are demonstrated too.
 This is very handy to translate user input which was written in a foreign language.
+
 ![deepl-txt-demo](img/txtTranslateDemo.png)
 
 To use DeepL powered translations, we have created a minimal simplistic interface without technical difficulties.
 Get inspired and use DeepL anywhere in your workflow.
+
 ![deepl-activity](img/deeplSubCallActivity.png)
 
 ## Setup
