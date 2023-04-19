@@ -52,7 +52,7 @@
 			</h:form>
 			<div>
 				<h:panelGrid width="100%" rendered="#{data.file ne null}">
-					<h:outputLabel value="Browser native PDF Viewer (iframe)" />
+					<h:outputLabel value="Browse translated PDF output:" />
 					<pe:documentViewer id="viewer" url="#{ivy.html.fileref(data.file)}"
 						height="500" zoom="page-width" />
 				</h:panelGrid>
