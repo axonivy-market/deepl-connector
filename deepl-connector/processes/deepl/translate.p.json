@@ -9,7 +9,7 @@
       "id" : "f1",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 1032, "y" : 216 }
+        "at" : { "x" : 1016, "y" : 216 }
       }
     }, {
       "id" : "f4",
@@ -45,7 +45,7 @@
         "bodyMediaType" : "multipart/form-data"
       },
       "visual" : {
-        "at" : { "x" : 488, "y" : 216 },
+        "at" : { "x" : 512, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f14", "to" : "f13" }
@@ -70,7 +70,7 @@
         "responseCode" : "out.output = result.get(\"translations\").get(0).get(\"text\").asText();"
       },
       "visual" : {
-        "at" : { "x" : 496, "y" : 424 },
+        "at" : { "x" : 512, "y" : 408 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f7", "to" : "f5" }
@@ -102,7 +102,7 @@
         "bodyMediaType" : "application/x-www-form-urlencoded"
       },
       "visual" : {
-        "at" : { "x" : 648, "y" : 216 },
+        "at" : { "x" : 664, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f12", "to" : "f8" }
@@ -110,11 +110,11 @@
       "id" : "f8",
       "type" : "Alternative",
       "visual" : {
-        "at" : { "x" : 784, "y" : 216 }
+        "at" : { "x" : 776, "y" : 216 }
       },
       "connect" : [
         { "id" : "f18", "to" : "f16", "condition" : "in.check.status == com.deepl.api.v2.client.InlineResponse2002.StatusEnum.DONE" },
-        { "id" : "f19", "to" : "f15", "via" : [ { "x" : 784, "y" : 328 } ] }
+        { "id" : "f19", "to" : "f15", "via" : [ { "x" : 776, "y" : 304 } ] }
       ]
     }, {
       "id" : "f16",
@@ -151,7 +151,7 @@
         "bodyMediaType" : "application/x-www-form-urlencoded"
       },
       "visual" : {
-        "at" : { "x" : 912, "y" : 216 },
+        "at" : { "x" : 896, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : { "id" : "f2", "to" : "f1" }
@@ -165,7 +165,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 712, "y" : 328 }
+        "at" : { "x" : 664, "y" : 304 }
       },
       "connect" : { "id" : "f17", "to" : "f13" }
     }, {
@@ -203,7 +203,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 344, "y" : 424 },
+        "at" : { "x" : 360, "y" : 408 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
       },
       "connect" : { "id" : "f21", "to" : "f6" }
@@ -211,14 +211,14 @@
       "id" : "f5",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 640, "y" : 424 }
+        "at" : { "x" : 656, "y" : 408 }
       }
     }, {
       "id" : "f3",
       "type" : "CallSubStart",
-      "name" : "Document(File,TargetLanguage)",
+      "name" : "document(File,TargetLanguage)",
       "config" : {
-        "callSignature" : "Document",
+        "callSignature" : "document",
         "input" : {
           "params" : [
             { "name" : "file", "type" : "File", "desc" : "A file to translate (e.g. docx, pdf, pptx)" },
@@ -250,7 +250,7 @@
         "tags" : "connector"
       },
       "visual" : {
-        "at" : { "x" : 336, "y" : 216 },
+        "at" : { "x" : 360, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
       },
       "connect" : { "id" : "f9", "to" : "f4" }
