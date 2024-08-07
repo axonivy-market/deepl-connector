@@ -1,10 +1,10 @@
-Say goodbye to language barriers in process automation with Axon Ivy's translation service powered by DeepL. The connector seamlessly integrates into your existing workflows, allowing you to communicate easily regardless of the language. This marketplace item:
+Mit dem Deepl-Übersetzungsservice von Axon Ivy kannst du Sprachbarrieren in der Prozessautomatisierung überwinden. Der Konnektor lässt sich nahtlos in deine bestehenden Workflows integrieren und ermöglicht Dir mehrsprachige Kommunikation. Der Deepl-Konnektor:
 
-- Is based on the future-proof OpenAPI specification.
-- Translates entire Word (.docx), PowerPoint (.pptx), PDF (.pdf), text (.txt), and HTML (.html) files.
-- Gives you the power of all DeepL API features.
-- Supports you with a demo implementation to reduce your integration effort.
-- Enables low-code citizen developers to provide multi-lingual user interfaces.
+- basiert auf der OpenAPI-Spezifikation.
+- übersetzt ganze Word- (.docx), PowerPoint- (.pptx), PDF- (.pdf), Text- (.txt) und HTML-Dateien (.html).
+- gibt dir die volle Leistungsfähigkeit aller DeepL-API-Funktionen.
+- unterstützt dich mit einer Demo-Implementierung, um deinen Integrationsaufwand zu reduzieren.
+- ermöglicht es Low-Code Citizen Developern, mehrsprachige Benutzeroberflächen bereitzustellen.
 
 ## Demo
 
@@ -33,3 +33,4 @@ Copy the API-Key of your account into
 ```
 @variables.yaml@
 ```
+
