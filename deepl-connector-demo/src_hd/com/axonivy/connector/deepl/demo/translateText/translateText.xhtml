@@ -41,7 +41,7 @@
 				</div>
 				<div class="command-btns" style="justify-content: left;">
 					<p:commandButton id="translate" actionListener="#{logic.translate}"
-						value="translate" update="form" icon="si si-chat-translate" disabled="#{empty data.translate}" />
+						value="translate" update="form" icon="si si-chat-translate" disabled="#{data.translate eq null}" />
 				</div>
 			</h:form>
 		</ui:define>
