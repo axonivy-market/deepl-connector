@@ -5,8 +5,7 @@
   "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "language",
-    "type" : "com.deepl.api.v2.client.TargetLanguage",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.deepl.api.v2.client.TargetLanguage"
   }, {
     "name" : "file",
     "type" : "File",

@@ -13,16 +13,13 @@
     "modifiers" : [ "PERSISTENT" ]
   }, {
     "name" : "languages",
-    "type" : "List<com.axonivy.connector.deepl.LanguageInfo.Lang>",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "List<com.axonivy.connector.deepl.LanguageInfo.Lang>"
   }, {
     "name" : "translate",
-    "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang"
   }, {
     "name" : "ivyFile",
-    "type" : "File",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "File"
   }, {
     "name" : "file",
     "type" : "File",

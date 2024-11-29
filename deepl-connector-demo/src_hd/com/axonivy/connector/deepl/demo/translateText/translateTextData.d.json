@@ -9,12 +9,10 @@
     "modifiers" : [ "PERSISTENT" ]
   }, {
     "name" : "languages",
-    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>"
   }, {
     "name" : "translate",
-    "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang"
   }, {
     "name" : "inputText",
     "type" : "String",
