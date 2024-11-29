@@ -1,0 +1,35 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "Data",
+  "namespace" : "deepl.translate",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "file",
+    "type" : "java.io.File"
+  }, {
+    "name" : "uploaded",
+    "type" : "com.deepl.api.v2.client.InlineResponse2001"
+  }, {
+    "name" : "check",
+    "type" : "com.deepl.api.v2.client.InlineResponse2002"
+  }, {
+    "name" : "translated",
+    "type" : "File"
+  }, {
+    "name" : "input",
+    "type" : "String"
+  }, {
+    "name" : "output",
+    "type" : "String"
+  }, {
+    "name" : "langTarget",
+    "type" : "com.deepl.api.v2.client.TargetLanguage"
+  }, {
+    "name" : "indexData",
+    "type" : "javax.persistence.Index"
+  }, {
+    "name" : "ivyFile",
+    "type" : "File",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}
