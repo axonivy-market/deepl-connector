@@ -21,7 +21,7 @@ Setup the mock service for DeepL requests, which provides static results. This m
     deepl:
         Url: '{ivy.app.baseurl}/api/mock'
         Properties:
-        AUTH.deepLKey: notMyKey
+          AUTH.deepLKey: notMyKey
         Features:
         - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
         - org.glassfish.jersey.media.multipart.MultiPartFeature
