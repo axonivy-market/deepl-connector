@@ -38,14 +38,14 @@
 					<p:commandButton value="Upload"
 						actionListener="#{logic.fileUpload}" ajax="false"
 						id="fileUploadButton" icon="fa-solid fa-cloud-upload"
-						disabled="#{empty data.translate}" />
+						disabled="#{data.translate eq null}" />
 					<br /> <br />
 					<h:outputText value="No file to translate? Try our example" />
 					<br />
 					<p:commandButton value="Example file"
 						actionListener="#{logic.fileUploadTemplate}" ajax="false"
 						update="form" id="templateButton" icon="fa-solid fa-cloud-upload"
-						disabled="#{empty data.translate}" />
+						disabled="#{data.translate eq null}" />
 
 					<a href="#{ivy.html.fileref(data.exampleFile)}">Example file</a> <br />
 				</div>
