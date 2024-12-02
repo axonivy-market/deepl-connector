@@ -19,13 +19,13 @@ Setup the mock service for DeepL requests, which provides static results. This m
     # yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/app.json
     RestClients:
     deepl:
-        Url: '{ivy.app.baseurl}/api/mock'
-        Properties:
-          AUTH.deepLKey: notMyKey
-        Features:
-        - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
-        - org.glassfish.jersey.media.multipart.MultiPartFeature
-        - ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature
+      Url: '{ivy.app.baseurl}/api/mock'
+      Properties:
+        AUTH.deepLKey: notMyKey
+      Features:
+      - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+      - org.glassfish.jersey.media.multipart.MultiPartFeature
+      - ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature
     ```
 - Run any startable Process in the Demo project and verify in the RuntimeLog view, that requests are being sent to localhost rathern than deepl.com.
 
