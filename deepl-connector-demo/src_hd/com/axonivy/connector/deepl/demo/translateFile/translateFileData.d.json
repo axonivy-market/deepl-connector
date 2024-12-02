@@ -1,0 +1,36 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "translateFileData",
+  "namespace" : "com.axonivy.connector.deepl.demo.translateFile",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "showContent",
+    "type" : "Boolean",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "filePath",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "languages",
+    "type" : "List<com.axonivy.connector.deepl.LanguageInfo.Lang>"
+  }, {
+    "name" : "translate",
+    "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang"
+  }, {
+    "name" : "ivyFile",
+    "type" : "File"
+  }, {
+    "name" : "file",
+    "type" : "File",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "translated",
+    "type" : "File",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "exampleFile",
+    "type" : "File",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

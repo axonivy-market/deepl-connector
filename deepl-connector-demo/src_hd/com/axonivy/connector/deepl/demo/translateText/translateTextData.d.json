@@ -1,0 +1,25 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "translateTextData",
+  "namespace" : "com.axonivy.connector.deepl.demo.translateText",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "data",
+    "type" : "com.axonivy.connector.deepl.demo.Data",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "languages",
+    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>"
+  }, {
+    "name" : "translate",
+    "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang"
+  }, {
+    "name" : "inputText",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "outputText",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

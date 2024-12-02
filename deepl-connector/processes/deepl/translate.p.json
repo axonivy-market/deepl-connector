@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "1865BA0763310472",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -16,104 +16,139 @@
       "type" : "RestClientCall",
       "name" : "upload",
       "config" : {
-        "bodyObjectMapping" : {
-          "param.file" : "in.ivyFile"
-        },
-        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
         "method" : "POST",
-        "statusErrorCode" : "ivy:error:rest:client",
-        "bodyObjectType" : "com.deepl.api.v2.client.DocumentBody",
-        "bodyInputType" : "FORM",
-        "bodyForm" : {
-          "source_lang" : "",
-          "target_lang" : "in.langTarget",
-          "file" : "in.file",
-          "filename" : "in.file.getName()",
-          "formality" : "",
-          "glossary_id" : "",
-          "" : ""
+        "target" : {
+          "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+          "path" : "/document"
         },
-        "path" : "/document",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "responseMapping" : {
-          "out" : "in",
-          "out.file" : "in.file",
-          "out.ivyFile" : "in.ivyFile",
-          "out.uploaded" : "result"
+        "body" : {
+          "type" : "FORM",
+          "mediaType" : "multipart/form-data",
+          "form" : {
+            "source_lang" : [ "" ],
+            "target_lang" : [ "in.langTarget" ],
+            "file" : [ "in.file" ],
+            "filename" : [ "in.file.getName()" ],
+            "formality" : [ "" ],
+            "glossary_id" : [ "" ],
+            "" : [ "" ]
+          },
+          "entity" : {
+            "type" : "com.deepl.api.v2.client.DocumentBody",
+            "map" : {
+              "param.file" : "in.ivyFile"
+            }
+          }
         },
-        "resultType" : "com.deepl.api.v2.client.InlineResponse2001",
-        "bodyMediaType" : "multipart/form-data"
+        "response" : {
+          "entity" : {
+            "type" : "com.deepl.api.v2.client.InlineResponse2001",
+            "map" : {
+              "out" : "in",
+              "out.file" : "in.file",
+              "out.ivyFile" : "in.ivyFile",
+              "out.uploaded" : "result"
+            }
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 512, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
-      "connect" : { "id" : "f14", "to" : "f13" }
+      "connect" : [
+        { "id" : "f14", "to" : "f13" }
+      ]
     }, {
       "id" : "f6",
       "type" : "RestClientCall",
       "name" : "translate",
       "config" : {
-        "bodyForm" : {
-          "target_lang" : "in.langTarget",
-          "text" : "in.input.lines().toList()"
-        },
-        "path" : "/translate",
-        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
-        "clientErrorCode" : "ivy:error:rest:client",
         "method" : "POST",
-        "statusErrorCode" : "ivy:error:rest:client",
-        "bodyObjectType" : "com.deepl.api.v2.client.TranslateBody",
-        "resultType" : "com.fasterxml.jackson.databind.JsonNode",
-        "bodyInputType" : "FORM",
-        "bodyMediaType" : "application/x-www-form-urlencoded",
-        "responseCode" : "out.output = result.get(\"translations\").get(0).get(\"text\").asText();"
+        "target" : {
+          "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+          "path" : "/translate"
+        },
+        "body" : {
+          "type" : "FORM",
+          "mediaType" : "application/x-www-form-urlencoded",
+          "form" : {
+            "target_lang" : [ "in.langTarget" ],
+            "text" : [ "in.input.lines().toList()" ]
+          },
+          "entity" : {
+            "type" : "com.deepl.api.v2.client.TranslateBody"
+          }
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.fasterxml.jackson.databind.JsonNode",
+            "code" : "out.output = result.get(\"translations\").get(0).get(\"text\").asText();"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 512, "y" : 408 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
-      "connect" : { "id" : "f7", "to" : "f5" }
+      "connect" : [
+        { "id" : "f7", "to" : "f5" }
+      ]
     }, {
       "id" : "f13",
       "type" : "RestClientCall",
       "name" : "check",
       "config" : {
-        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
         "method" : "POST",
-        "statusErrorCode" : "ivy:error:rest:client",
-        "bodyObjectType" : "com.deepl.api.v2.client.DocumentDocumentIdBody",
-        "bodyInputType" : "FORM",
-        "bodyForm" : {
-          "source_lang" : "",
-          "formality" : "",
-          "glossary_id" : "",
-          "document_key" : "in.uploaded.documentKey"
+        "target" : {
+          "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+          "path" : "/document/{document_id}",
+          "templateParams" : {
+            "document_id" : "in.uploaded.documentId"
+          }
         },
-        "path" : "/document/{document_id}",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "responseMapping" : {
-          "out.check" : "result"
+        "body" : {
+          "type" : "FORM",
+          "mediaType" : "application/x-www-form-urlencoded",
+          "form" : {
+            "source_lang" : [ "" ],
+            "formality" : [ "" ],
+            "glossary_id" : [ "" ],
+            "document_key" : [ "in.uploaded.documentKey" ]
+          },
+          "entity" : {
+            "type" : "com.deepl.api.v2.client.DocumentDocumentIdBody"
+          }
         },
-        "templateParams" : {
-          "document_id" : "in.uploaded.documentId"
-        },
-        "resultType" : "com.deepl.api.v2.client.InlineResponse2002",
-        "bodyMediaType" : "application/x-www-form-urlencoded"
+        "response" : {
+          "entity" : {
+            "type" : "com.deepl.api.v2.client.InlineResponse2002",
+            "map" : {
+              "out.check" : "result"
+            }
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 664, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
-      "connect" : { "id" : "f12", "to" : "f8" }
+      "connect" : [
+        { "id" : "f12", "to" : "f8" }
+      ]
     }, {
       "id" : "f8",
       "type" : "Alternative",
+      "config" : {
+        "conditions" : {
+          "f18" : "in.check.status == com.deepl.api.v2.client.InlineResponse2002.StatusEnum.DONE"
+        }
+      },
       "visual" : {
         "at" : { "x" : 776, "y" : 216 }
       },
       "connect" : [
-        { "id" : "f18", "to" : "f16", "condition" : "in.check.status == com.deepl.api.v2.client.InlineResponse2002.StatusEnum.DONE" },
+        { "id" : "f18", "to" : "f16" },
         { "id" : "f19", "to" : "f15", "via" : [ { "x" : 776, "y" : 304 } ] }
       ]
     }, {
@@ -121,40 +156,50 @@
       "type" : "RestClientCall",
       "name" : "download",
       "config" : {
-        "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
         "method" : "POST",
-        "statusErrorCode" : "ivy:error:rest:client",
-        "bodyObjectType" : "com.deepl.api.v2.client.DocumentDocumentIdBody",
-        "bodyInputType" : "FORM",
-        "responseCode" : [
-          "import java.nio.file.StandardCopyOption;",
-          "import java.nio.file.Files;",
-          "File res = new File(\"translated.pdf\");",
-          "Files.copy(result, res.getJavaFile().toPath(), StandardCopyOption.REPLACE_EXISTING);",
-          "out.translated = res;"
-        ],
-        "bodyForm" : {
-          "source_lang" : "",
-          "formality" : "",
-          "glossary_id" : "",
-          "document_key" : "in.uploaded.documentKey"
+        "target" : {
+          "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+          "path" : "/document/{document_id}/result",
+          "templateParams" : {
+            "document_id" : "in.uploaded.documentId"
+          }
         },
-        "path" : "/document/{document_id}/result",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "responseMapping" : {
-          "out.translated" : "in.translated"
+        "body" : {
+          "type" : "FORM",
+          "mediaType" : "application/x-www-form-urlencoded",
+          "form" : {
+            "source_lang" : [ "" ],
+            "formality" : [ "" ],
+            "glossary_id" : [ "" ],
+            "document_key" : [ "in.uploaded.documentKey" ]
+          },
+          "entity" : {
+            "type" : "com.deepl.api.v2.client.DocumentDocumentIdBody"
+          }
         },
-        "templateParams" : {
-          "document_id" : "in.uploaded.documentId"
-        },
-        "resultType" : "java.io.InputStream",
-        "bodyMediaType" : "application/x-www-form-urlencoded"
+        "response" : {
+          "entity" : {
+            "type" : "java.io.InputStream",
+            "map" : {
+              "out.translated" : "in.translated"
+            },
+            "code" : [
+              "import java.nio.file.StandardCopyOption;",
+              "import java.nio.file.Files;",
+              "File res = new File(\"translated.pdf\");",
+              "Files.copy(result, res.getJavaFile().toPath(), StandardCopyOption.REPLACE_EXISTING);",
+              "out.translated = res;"
+            ]
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 896, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
-      "connect" : { "id" : "f2", "to" : "f1" }
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
     }, {
       "id" : "f15",
       "type" : "Script",
@@ -167,13 +212,15 @@
       "visual" : {
         "at" : { "x" : 664, "y" : 304 }
       },
-      "connect" : { "id" : "f17", "to" : "f13" }
+      "connect" : [
+        { "id" : "f17", "to" : "f13" }
+      ]
     }, {
       "id" : "f20",
       "type" : "CallSubStart",
       "name" : "text(String,TargetLanguage)",
       "config" : {
-        "callSignature" : "text",
+        "signature" : "text",
         "input" : {
           "params" : [
             { "name" : "text", "type" : "String", "desc" : "The text to translate" },
@@ -195,7 +242,7 @@
         },
         "result" : {
           "params" : [
-            { "name" : "translation", "type" : "String" }
+            { "name" : "translation", "type" : "String", "desc" : "" }
           ],
           "map" : {
             "result.translation" : "in.output"
@@ -206,7 +253,9 @@
         "at" : { "x" : 360, "y" : 408 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
       },
-      "connect" : { "id" : "f21", "to" : "f6" }
+      "connect" : [
+        { "id" : "f21", "to" : "f6" }
+      ]
     }, {
       "id" : "f5",
       "type" : "CallSubEnd",
@@ -218,7 +267,7 @@
       "type" : "CallSubStart",
       "name" : "document(File,TargetLanguage)",
       "config" : {
-        "callSignature" : "document",
+        "signature" : "document",
         "input" : {
           "params" : [
             { "name" : "file", "type" : "File", "desc" : "A file to translate (e.g. docx, pdf, pptx)" },
@@ -241,18 +290,22 @@
         },
         "result" : {
           "params" : [
-            { "name" : "translated", "type" : "File" }
+            { "name" : "translated", "type" : "File", "desc" : "" }
           ],
           "map" : {
             "result.translated" : "in.translated"
           }
-        },
-        "tags" : "connector"
+        }
       },
+      "tags" : [
+        "connector"
+      ],
       "visual" : {
         "at" : { "x" : 360, "y" : 216 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
       },
-      "connect" : { "id" : "f9", "to" : "f4" }
+      "connect" : [
+        { "id" : "f9", "to" : "f4" }
+      ]
     } ]
 }

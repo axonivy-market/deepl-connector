@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "1865BBA362D2425B",
   "config" : {
     "data" : "com.axonivy.connector.deepl.demo.Data"
@@ -9,14 +9,17 @@
       "type" : "RequestStart",
       "name" : "translateText.ivp",
       "config" : {
-        "callSignature" : "translateText",
-        "outLink" : "translateText.ivp",
-        "tags" : "demo"
+        "signature" : "translateText"
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },
-      "connect" : { "id" : "f2", "to" : "f4" }
+      "connect" : [
+        { "id" : "f2", "to" : "f4" }
+      ]
     }, {
       "id" : "f1",
       "type" : "TaskEnd",
@@ -28,14 +31,15 @@
       "type" : "DialogCall",
       "name" : "translateText",
       "config" : {
-        "dialogId" : "com.axonivy.connector.deepl.demo.translateText",
-        "startMethod" : "start()"
+        "dialog" : "com.axonivy.connector.deepl.demo.translateText:start()"
       },
       "visual" : {
         "at" : { "x" : 248, "y" : 64 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
-      "connect" : { "id" : "f7", "to" : "f1" }
+      "connect" : [
+        { "id" : "f7", "to" : "f1" }
+      ]
     }, {
       "id" : "f5",
       "type" : "TaskEnd",
@@ -47,21 +51,21 @@
       "type" : "RequestStart",
       "name" : "translateFile.ivp",
       "config" : {
-        "callSignature" : "translateFile",
-        "outLink" : "translateFile.ivp"
+        "signature" : "translateFile"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 144 },
-        "labelOffset" : { "x" : 9, "y" : 35 }
+        "labelOffset" : { "x" : 9 }
       },
-      "connect" : { "id" : "f6", "to" : "f11" }
+      "connect" : [
+        { "id" : "f6", "to" : "f11" }
+      ]
     }, {
       "id" : "f11",
       "type" : "DialogCall",
       "name" : "translateFile",
       "config" : {
-        "dialogId" : "com.axonivy.connector.deepl.demo.translateFile",
-        "startMethod" : "start()",
+        "dialog" : "com.axonivy.connector.deepl.demo.translateFile:start()",
         "output" : {
           "map" : {
             "out" : "in",
@@ -73,6 +77,8 @@
         "at" : { "x" : 248, "y" : 144 },
         "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
-      "connect" : { "id" : "f3", "to" : "f5" }
+      "connect" : [
+        { "id" : "f3", "to" : "f5" }
+      ]
     } ]
 }
