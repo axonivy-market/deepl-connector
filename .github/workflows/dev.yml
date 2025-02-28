@@ -8,4 +8,4 @@ on:
 
 jobs:
   build:
-    uses: axonivy-market/github-workflows/.github/workflows/dev.yml@v5
+    uses: axonivy-market/github-workflows/.github/workflows/dev.yml@feature/MARP-1982-Adapt-CI-Build-for-MultiEnvironment
