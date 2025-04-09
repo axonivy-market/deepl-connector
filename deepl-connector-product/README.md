@@ -23,8 +23,9 @@ Get inspired and use DeepL anywhere in your workflow.
 ![deepl-activity](img/deeplSubCallActivity.png)
 
 We have also introduced new Options to fully utilize the client parameters. 
-Here, we show two newly introduced options for source_language and tag_handling, but you can access all options using this new Options object.
+Here, we show two newly introduced options for source_language and tag_handling, but you can access all options using this new deepl.translate.Options object.
 
+![deepl-translate-options](img/optionsObject.png)
 ![deepl-txt-adv-demo](img/txtTranslateAdvancedDemo.png)
 ![deepl-doc-adv-demo](img/docTranslationAdvancedDemo.png)
 
