@@ -1,0 +1,40 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "Options",
+  "namespace" : "deepl.translate",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "sourceLang",
+    "type" : "com.deepl.api.v2.client.SourceLanguage"
+  }, {
+    "name" : "targetLang",
+    "type" : "com.deepl.api.v2.client.TargetLanguage"
+  }, {
+    "name" : "splitSentences",
+    "type" : "String"
+  }, {
+    "name" : "preserveFormatting",
+    "type" : "String"
+  }, {
+    "name" : "formality",
+    "type" : "com.deepl.api.v2.client.Formality"
+  }, {
+    "name" : "glossaryId",
+    "type" : "String"
+  }, {
+    "name" : "tagHandling",
+    "type" : "String"
+  }, {
+    "name" : "nonSplittingTags",
+    "type" : "String"
+  }, {
+    "name" : "outlineDetection",
+    "type" : "String"
+  }, {
+    "name" : "splittingTags",
+    "type" : "String"
+  }, {
+    "name" : "ignoreTags",
+    "type" : "String"
+  } ]
+}
