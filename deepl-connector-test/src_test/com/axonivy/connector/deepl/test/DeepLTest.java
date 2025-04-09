@@ -38,7 +38,7 @@ public class DeepLTest{
 
   @BeforeEach
   void setup(AppFixture fixture, IApplication app) {
-    fixture.config("RestClients.deepl.Url", DeepLServiceMock.URI);
+    fixture.config("RestClients.deepl-connector.Url", DeepLServiceMock.URI);
     fixture.var("deepl-connector.apiKey", "notMyKey:fx");
     RestClients clients = RestClients.of(app);
     RestClient deepL = clients.find("deepl-connector");
