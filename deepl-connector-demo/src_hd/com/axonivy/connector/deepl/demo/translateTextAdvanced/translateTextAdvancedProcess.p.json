@@ -12,12 +12,20 @@
       "config" : {
         "signature" : "start",
         "input" : {
-          "map" : {
-            "out.inputText" : "\"Hello world\""
-          },
+          "map" : { },
           "code" : [
+            "import deepl.translate.Options;",
+            "import com.deepl.api.v2.client.TargetLanguage;",
+            "import com.deepl.api.v2.client.SourceLanguage;",
             "out.languages = com.axonivy.connector.deepl.LanguageInfo.all();",
-            "out.sourceLanguages = com.axonivy.connector.deepl.LanguageInfo.allSourceLanguages();"
+            "out.sourceLanguages = com.axonivy.connector.deepl.LanguageInfo.allSourceLanguages();",
+            "",
+            "//defaults",
+            "out.source = new com.axonivy.connector.deepl.LanguageInfo.SourceLang(SourceLanguage.EN, \"English\");",
+            "out.translate = new com.axonivy.connector.deepl.LanguageInfo.Lang(TargetLanguage.DE, \"German\");",
+            "",
+            "out.data.options.setTagHandling(\"HTML\");",
+            "out.inputText = \"<h1>Hello world</h1>\";"
           ]
         },
         "guid" : "196146517C2CAFA6"

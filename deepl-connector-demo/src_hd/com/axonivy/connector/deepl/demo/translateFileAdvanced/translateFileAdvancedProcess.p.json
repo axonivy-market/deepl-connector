@@ -14,11 +14,18 @@
         "input" : {
           "map" : { },
           "code" : [
+            "import com.deepl.api.v2.client.TargetLanguage;",
+            "import com.deepl.api.v2.client.SourceLanguage;",
             "import com.axonivy.connector.deepl.FileLoaderUtil;",
             "",
             "out.languages = com.axonivy.connector.deepl.LanguageInfo.all();",
             "out.sourceLanguages = com.axonivy.connector.deepl.LanguageInfo.allSourceLanguages();",
-            "out.exampleFile = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");"
+            "out.exampleFile = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");",
+            "",
+            "//defaults ",
+            "out.source = new com.axonivy.connector.deepl.LanguageInfo.SourceLang(SourceLanguage.EN, \"English\");",
+            "out.translate = new com.axonivy.connector.deepl.LanguageInfo.Lang(TargetLanguage.DE, \"German\");",
+            "out.options.setTagHandling(\"HTML\");"
           ]
         },
         "result" : {
