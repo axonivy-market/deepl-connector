@@ -23,16 +23,19 @@
     "type" : "String"
   }, {
     "name" : "tagHandling",
-    "type" : "String"
+    "type" : "String",
+    "comment" : "Sets which kind of tags should be handled. Options currently available: * `xml`: Enable XML tag handling; see [XML Handling](https://www.deepl.com/docs-api/xml). * `html`: Enable HTML tag handling; see [HTML Handling](https://www.deepl.com/docs-api/html)."
   }, {
     "name" : "nonSplittingTags",
-    "type" : "String"
+    "type" : "String",
+    "comment" : "Comma-separated list of XML tags which never split sentences"
   }, {
     "name" : "outlineDetection",
     "type" : "String"
   }, {
     "name" : "splittingTags",
-    "type" : "String"
+    "type" : "String",
+    "comment" : "Comma-separated list of XML tags which always cause splits."
   }, {
     "name" : "ignoreTags",
     "type" : "String"

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.axonivy.connector.deepl.mock.DeepLServiceMock;
+import com.deepl.api.v2.client.SourceLanguage;
 import com.deepl.api.v2.client.TargetLanguage;
 
 import ch.ivyteam.ivy.application.IApplication;
@@ -79,7 +80,7 @@ public class DeepLTest{
     ExecutionResult result = bpmClient.start()
       .subProcess(Start.TRANSLATE_ADVANCED)
       .withParam("text", "Hello World")
-      .withParam("targetLanguage", getDefaultOptions())
+      .withParam("options", getDefaultOptions())
       .execute();
     deepl.translate.Data data = result.data().last();
     assertThat(data.getOutput()).isEqualTo("Hallo Welt");
@@ -92,7 +93,7 @@ public class DeepLTest{
     ExecutionResult result = bpmClient.start()
       .subProcess(Start.DOCUMENT_ADVANCED)
       .withParam("file", original)
-      .withParam("targetLanguage", getDefaultOptions())
+      .withParam("options", getDefaultOptions())
       .execute();
     deepl.translate.Data data = result.data().last();
     File translated = data.getTranslated();
@@ -102,7 +103,9 @@ public class DeepLTest{
   
   private Options getDefaultOptions() {
 	  Options opt = new Options();
+	  opt.setSourceLang(SourceLanguage.EN);
 	  opt.setTargetLang(TargetLanguage.DE);
+	  opt.setTagHandling("HTML");
 	  return opt;
   }
 
