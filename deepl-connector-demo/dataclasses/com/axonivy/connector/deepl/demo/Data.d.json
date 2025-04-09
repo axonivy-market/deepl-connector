@@ -10,5 +10,8 @@
     "name" : "file",
     "type" : "File",
     "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "options",
+    "type" : "deepl.translate.Options"
   } ]
 }

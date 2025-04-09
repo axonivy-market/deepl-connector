@@ -1,0 +1,119 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "196146517BE8F821",
+  "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.connector.deepl.demo.translateTextAdvanced.translateTextAdvancedData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "HtmlDialogStart",
+      "name" : "start()",
+      "config" : {
+        "signature" : "start",
+        "input" : {
+          "map" : {
+            "out.inputText" : "\"Hello world\""
+          },
+          "code" : [
+            "out.languages = com.axonivy.connector.deepl.LanguageInfo.all();",
+            "out.sourceLanguages = com.axonivy.connector.deepl.LanguageInfo.allSourceLanguages();"
+          ]
+        },
+        "guid" : "196146517C2CAFA6"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "HtmlDialogEventStart",
+      "name" : "close",
+      "config" : {
+        "guid" : "196146517C558C29"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 272 }
+      },
+      "connect" : [
+        { "id" : "f5", "to" : "f4" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "HtmlDialogExit",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 272 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f7",
+      "type" : "HtmlDialogEventStart",
+      "name" : "translate",
+      "config" : {
+        "guid" : "1961486D01677A29",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.data" : "in.data",
+            "out.languages" : "in.languages"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 168 }
+      },
+      "connect" : [
+        { "id" : "f10", "to" : "f6" }
+      ]
+    }, {
+      "id" : "f8",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 168 }
+      }
+    }, {
+      "id" : "f6",
+      "type" : "SubProcessCall",
+      "name" : "translate",
+      "config" : {
+        "processCall" : "deepl/translate:text(String,deepl.translate.Options)",
+        "call" : {
+          "map" : {
+            "param.text" : "in.inputText",
+            "param.options" : "in.data.options",
+            "param.options.targetLang" : "in.translate.key()"
+          },
+          "code" : [
+            "if(in.#source != null && in.source.key() != null){",
+            "  param.options.sourceLang = in.source.key();",
+            "}else{",
+            "  param.options.sourceLang = null;",
+            "}"
+          ]
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.outputText" : "result.translation"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 168 },
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
+      },
+      "connect" : [
+        { "id" : "f9", "to" : "f8" }
+      ]
+    } ]
+}
