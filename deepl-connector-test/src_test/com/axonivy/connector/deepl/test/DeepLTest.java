@@ -41,7 +41,7 @@ public class DeepLTest{
     fixture.config("RestClients.deepl.Url", DeepLServiceMock.URI);
     fixture.var("deepl-connector.apiKey", "notMyKey:fx");
     RestClients clients = RestClients.of(app);
-    RestClient deepL = clients.find("deepl");
+    RestClient deepL = clients.find("deepl-connector");
     var testClient = deepL.toBuilder()
       .feature(CsrfHeaderFeature.class.getName())
       .property("AUTH.deepLKey", "notMyKey:fx")
