@@ -2,23 +2,37 @@ package com.axonivy.connector.deepl;
 
 import java.util.List;
 
+import com.deepl.api.v2.client.SourceLanguage;
 import com.deepl.api.v2.client.TargetLanguage;
 import com.google.common.base.Objects;
 
 public class LanguageInfo {
 
   public static Lang of(TargetLanguage tLang) {
-    return LANGUAGES.stream()
+    return TARGET_LANGUAGES.stream()
       .filter(lang -> Objects.equal(lang.key(), tLang.getValue()))
       .findAny()
       .orElseGet(()->new Lang(tLang , ""));
   }
-
-  public static List<Lang> all() {
-    return LANGUAGES;
+  
+  public static SourceLang of(SourceLanguage sLang) {
+	return SOURCE_LANGUAGES.stream()
+	  .filter(lang -> Objects.equal(lang.key(), sLang.getValue()))
+	  .findAny()
+	  .orElseGet(() -> new SourceLang(sLang, ""));
   }
 
-  private static List<Lang> LANGUAGES = List.of(
+
+  public static List<Lang> all() {
+    return TARGET_LANGUAGES;
+  }
+  
+  public static List<SourceLang> allSourceLanguages() {
+	return SOURCE_LANGUAGES;
+  }
+
+
+  private static List<Lang> TARGET_LANGUAGES = List.of(
     new Lang(TargetLanguage.BG, "Bulgarian"),
     new Lang(TargetLanguage.CS, "Czech"),
     new Lang(TargetLanguage.DA, "Danish"),
@@ -51,9 +65,48 @@ public class LanguageInfo {
     new Lang(TargetLanguage.UK, "Ukrainian"),
     new Lang(TargetLanguage.ZH, "Chinese", "simplified"));
   
+  private static List<SourceLang> SOURCE_LANGUAGES = List.of(
+    new SourceLang(SourceLanguage.BG, "Bulgarian"),
+	new SourceLang(SourceLanguage.CS, "Czech"),
+	new SourceLang(SourceLanguage.DA, "Danish"),
+	new SourceLang(SourceLanguage.DE, "German"),
+	new SourceLang(SourceLanguage.EL, "Greek"),
+	new SourceLang(SourceLanguage.EN, "English"),
+	new SourceLang(SourceLanguage.ES, "Spanish"),
+	new SourceLang(SourceLanguage.ET, "Estonian"),
+	new SourceLang(SourceLanguage.FI, "Finnish"),
+	new SourceLang(SourceLanguage.FR, "French"),
+	new SourceLang(SourceLanguage.HU, "Hungarian"),
+	new SourceLang(SourceLanguage.ID, "Indonesian"),
+	new SourceLang(SourceLanguage.IT, "Italian"),
+	new SourceLang(SourceLanguage.JA, "Japanese"),
+	new SourceLang(SourceLanguage.KO, "Korean"),
+	new SourceLang(SourceLanguage.LT, "Lithuanian"),
+	new SourceLang(SourceLanguage.LV, "Latvian"),
+	new SourceLang(SourceLanguage.NB, "Norwegian", "Bokmål"),
+	new SourceLang(SourceLanguage.NL, "Dutch"),
+	new SourceLang(SourceLanguage.PL, "Polish"),
+	new SourceLang(SourceLanguage.PT, "Portuguese"),
+	new SourceLang(SourceLanguage.RO, "Romanian"),
+	new SourceLang(SourceLanguage.RU, "Russian"),
+	new SourceLang(SourceLanguage.SK, "Slovak"),
+	new SourceLang(SourceLanguage.SL, "Slovenian"),
+	new SourceLang(SourceLanguage.SV, "Swedish"),
+	new SourceLang(SourceLanguage.TR, "Turkish"),
+	new SourceLang(SourceLanguage.UK, "Ukrainian"),
+	new SourceLang(SourceLanguage.ZH, "Chinese", "simplified"));
+  
   public record Lang(TargetLanguage key, String name, String variant) {
-	  
-    public Lang(TargetLanguage key, String name) {
+	public Lang(TargetLanguage key, String name) {
+	  this(key, name, null);
+	}
+    public String getVariant() {
+      return variant(); // accessor for JSF
+    }
+  }
+  
+  public record SourceLang(SourceLanguage key, String name, String variant) {
+    public SourceLang(SourceLanguage key, String name) {
       this(key, name, null);
     }
 
