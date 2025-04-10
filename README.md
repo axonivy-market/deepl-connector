@@ -18,7 +18,7 @@ Setup the mock service for DeepL requests, which provides static results. This m
     ```yaml
     # yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/app.json
     RestClients:
-      deepl:
+      deepl-connector:
         Url: '{ivy.app.baseurl}/api/mock'
         Properties:
           AUTH.deepLKey: notMyKey
