@@ -184,9 +184,14 @@
               "out.translated" : "in.translated"
             },
             "code" : [
+              "import org.apache.commons.lang3.StringUtils;",
               "import java.nio.file.StandardCopyOption;",
               "import java.nio.file.Files;",
-              "File res = new File(\"translated.pdf\");",
+              "",
+              "String name = in.file.getName();",
+              "String ext = StringUtils.substringAfterLast(name, \".\");",
+              "String base = StringUtils.substringBeforeLast(name, \".\");",
+              "File res = new File(base+\"_\"+in.options.targetLang.getValue()+\".\"+ext);",
               "Files.copy(result, res.getJavaFile().toPath(), StandardCopyOption.REPLACE_EXISTING);",
               "out.translated = res;"
             ]
