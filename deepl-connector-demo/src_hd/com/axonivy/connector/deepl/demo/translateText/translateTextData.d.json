@@ -11,8 +11,14 @@
     "name" : "languages",
     "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>"
   }, {
+    "name" : "sourceLanguages",
+    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.SourceLang>"
+  }, {
     "name" : "translate",
     "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang"
+  }, {
+    "name" : "source",
+    "type" : "com.axonivy.connector.deepl.LanguageInfo.SourceLang"
   }, {
     "name" : "inputText",
     "type" : "String",
