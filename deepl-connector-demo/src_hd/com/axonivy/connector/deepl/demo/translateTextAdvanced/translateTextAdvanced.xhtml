@@ -15,7 +15,7 @@
 		                    <span class="ui-float-label">
 		                        <p:selectOneMenu id="sourceLanguage" value="#{data.source}" title="#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/LeavingTheField')}"
 									converter="ivy.ListItem" styleClass="w-full">
-									<f:selectItem itemLabel="" itemValue="" />
+									<f:selectItem itemLabel="#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/DetectLanguage')}" itemValue="" />
 									<f:selectItems value="#{data.sourceLanguages}" var="language"
 										itemValue="#{language}"
 										itemLabel="#{language.name()} [#{language.key()}]" /> 
@@ -29,7 +29,7 @@
 		                    <span class="ui-float-label">
 		                        <p:selectOneMenu id="targetLanguage" value="#{data.translate}"
 									converter="ivy.ListItem" styleClass="w-full">
-									<f:selectItem itemLabel="" itemValue="" />
+									<f:selectItem itemLabel="#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/SelectTarget')}" itemValue="" />
 									<f:selectItems value="#{data.languages}" var="language"
 										itemValue="#{language}"
 										itemLabel="#{language.name()} [#{language.key()}]" />
@@ -40,14 +40,20 @@
 		                </div>
 					</div>
 					<div class="col-6">
-						<div>
-							<p:outputLabel for="inputText" value="Input text in any language" />
-						</div>
-						<p:inputTextarea id="inputText" value="#{data.inputText}" styleClass="w-full"
-							style="height: 50vh; resize: none;"
-							autoResize="false" />
+					<div class="field mb-0 pb-0">
+		                <span class="ui-float-label">
+							<p:inputTextarea id="inputText" value="#{data.inputText}" styleClass="w-full"
+								style="height: 50vh; resize: none;"
+								autoResize="false" />
+							<p:outputLabel for="@previous" value="#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/InputText')}" />
+						</span>
+		                </div> 
 					</div>
 					
+					<div class="col-6"> 
+						<p:inputTextarea style="height: 50vh; resize: none;" styleClass="w-full"
+							id="outputText" value="#{data.outputText}" autoResize="false" />
+					</div>
 					<div class="col-6"> 
 						<div class="field mb-0 pb-0">
 		                    <span class="ui-float-label">
@@ -55,13 +61,13 @@
 		                        <p:outputLabel for="@previous" value="#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/TagHandling')}" />
 		                    </span>
 		                </div> 
-						<p:inputTextarea style="height: 50vh; resize: none;" styleClass="w-full"
-							id="outputText" value="#{data.outputText}" autoResize="false" />
 					</div>
-				</div>
-				<div class="command-btns" style="justify-content: left;">
-					<p:commandButton id="translate" actionListener="#{logic.translate}"
+					<div class="col-6"> 
+						<div class="field mb-0 pb-0">
+		                    <p:commandButton id="translate" actionListener="#{logic.translate}"
 						value="translate" update="form" icon="si si-chat-translate" disabled="#{data.translate eq null}" />
+		                </div> 
+					</div>
 				</div>
 			</h:form>
 		</ui:define>
