@@ -23,7 +23,7 @@
             "//defaults",
             "out.translate = new com.axonivy.connector.deepl.LanguageInfo.Lang(TargetLanguage.DE, \"German\");",
             "",
-            "out.data.options.setTagHandling(\"HTML\");",
+            "out.data.options.setTagHandling(\"html\");",
             "out.inputText = \"<h1>Hello world</h1>\";"
           ]
         },
