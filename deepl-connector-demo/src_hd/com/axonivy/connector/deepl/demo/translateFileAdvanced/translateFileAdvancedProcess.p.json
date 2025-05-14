@@ -23,7 +23,6 @@
             "out.exampleFile = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");",
             "",
             "//defaults ",
-            "out.source = new com.axonivy.connector.deepl.LanguageInfo.SourceLang(SourceLanguage.EN, \"English\");",
             "out.translate = new com.axonivy.connector.deepl.LanguageInfo.Lang(TargetLanguage.DE, \"German\");",
             "out.options.setTagHandling(\"HTML\");"
           ]
