@@ -21,7 +21,6 @@
             "out.sourceLanguages = com.axonivy.connector.deepl.LanguageInfo.allSourceLanguages();",
             "",
             "//defaults",
-            "out.source = new com.axonivy.connector.deepl.LanguageInfo.SourceLang(SourceLanguage.EN, \"English\");",
             "out.translate = new com.axonivy.connector.deepl.LanguageInfo.Lang(TargetLanguage.DE, \"German\");",
             "",
             "out.data.options.setTagHandling(\"HTML\");",
