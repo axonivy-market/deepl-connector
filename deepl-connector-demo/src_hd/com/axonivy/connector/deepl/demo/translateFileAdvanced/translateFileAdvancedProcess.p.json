@@ -24,7 +24,7 @@
             "",
             "//defaults ",
             "out.translate = new com.axonivy.connector.deepl.LanguageInfo.Lang(TargetLanguage.DE, \"German\");",
-            "out.options.setTagHandling(\"HTML\");"
+            "out.options.setTagHandling(\"html\");"
           ]
         },
         "result" : {
