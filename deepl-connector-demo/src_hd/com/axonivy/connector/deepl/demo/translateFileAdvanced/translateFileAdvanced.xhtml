@@ -16,7 +16,7 @@
 		                    <span class="ui-float-label">
 		                        <p:selectOneMenu id="sourceLanguage" value="#{data.source}" title="#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/LeavingTheField')}"
 									converter="ivy.ListItem" styleClass="w-full">
-									<f:selectItem itemLabel="" itemValue="" />
+									<f:selectItem itemLabel="#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/DetectLanguage')}" itemValue="" />
 									<f:selectItems value="#{data.sourceLanguages}" var="language"
 										itemValue="#{language}"
 										itemLabel="#{language.name()} [#{language.key()}]" /> 
@@ -30,7 +30,7 @@
 		                    <span class="ui-float-label">
 		                        <p:selectOneMenu id="targetLanguage" value="#{data.translate}"
 									converter="ivy.ListItem" styleClass="w-full">
-									<f:selectItem itemLabel="" itemValue="" />
+									<f:selectItem itemLabel="#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/SelectTarget')}" itemValue="" />
 									<f:selectItems value="#{data.languages}" var="language"
 										itemValue="#{language}"
 										itemLabel="#{language.name()} [#{language.key()}]" />
