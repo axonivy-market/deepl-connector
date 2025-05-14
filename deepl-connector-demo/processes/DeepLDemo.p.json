@@ -81,43 +81,6 @@
         { "id" : "f3", "to" : "f5" }
       ]
     }, {
-      "id" : "f8",
-      "type" : "RequestStart",
-      "name" : "translateTextAdvanced.ivp",
-      "config" : {
-        "signature" : "translateTextAdvanced"
-      },
-      "tags" : [
-        "demo"
-      ],
-      "visual" : {
-        "at" : { "x" : 96, "y" : 160 }
-      },
-      "connect" : [
-        { "id" : "f13", "to" : "f9" }
-      ]
-    }, {
-      "id" : "f9",
-      "type" : "DialogCall",
-      "name" : "translateTextAdvanced",
-      "config" : {
-        "dialog" : "com.axonivy.connector.deepl.demo.translateTextAdvanced:start()"
-      },
-      "visual" : {
-        "at" : { "x" : 248, "y" : 160 },
-        "description" : "Translate a String using options available",
-        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
-      },
-      "connect" : [
-        { "id" : "f14", "to" : "f12" }
-      ]
-    }, {
-      "id" : "f12",
-      "type" : "TaskEnd",
-      "visual" : {
-        "at" : { "x" : 416, "y" : 160 }
-      }
-    }, {
       "id" : "f15",
       "type" : "TaskEnd",
       "visual" : {
