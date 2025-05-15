@@ -135,14 +135,11 @@
         "call" : {
           "map" : {
             "param.file" : "in.file",
-            "param.options.sourceLang" : "in.source.key()",
             "param.options.targetLang" : "in.translate.key()"
           },
           "code" : [
-            "if(in.#source != null && in.source.key() != null){",
+            "if(in.#source is initialized && in.source.key() != null){",
             "  param.options.sourceLang = in.source.key();",
-            "}else{",
-            "  param.options.sourceLang = null;",
             "}"
           ]
         },
