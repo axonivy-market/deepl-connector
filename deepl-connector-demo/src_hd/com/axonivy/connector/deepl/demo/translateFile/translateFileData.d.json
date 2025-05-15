@@ -13,10 +13,16 @@
     "modifiers" : [ "PERSISTENT" ]
   }, {
     "name" : "languages",
-    "type" : "List<com.axonivy.connector.deepl.LanguageInfo.Lang>"
+    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>"
+  }, {
+    "name" : "sourceLanguages",
+    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.SourceLang>"
   }, {
     "name" : "translate",
     "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang"
+  }, {
+    "name" : "source",
+    "type" : "com.axonivy.connector.deepl.LanguageInfo.SourceLang"
   }, {
     "name" : "ivyFile",
     "type" : "File"
@@ -32,5 +38,8 @@
     "name" : "exampleFile",
     "type" : "File",
     "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "options",
+    "type" : "deepl.translate.Options"
   } ]
 }
