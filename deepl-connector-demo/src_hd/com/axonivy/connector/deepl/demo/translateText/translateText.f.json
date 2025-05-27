@@ -1,0 +1,79 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/form/12.0.2/form.json",
+  "id" : "5dbc089d-d4f4-42ba-96db-ced2cf23ee96",
+  "components" : [ {
+    "cid" : "text8",
+    "type" : "Text",
+    "config" : {
+      "content" : "Translate your text"
+    }
+  }, {
+    "cid" : "layout1",
+    "type" : "Layout",
+    "config" : {
+      "components" : [ {
+        "cid" : "select2",
+        "type" : "Select",
+        "config" : {
+          "staticItems" : [ {
+            "label" : "#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/DetectLanguage')}",
+            "value" : ""
+          } ],
+          "dynamicItemsList" : "#{data.sourceLanguages}",
+          "dynamicItemsLabel" : "name()",
+          "label" : "#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/SelectSource')}",
+          "value" : "#{data.source}"
+        }
+      }, {
+        "cid" : "select3",
+        "type" : "Select",
+        "config" : {
+          "updateOnChange" : true,
+          "staticItems" : [ {
+            "label" : "#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/SelectTarget')}",
+            "value" : ""
+          } ],
+          "dynamicItemsList" : "#{data.languages}",
+          "dynamicItemsLabel" : "name()} #{variable.key()",
+          "label" : "#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/SelectTarget')}",
+          "value" : "#{data.translate}"
+        }
+      }, {
+        "cid" : "textarea4",
+        "type" : "Textarea",
+        "config" : {
+          "label" : "#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/InputText')}",
+          "value" : "#{data.inputText}",
+          "rows" : "5"
+        }
+      }, {
+        "cid" : "textarea5",
+        "type" : "Textarea",
+        "config" : {
+          "alignSelf" : "END",
+          "value" : "#{data.outputText}",
+          "rows" : "5"
+        }
+      }, {
+        "cid" : "input6",
+        "type" : "Input",
+        "config" : {
+          "label" : "Input#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/TagHandling')}",
+          "value" : "#{data.data.options.tagHandling}"
+        }
+      }, {
+        "cid" : "button7",
+        "type" : "Button",
+        "config" : {
+          "alignSelf" : "END",
+          "disabled" : "#{data.translate eq null}",
+          "name" : "translate",
+          "action" : "#{logic.translate}",
+          "icon" : "si si-chat-translate",
+          "confirmHeader" : "Delete Confirmation",
+          "confirmMessage" : "Are you sure you want to delete this row?"
+        }
+      } ]
+    }
+  } ]
+}

@@ -6,6 +6,8 @@ Dialogs:
           demo:
             translateTextAdvanced:
               BySettingToHtml: By setting tag_handling to html, the API will process HTML input by extracting the text, splitting it into individual sentences, translating them, and placing them back into the HTML structure
+              DetectLanguage: Detect language
+              InputText: Input text in any language
               LeavingTheField: Leaving the field empty will automatically detect the source language.
               SelectSource: Select source language
               SelectTarget: Select target language

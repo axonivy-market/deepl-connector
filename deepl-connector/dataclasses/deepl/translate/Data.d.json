@@ -22,9 +22,6 @@
     "name" : "output",
     "type" : "String"
   }, {
-    "name" : "langTarget",
-    "type" : "com.deepl.api.v2.client.TargetLanguage"
-  }, {
     "name" : "indexData",
     "type" : "javax.persistence.Index"
   }, {
