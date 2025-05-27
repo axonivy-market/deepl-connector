@@ -1,0 +1,24 @@
+name: Upload Test Results
+
+on:
+  pull_request:
+    branches: [main]  # Match the default branch of upstream
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tests (replace with real command)
+        run: |
+          mkdir -p test-results
+          echo "<testsuites></testsuites>" > test-results/results.xml
+          # Replace with your actual test command and output
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results
