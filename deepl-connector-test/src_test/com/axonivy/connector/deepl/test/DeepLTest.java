@@ -33,7 +33,7 @@ import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 import ch.ivyteam.ivy.scripting.objects.File;
 import deepl.translate.Options;
 
-@IvyProcessTest(enableWebServer = true)
+@IvyProcessTest
 public class DeepLTest{
 
   private static final BpmProcess DEEPL = BpmProcess.path("deepl/translate");
