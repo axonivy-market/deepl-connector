@@ -51,8 +51,8 @@ public class DeepLTest {
    * repository</a>, which is published and maintained by
    * <a href="https://github.com/DeepLcom">DeepLcom</a>.
    * <p>
-   * This image is intended for <b>testing purposes only</b> and should not be
-   * used in production.
+   * This image is intended for <b>testing purposes only</b> and <b>should not be
+   * used</b> in production.
    * <p>
    * To build this image yourself, refer to: <a href=
    * "https://github.com/DeepLcom/deepl-mock?tab=readme-ov-file#using-docker">

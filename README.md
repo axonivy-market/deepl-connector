@@ -21,7 +21,7 @@ or by running it [manually](https://github.com/DeepLcom/deepl-mock?tab=readme-ov
     # yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/app.json
     RestClients:
       deepl-connector:
-        Url: '{deepl-test-instance-url}'
+        Url: {deepl-test-instance-url}
         Properties:
           AUTH.deepLKey: notMyKey
         Features:
