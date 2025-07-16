@@ -86,8 +86,10 @@ public class DeepLTest {
     fixture.var("deepl-connector.apiKey", DEFAULT_TEST_INSTANCE_KEY);
     RestClients clients = RestClients.of(app);
     RestClient deepL = clients.find("deepl-connector");
-    var testClient = deepL.toBuilder().feature(CsrfHeaderFeature.class.getName())
-        .property("AUTH.deepLKey", DEFAULT_TEST_INSTANCE_KEY).toRestClient();
+    var testClient = deepL.toBuilder()
+      .feature(CsrfHeaderFeature.class.getName())
+      .property("AUTH.deepLKey", DEFAULT_TEST_INSTANCE_KEY)
+      .toRestClient();
     clients.set(testClient);
   }
 
