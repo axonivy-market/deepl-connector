@@ -40,4 +40,3 @@ Copy the API-Key of your account into
 ```
 @variables.yaml@
 ```
-****
