@@ -9,13 +9,13 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 
 import ch.ivyteam.ivy.IvyConstants;
-import ch.ivyteam.ivy.environment.Ivy;
+import ch.ivyteam.ivy.project.IIvyProject;
 
 @SuppressWarnings("restriction")
 public class FileLoaderUtil {
 
   public static ch.ivyteam.ivy.scripting.objects.File loadFromWebContent(String relativePath) throws IOException, CoreException {
-    IProject project = Ivy.request().getProcessModelVersion().getProject();
+    IProject project = IIvyProject.current().getProject();
     IFile file = project.getFolder(IvyConstants.DIRECTORY_WEB_CONTENT).getFile(relativePath);
     var ivyFile = new ch.ivyteam.ivy.scripting.objects.File(file.getName(), true);
     java.nio.file.Path path = ivyFile.getJavaFile().toPath();
