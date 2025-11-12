@@ -38,3 +38,5 @@ jobs:
   build:
     needs: prepare
     uses: axonivy-market/github-workflows/.github/workflows/ci.yml@v6
+    with:
+      ivyVersion: nightly-13.1
