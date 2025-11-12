@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/form/12.0.2/form.json",
+  "$schema" : "https://json-schema.axonivy.com/form/13.1.0/form.json",
   "id" : "5dbc089d-d4f4-42ba-96db-ced2cf23ee96",
   "components" : [ {
     "cid" : "text8",
@@ -20,7 +20,7 @@
             "value" : ""
           } ],
           "dynamicItemsList" : "#{data.sourceLanguages}",
-          "dynamicItemsLabel" : "name()",
+          "dynamicItemsLabel" : "#{item.name()}",
           "label" : "#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/SelectSource')}",
           "value" : "#{data.source}"
         }
@@ -34,7 +34,7 @@
             "value" : ""
           } ],
           "dynamicItemsList" : "#{data.languages}",
-          "dynamicItemsLabel" : "name()} #{variable.key()",
+          "dynamicItemsLabel" : "#{item.name()} #{item.key()}",
           "label" : "#{ivy.cms.co('/Dialogs/com/axonivy/connector/deepl/demo/translateTextAdvanced/SelectTarget')}",
           "value" : "#{data.translate}"
         }
