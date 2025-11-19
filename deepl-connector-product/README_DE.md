@@ -1,52 +1,52 @@
-Sag #Lebwohl zu Sprache Hemmnisse in Arbeitsgang Automatisierung mit #Axon Efeus
-Übersetzung Bedienung #ausrüsten mal DeepL. Der Anschluss integriert #bruchlos
-hinein eure #existierend workflows, erlaubend dir zu kommunizieren sicher #ohne
-Rücksicht auf von der Sprache. Dieses Marktplatz Stück:
+Verabschieden Sie sich von Sprachbarrieren in der Prozessautomatisierung mit dem
+Übersetzungsservice von Axon Ivy, der auf DeepL basiert. Der Konnektor lässt
+sich nahtlos in Ihre bestehenden Workflows integrieren und ermöglicht Ihnen eine
+einfache Kommunikation unabhängig von der Sprache. Dieser Marktplatzartikel:
 
-- Ist gegründet auf das künftiges-Beweis OpenAPI Beschreibung.
-- Übersetzt ganzes Wort (.docx), PowerPoint (.pptx), #PDF (.pdf), Text (.txt),
-  Und #HTML (.html) Dateien.
-- Gibt du die Kraft von alle DeepL API Charakterzüge.
-- Unterstützt du mit eine Demo Ausführung zu heruntersetzen eure Integration
-  Anstrengung.
-- Aktiviert nieder-Code Bürger Entwickler zu versehen mehrsprachige Nutzer
-  Schnittstellen.
+- Basiert auf der zukunftssicheren OpenAPI-Spezifikation.
+- Übersetzt ganze Word- (.docx), PowerPoint- (.pptx), PDF- (.pdf), Text- (.txt)
+  und HTML- (.html) Dateien.
+- Damit stehen Ihnen alle Funktionen der DeepL-API zur Verfügung.
+- Unterstützt Sie mit einer Demo-Implementierung, um Ihren Integrationsaufwand
+  zu reduzieren.
+- Ermöglicht Low-Code-Citizen-Developern die Bereitstellung mehrsprachiger
+  Benutzeroberflächen.
 
 ## Demo
 
-Die Dokument Übersetzung Demo Vorstellungen wie leicht ihm hat geworden, zu
-übersetzen durchweg Dokumente eure workflow, hinein die Sprache von euren Ende
-Nutzer.
+Die Dokumentübersetzungs-Demo zeigt, wie einfach es geworden ist, Dokumente
+während Ihres gesamten Workflows in die Sprache Ihres Endnutzers zu übersetzen.
 
-![deepl-doc-Demo](img/docTranslationDemo.png)
+![deepl-doc-demo](img/docTranslationDemo.png)
 
-Natürlich purer Text Übersetzungen sind demonstriert auch. Dies ist sehr
-praktisch zu übersetzen Nutzer #einlesen #welche war geschrieben in einer
-Fremdsprache.
+Natürlich werden auch reine Textübersetzungen gezeigt. Dies ist sehr praktisch,
+um Benutzereingaben zu übersetzen, die in einer Fremdsprache verfasst wurden.
 
-![deepl-txt-Demo](img/txtTranslateDemo.png)
+![deepl-txt-demo](img/txtTranslateDemo.png)
 
-Zu benutzen DeepL #ausrüsten Übersetzungen, wir haben eine minimale
-#holzschnittartig Schnittstelle geschafft ohne technisch Schwierigkeiten.
-Bekommen inspiriert und benutzen DeepL irgendwo herein eure workflow.
+Um DeepL-basierte Übersetzungen nutzen zu können, haben wir eine
+minimalistische, einfache Benutzeroberfläche ohne technische Schwierigkeiten
+entwickelt. Lassen Sie sich inspirieren und nutzen Sie DeepL überall in Ihrem
+Arbeitsablauf.
 
-![deepl-Aktivität](img/deeplSubCallActivity.png)
+![deepl-activity](img/deeplSubCallActivity.png)
 
-Wir haben auch neue Optionen hereingebracht zu vollauf nutzen die Kunden
-Parameter. Hier, wir zeigen zwei neulich brachten herein Optionen für
-Quelle_Sprache und Anhängsel_Handing, aber du können alle Optionen zugreifen
-benutzend dieses neues `deepl.Übersetz.Optionen` Objekt.
+Wir haben außerdem neue Optionen eingeführt, um die Client-Parameter voll
+auszuschöpfen. Hier zeigen wir zwei neu eingeführte Optionen für source_language
+und tag_handling, aber Sie können auf alle Optionen zugreifen, indem Sie dieses
+neue `deepl.translate.Options` Objekt verwenden.
 
-![deepl-Übersetzen-Optionen](img/optionsObject.png)
-![deepl-txt-adv-Demo](img/txtTranslateAdvancedDemo.png)
-![deepl-doc-adv-Demo](img/docTranslationAdvancedDemo.png)
+![deepl-translate-options](img/optionsObject.png)
+![deepl-txt-adv-demo](img/txtTranslateAdvancedDemo.png)
+![deepl-doc-adv-demo](img/docTranslationAdvancedDemo.png)
 
 ## Einrichtung
 
-Bekomm ein [freies Entwickler Konto](https://www.deepl.com/pro#developer) von
-DeepL.com Kopie die API-Schlüssel von eurem Konto hinein
+Erstellen Sie ein [kostenloses
+Entwicklerkonto](https://www.deepl.com/pro#developer) bei DeepL.com Kopieren Sie
+den API-Schlüssel Ihres Kontos in
 
-`config/Variablen.yaml` Unter `Variablen.deepl-Anschluss.authKey`
+`config/variables.yaml` unter `variables.deepl-connector.authKey`
 
 ```
 @variables.yaml@
