@@ -7,8 +7,7 @@ einfache Kommunikation unabhängig von der Sprache. Dieser Marktplatzartikel:
 - Übersetzt ganze Word- (.docx), PowerPoint- (.pptx), PDF- (.pdf), Text- (.txt)
   und HTML- (.html) Dateien.
 - Damit stehen Ihnen alle Funktionen der DeepL-API zur Verfügung.
-- Unterstützt Sie mit einer Demo-Implementierung, um Ihren Integrationsaufwand
-  zu reduzieren.
+- Bietet eine Demo Implementierung.
 - Ermöglicht Low-Code-Citizen-Developern die Bereitstellung mehrsprachiger
   Benutzeroberflächen.
 
@@ -40,7 +39,7 @@ neue `deepl.translate.Options` Objekt verwenden.
 ![deepl-txt-adv-demo](img/txtTranslateAdvancedDemo.png)
 ![deepl-doc-adv-demo](img/docTranslationAdvancedDemo.png)
 
-## Einrichtung
+## Setup
 
 Erstellen Sie ein [kostenloses
 Entwicklerkonto](https://www.deepl.com/pro#developer) bei DeepL.com Kopieren Sie
