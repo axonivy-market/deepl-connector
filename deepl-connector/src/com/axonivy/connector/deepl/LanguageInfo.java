@@ -1,23 +1,23 @@
 package com.axonivy.connector.deepl;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.deepl.api.v2.client.SourceLanguage;
 import com.deepl.api.v2.client.TargetLanguage;
-import com.google.common.base.Objects;
 
 public class LanguageInfo {
 
   public static Lang of(TargetLanguage tLang) {
     return TARGET_LANGUAGES.stream()
-      .filter(lang -> Objects.equal(lang.key(), tLang.getValue()))
+      .filter(lang -> Objects.equals(lang.key(), tLang.getValue()))
       .findAny()
       .orElseGet(()->new Lang(tLang , ""));
   }
   
   public static SourceLang of(SourceLanguage sLang) {
 	return SOURCE_LANGUAGES.stream()
-	  .filter(lang -> Objects.equal(lang.key(), sLang.getValue()))
+	  .filter(lang -> Objects.equals(lang.key(), sLang.getValue()))
 	  .findAny()
 	  .orElseGet(() -> new SourceLang(sLang, ""));
   }
