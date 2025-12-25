@@ -23,7 +23,7 @@
     "type" : "String"
   }, {
     "name" : "indexData",
-    "type" : "javax.persistence.Index"
+    "type" : "jakarta.persistence.Index"
   }, {
     "name" : "ivyFile",
     "type" : "File",
