@@ -15,10 +15,6 @@ import org.testcontainers.utility.DockerImageName;
 
 import com.deepl.api.v2.client.SourceLanguage;
 import com.deepl.api.v2.client.TargetLanguage;
-import com.github.dockerjava.api.model.ExposedPort;
-import com.github.dockerjava.api.model.HostConfig;
-import com.github.dockerjava.api.model.PortBinding;
-import com.github.dockerjava.api.model.Ports;
 
 import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
@@ -38,7 +34,6 @@ import deepl.translate.Options;
 public class DeepLTest {
 
   private static final BpmProcess DEEPL = BpmProcess.path("deepl/translate");
-  private static final String DEFAULT_TEST_INSTANCE_URL = "http://localhost:3000/v2";
   private static final String DEFAULT_TEST_INSTANCE_KEY = "octopus-test";
   private static final String TEST_TEXT_IN_ENGLISH = "proton beam";
   private static final String RESULT_TEXT_IN_GERMAN = "Protonenstrahl";
@@ -63,11 +58,11 @@ public class DeepLTest {
 
   @Container
   @SuppressWarnings("resource")
-  private final GenericContainer<?> deeplContainer = new GenericContainer<>(DEEPL_TEST_IMAGE)
-      .withNetworkAliases("octopus_deepl").withExposedPorts(3000, 3001)
-      .withCreateContainerCmdModifier(cmd -> cmd
-          .withHostConfig(HostConfig.newHostConfig().withPortBindings(buildPortBinding(3000), buildPortBinding(3001))))
-      .waitingFor(Wait.forLogMessage(FINISHED_SET_UP_LOG_REGEX, 1)).withStartupTimeout(Duration.ofMinutes(1));
+  private final GenericContainer<?> deeplContainer =
+  new GenericContainer<>(DEEPL_TEST_IMAGE)
+    .withExposedPorts(3000, 3001)
+    .waitingFor(Wait.forLogMessage(FINISHED_SET_UP_LOG_REGEX, 1))
+    .withStartupTimeout(Duration.ofMinutes(1));
 
   private interface Start {
     BpmElement TRANSLATE = DEEPL.elementName("text(String,TargetLanguage)");
@@ -76,13 +71,11 @@ public class DeepLTest {
     BpmElement DOCUMENT_ADVANCED = DEEPL.elementName("document(File,Options)");
   }
 
-  private static PortBinding buildPortBinding(int port) {
-    return new PortBinding(Ports.Binding.bindPort(port), new ExposedPort(port));
-  }
-
   @BeforeEach
   void setup(AppFixture fixture, IApplication app) {
-    fixture.config("RestClients.deepl-connector.Url", DEFAULT_TEST_INSTANCE_URL);
+    String baseUrl = "http://" + deeplContainer.getHost()
+      + ":" + deeplContainer.getMappedPort(3000) + "/v2";
+    fixture.config("RestClients.deepl-connector.Url", baseUrl);
     fixture.var("deepl-connector.apiKey", DEFAULT_TEST_INSTANCE_KEY);
     RestClients clients = RestClients.of(app);
     RestClient deepL = clients.find("deepl-connector");
