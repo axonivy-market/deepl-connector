@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
   "id" : "1865BA0763310472",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -272,7 +272,7 @@
       ],
       "visual" : {
         "at" : { "x" : 360, "y" : 424 },
-        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : [
         { "id" : "f21", "to" : "f6", "via" : [ { "x" : 512, "y" : 424 } ] }
@@ -325,7 +325,7 @@
       ],
       "visual" : {
         "at" : { "x" : 360, "y" : 152 },
-        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : [
         { "id" : "f9", "to" : "f4", "via" : [ { "x" : 512, "y" : 152 } ] }
@@ -374,7 +374,7 @@
       ],
       "visual" : {
         "at" : { "x" : 360, "y" : 584 },
-        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : [
         { "id" : "f22", "to" : "f6", "via" : [ { "x" : 512, "y" : 584 } ] }
@@ -423,7 +423,7 @@
       ],
       "visual" : {
         "at" : { "x" : 360, "y" : 288 },
-        "icon" : "res:/webContent/logo/deepl-logo-blue.png?small"
+        "icon" : "res:/webContent/logo/deepl-logo-blue.png"
       },
       "connect" : [
         { "id" : "f31", "to" : "f4", "via" : [ { "x" : 512, "y" : 288 } ] }

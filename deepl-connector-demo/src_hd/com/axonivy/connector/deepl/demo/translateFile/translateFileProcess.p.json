@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
   "id" : "19614659AF4676AE",
   "kind" : "HTML_DIALOG",
   "config" : {
@@ -20,7 +20,7 @@
             "",
             "out.languages = com.axonivy.connector.deepl.LanguageInfo.all();",
             "out.sourceLanguages = com.axonivy.connector.deepl.LanguageInfo.allSourceLanguages();",
-            "out.exampleFile = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");",
+            "out.exampleFile = FileLoaderUtil.loadFileFromCms(\"rechnung.pdf\", \"/sample/rechnung\");",
             "",
             "//defaults ",
             "out.translate = new com.axonivy.connector.deepl.LanguageInfo.Lang(TargetLanguage.DE, \"German\");",
@@ -116,7 +116,7 @@
           "code" : [
             "import com.axonivy.connector.deepl.FileLoaderUtil;",
             "",
-            "out.file = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");"
+            "out.file = FileLoaderUtil.loadFileFromCms(\"rechnung.pdf\", \"/sample/rechnung\");"
           ]
         }
       },
