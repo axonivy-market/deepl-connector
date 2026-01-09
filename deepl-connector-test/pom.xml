@@ -63,7 +63,7 @@
         <updatePolicy>always</updatePolicy>
       </snapshots>
       <id>sonatype</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <url>https://central.sonatype.com/repository/maven-snapshots</url>
     </repository>
     <repository>
       <snapshots>
@@ -79,7 +79,7 @@
         <updatePolicy>always</updatePolicy>
       </snapshots>
       <id>sonatype</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <url>https://central.sonatype.com/repository/maven-snapshots</url>
     </pluginRepository>
   </pluginRepositories>
   <build>
