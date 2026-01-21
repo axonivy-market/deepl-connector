@@ -10,7 +10,7 @@ RestClients:
     - org.glassfish.jersey.media.multipart.MultiPartFeature
     - com.axonivy.connector.deepl.DeepLAuthFeature
     Properties:
-      AUTH.deepLKey: ${ivy.var.deepl-connector.authKey}
+      AUTH.deepLKey: ${ivy.var.deeplConnector.authKey}
     OpenAPI:
       SpecUrl: https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml
       Namespace: com.deepl.api.v2.client
