@@ -35,7 +35,7 @@ Get a [free developer account](https://www.deepl.com/pro#developer) from DeepL.c
 Copy the API-Key of your account into
 
 `config/variables.yaml` under
-`variables.ivy.com.axonivy.connector.deepl.authKey`
+`variables.com.axonivy.connector.deepl.authKey`
 
 ```
 @variables.yaml@
