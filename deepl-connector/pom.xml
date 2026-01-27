@@ -8,6 +8,12 @@
   <properties>
     <project.build.plugin.version>12.0.0</project.build.plugin.version>
   </properties>
+  <dependencies>
+    <dependency>
+      <groupId>com.axonivy.ivy.spi</groupId>
+      <artifactId>ivy-rest-jersey-spi</artifactId>
+    </dependency>
+  </dependencies>
   <pluginRepositories>
     <pluginRepository>
       <id>sonatype</id>
