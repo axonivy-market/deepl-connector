@@ -45,7 +45,7 @@ Erstellen Sie ein [kostenloses
 Entwicklerkonto](https://www.deepl.com/pro#developer) bei DeepL.com Kopieren Sie
 den API-Schlüssel Ihres Kontos in
 
-`config/variables.yaml` unter `variables.deepl-connector.authKey`
+`config/variables.yaml` under `variables.com.axonivy.connector.deepl.authKey`
 
 ```
 @variables.yaml@
