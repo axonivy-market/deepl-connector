@@ -22,7 +22,6 @@
           "path" : "/document"
         },
         "body" : {
-          "type" : "FORM",
           "mediaType" : "multipart/form-data",
           "form" : {
             "source_lang" : [ "in.options.#sourceLang" ],
@@ -34,10 +33,11 @@
             "" : [ "" ]
           },
           "entity" : {
-            "type" : "com.deepl.api.v2.client.DocumentBody",
-            "map" : {
-              "param.file" : "in.ivyFile"
-            }
+            "type" : "org.glassfish.jersey.media.multipart.FormDataMultiPart",
+            "code" : [
+              "import com.axonivy.connector.deepl.TranslateBodyBuilder;",
+              "param = TranslateBodyBuilder.buildMultiPartFormBodyByOptionsAndFile(in.options, in.ivyFile);"
+            ]
           }
         },
         "response" : {
@@ -71,7 +71,6 @@
           "path" : "/translate"
         },
         "body" : {
-          "type" : "FORM",
           "mediaType" : "application/x-www-form-urlencoded",
           "form" : {
             "text" : [ "in.input.lines().toList()" ],
@@ -88,7 +87,12 @@
             "ignore_tags" : [ "in.options.ignoreTags" ]
           },
           "entity" : {
-            "type" : "com.deepl.api.v2.client.TranslateBody"
+            "type" : "javax.ws.rs.core.MultivaluedMap",
+            "code" : [
+              "import com.axonivy.connector.deepl.TranslateBodyBuilder;",
+              "param = TranslateBodyBuilder.buildFormBodyByOptions(in.options);",
+              "param.put(\"text\",in.input.lines().toList());"
+            ]
           }
         },
         "response" : {
@@ -122,9 +126,6 @@
           "type" : "FORM",
           "mediaType" : "application/x-www-form-urlencoded",
           "form" : {
-            "source_lang" : [ "" ],
-            "formality" : [ "" ],
-            "glossary_id" : [ "" ],
             "document_key" : [ "in.uploaded.documentKey" ]
           },
           "entity" : {
@@ -179,9 +180,6 @@
           "type" : "FORM",
           "mediaType" : "application/x-www-form-urlencoded",
           "form" : {
-            "source_lang" : [ "" ],
-            "formality" : [ "" ],
-            "glossary_id" : [ "" ],
             "document_key" : [ "in.uploaded.documentKey" ]
           },
           "entity" : {
