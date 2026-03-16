@@ -29,5 +29,5 @@ or by running it [manually](https://github.com/DeepLcom/deepl-mock?tab=readme-ov
         - org.glassfish.jersey.media.multipart.MultiPartFeature
         - ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature
     ```
-- Run any startable Process in the Demo project and verify in the RuntimeLog view, that requests are being sent to localhost rathern than deepl.com.
+- Run any startable Process in the Demo project and verify in the RuntimeLog view, that requests are being sent to localhost rather than deepl.com.
 
