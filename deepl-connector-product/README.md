@@ -1,6 +1,6 @@
 Say goodbye to language barriers in process automation with Axon Ivy's translation service powered by DeepL. The connector seamlessly integrates into your existing workflows, allowing you to communicate easily regardless of the language.
 
-### Key features
+## Key features
 
 This marketplace item:
 
@@ -9,32 +9,33 @@ This marketplace item:
 - Gives you the power of all DeepL API features.
 - Supports you with a demo implementation to reduce your integration effort.
 - Enables low-code citizen developers to provide multi-lingual user interfaces.
-- Low-code callable subroutines (`text` and `document`) for quick process integration.
-- Built-in REST client authentication feature to inject the DeepL API key from `config/variables.yaml`.
-- Comprehensive language helper with a curated list of supported source and target languages.
+- Provide advanced translation options (source language, tag handling, formality) via the `deepl.translate.Options` object.
 
 ## Demo
 
-The document translation demo shows how easy it has become, to translate documents throughout your workflow, into the language of your end user.
+The product includes demo implementations to quickly try text and document translation in your processes.
 
 ![deepl-doc-demo](img/docTranslationDemo.png)
-
-Of course pure text translations are demonstrated too.
-This is very handy to translate user input which was written in a foreign language.
-
 ![deepl-txt-demo](img/txtTranslateDemo.png)
-
-To use DeepL powered translations, we have created a minimal simplistic interface without technical difficulties.
-Get inspired and use DeepL anywhere in your workflow.
-
 ![deepl-activity](img/deeplSubCallActivity.png)
 
-We have also introduced new Options to fully utilize the client parameters. 
-Here, we show two newly introduced options for source_language and tag_handling, but you can access all options using this new `deepl.translate.Options` object.
+### Demo workflows
 
-![deepl-translate-options](img/optionsObject.png)
-![deepl-txt-adv-demo](img/txtTranslateAdvancedDemo.png)
-![deepl-doc-adv-demo](img/docTranslationAdvancedDemo.png)
+#### DeepL Demo (deepl-connector-demo)
+
+##### Translate Text
+1. Launch the Translate Text demo from the demo menu or dashboard.
+2. A dialog appears where you can enter free-form text in any language.
+3. Fill in the target language and any translation options, then start the translation.
+4. The translated text is displayed immediately in the interface.
+5. Optionally export or copy the result for further processing.
+
+##### Translate File
+1. Launch the Translate File demo from the demo menu or dashboard.
+2. Upload a document (e.g., .docx, .pptx, .pdf) using the file picker.
+3. Choose the target language and any additional options.
+4. Start the translation and wait for processing to complete.
+5. Download the translated file from the resulting link.
 
 ### Demo workflows
 
@@ -52,49 +53,105 @@ Here, we show two newly introduced options for source_language and tag_handling,
 
 ## Setup
 
-Get a [free developer account](https://www.deepl.com/pro#developer) from DeepL.com
-Copy the API-Key of your account into
+- **Roles:** Everybody (configured in config/roles.xml)
+- **OpenAPI:** Spec: https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml (Namespace: com.deepl.api.v2.client)
 
-`config/variables.yaml` under
-`variables.com.axonivy.connector.deepl.authKey`
+### Variables
 
 ```
 @variables.yaml@
 ```
 
+Get a [free developer account](https://www.deepl.com/pro#developer) from DeepL.com and copy the API key of your account into `config/variables.yaml` under `variables.com.axonivy.connector.deepl.authKey`.
+
 ## Components
 
-- Maven artifacts included with this product:
+### Connector processes
 
-	1. com.axonivy.connector.deepl:deepl-connector-demo:${version} (demo IAR)
-		 ```xml
-		 <dependency>
-			 <groupId>com.axonivy.connector.deepl</groupId>
-			 <artifactId>deepl-connector-demo</artifactId>
-			 <version>${version}</version>
-			 <type>iar</type>
-		 </dependency>
-		 ```
+#### translate.p.json
 
-	2. com.axonivy.connector.deepl:deepl-connector:${version} (connector IAR used as runtime dependency)
-		 ```xml
-		 <dependency>
-			 <groupId>com.axonivy.connector.deepl</groupId>
-			 <artifactId>deepl-connector</artifactId>
-			 <version>${version}</version>
-			 <type>iar</type>
-		 </dependency>
-		 ```
+- **text(String text, com.deepl.api.v2.client.TargetLanguage targetLanguage) -> translation: String**
+	- Input:
+		- `text` (String) — The text to translate
+		- `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) — The wished target language
+	- Result:
+		- `translation` (String) — 
 
-	- OpenAPI specification used by the connector:
+- **document(File file, com.deepl.api.v2.client.TargetLanguage targetLanguage) -> translated: File**
+	- Input:
+		- `file` (File) — A file to translate (e.g. docx, pdf, pptx)
+		- `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) — The language to translate to
+	- Result:
+		- `translated` (File) — 
 
-		https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml
+- **text(String text, deepl.translate.Options options) -> translation: String**
+	- Input:
+		- `text` (String) — The text to translate
+		- `options` (deepl.translate.Options) — Full options for rest client
+	- Result:
+		- `translation` (String) — 
 
-### Callables
+- **document(File file, deepl.translate.Options options) -> translated: File**
+	- Input:
+		- `file` (File) — A file to translate (e.g. docx, pdf, pptx)
+		- `options` (deepl.translate.Options) — Full options for rest client
+	- Result:
+		- `translated` (File) — 
 
-The main module exposes low-code callable subroutines for direct use in processes:
+### Form components
 
-- `text(String, TargetLanguage)` — translate a short text to a target language.
-- `document(File, TargetLanguage)` — translate a document file and return a translated file.
-- `text(String, Options)` — translate text with full `deepl.translate.Options`.
-- `document(File, Options)` — translate a document with full `deepl.translate.Options`.
+#### translateTextData — Captures input and output fields for text translation demo
+- **Namespace:** com.axonivy.connector.deepl.demo.translateText
+- **Component type:** Data Class
+- **Fields:**
+   - `data` (com.axonivy.connector.deepl.demo.Data) — 
+   - `languages` (java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>) — 
+   - `sourceLanguages` (java.util.List<com.axonivy.connector.deepl.LanguageInfo.SourceLang>) — 
+   - `translate` (com.axonivy.connector.deepl.LanguageInfo.Lang) — 
+   - `source` (com.axonivy.connector.deepl.LanguageInfo.SourceLang) — 
+   - `inputText` (String) — 
+   - `outputText` (String) — 
+- **Where used:** translateText dialog, demo workflows
+- **Purpose:** Holds user-entered text and language selection for the text translation demo
+
+#### translateFileData — Captures input and output fields for file translation demo
+- **Namespace:** com.axonivy.connector.deepl.demo.translateFile
+- **Component type:** Data Class
+- **Fields:**
+   - `showContent` (Boolean) — 
+   - `filePath` (String) — 
+   - `languages` (java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>) — 
+   - `sourceLanguages` (java.util.List<com.axonivy.connector.deepl.LanguageInfo.SourceLang>) — 
+   - `translate` (com.axonivy.connector.deepl.LanguageInfo.Lang) — 
+   - `source` (com.axonivy.connector.deepl.LanguageInfo.SourceLang) — 
+   - `ivyFile` (File) — 
+   - `file` (File) — 
+   - `translated` (File) — 
+   - `exampleFile` (File) — 
+   - `options` (deepl.translate.Options) — 
+- **Where used:** translateFile dialog, demo workflows
+- **Purpose:** Captures file selection, target language, and options for document translations
+
+### Maven artifacts
+
+1. deepl-connector
+
+```xml
+<dependency>
+  <groupId>com.axonivy.connector.deepl</groupId>
+  <artifactId>deepl-connector</artifactId>
+  <version>@version@</version>
+  <type>iar</type>
+</dependency>
+```
+
+2. deepl-connector-demo
+
+```xml
+<dependency>
+  <groupId>com.axonivy.connector.deepl</groupId>
+  <artifactId>deepl-connector-demo</artifactId>
+  <version>@version@</version>
+  <type>iar</type>
+</dependency>
+```
