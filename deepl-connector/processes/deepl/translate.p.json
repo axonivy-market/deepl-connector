@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "1865BA0763310472",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -18,7 +18,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+          "clientId" : "deepl-connector",
           "path" : "/document"
         },
         "body" : {
@@ -67,7 +67,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+          "clientId" : "deepl-connector",
           "path" : "/translate"
         },
         "body" : {
@@ -116,7 +116,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+          "clientId" : "deepl-connector",
           "path" : "/document/{document_id}",
           "templateParams" : {
             "document_id" : "in.uploaded.documentId"
@@ -170,7 +170,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "d0a119ea-f566-47be-8cc8-c6681c129161",
+          "clientId" : "deepl-connector",
           "path" : "/document/{document_id}/result",
           "templateParams" : {
             "document_id" : "in.uploaded.documentId"
