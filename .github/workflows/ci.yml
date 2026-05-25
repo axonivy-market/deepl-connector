@@ -38,3 +38,7 @@ jobs:
   build:
     needs: prepare
     uses: axonivy-market/github-workflows/.github/workflows/ci.yml@v6
+    with:
+      javaVersion: 25
+      ivyVersion: "sprint"
+
