@@ -1,31 +1,29 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "translateTextData",
   "namespace" : "com.axonivy.connector.deepl.demo.translateText",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "data",
-    "type" : "com.axonivy.connector.deepl.demo.Data",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.deepl.demo.Data"
   }, {
     "name" : "languages",
-    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>"
+    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>",
+    "modifiers" : [ ]
   }, {
     "name" : "sourceLanguages",
-    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.SourceLang>"
+    "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.SourceLang>",
+    "modifiers" : [ ]
   }, {
     "name" : "translate",
-    "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang"
+    "type" : "com.axonivy.connector.deepl.LanguageInfo.Lang",
+    "modifiers" : [ ]
   }, {
     "name" : "source",
-    "type" : "com.axonivy.connector.deepl.LanguageInfo.SourceLang"
+    "type" : "com.axonivy.connector.deepl.LanguageInfo.SourceLang",
+    "modifiers" : [ ]
   }, {
-    "name" : "inputText",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "inputText"
   }, {
-    "name" : "outputText",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "outputText"
   } ]
 }
