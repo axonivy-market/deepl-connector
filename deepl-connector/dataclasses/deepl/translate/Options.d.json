@@ -1,43 +1,45 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "Options",
   "namespace" : "deepl.translate",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "sourceLang",
-    "type" : "com.deepl.api.v2.client.SourceLanguage"
+    "type" : "com.deepl.api.v2.client.SourceLanguage",
+    "modifiers" : [ ]
   }, {
     "name" : "targetLang",
-    "type" : "com.deepl.api.v2.client.TargetLanguage"
+    "type" : "com.deepl.api.v2.client.TargetLanguage",
+    "modifiers" : [ ]
   }, {
     "name" : "splitSentences",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "preserveFormatting",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "formality",
-    "type" : "com.deepl.api.v2.client.Formality"
+    "type" : "com.deepl.api.v2.client.Formality",
+    "modifiers" : [ ]
   }, {
     "name" : "glossaryId",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "tagHandling",
-    "type" : "String",
-    "comment" : "Sets which kind of tags should be handled. Options currently available: * `xml`: Enable XML tag handling; see [XML Handling](https://www.deepl.com/docs-api/xml). * `html`: Enable HTML tag handling; see [HTML Handling](https://www.deepl.com/docs-api/html)."
+    "comment" : "Sets which kind of tags should be handled. Options currently available: * `xml`: Enable XML tag handling; see [XML Handling](https://www.deepl.com/docs-api/xml). * `html`: Enable HTML tag handling; see [HTML Handling](https://www.deepl.com/docs-api/html).",
+    "modifiers" : [ ]
   }, {
     "name" : "nonSplittingTags",
-    "type" : "String",
-    "comment" : "Comma-separated list of XML tags which never split sentences"
+    "comment" : "Comma-separated list of XML tags which never split sentences",
+    "modifiers" : [ ]
   }, {
     "name" : "outlineDetection",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "splittingTags",
-    "type" : "String",
-    "comment" : "Comma-separated list of XML tags which always cause splits."
+    "comment" : "Comma-separated list of XML tags which always cause splits.",
+    "modifiers" : [ ]
   }, {
     "name" : "ignoreTags",
-    "type" : "String"
+    "modifiers" : [ ]
   } ]
 }
