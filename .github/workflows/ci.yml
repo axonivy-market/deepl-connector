@@ -41,4 +41,5 @@ jobs:
     with:
       javaVersion: 25
       ivyVersion: "sprint"
+      ivyJavaHome: $JAVA_HOME_25_X64
 
