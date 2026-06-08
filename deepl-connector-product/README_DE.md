@@ -1,53 +1,40 @@
 # DeepL Connector
 
-Der DeepL Connector bringt die Leistung von [DeepL](https://www.deepl.com/), einem der weltweit präzisesten maschinellen Übersetzungsdienste, direkt in deine Axon Ivy Prozesse. Egal ob du einen kurzen Text oder ein komplettes Dokument übersetzen möchtest – der Connector lässt deine Anwendungen die Sprache deiner Kunden sprechen, ganz ohne mühsames Kopieren und Einfügen.
-
-Mit einem sofort einsatzbereiten REST-Client und einfach aufrufbaren Teilprozessen fügst du deinen Workflows in wenigen Minuten hochwertige, automatisierte Übersetzungen hinzu. Bring einfach deinen eigenen DeepL API-Schlüssel mit und lass deine Prozesse über Sprachgrenzen hinweg kommunizieren.
+Der DeepL Connector integriert die maschinellen Übersetzungsdienste von DeepL in Axon Ivy und ermöglicht dir, Texte und Dokumente direkt in deinen Prozessen zu übersetzen. Er stellt aufrufbare Unterprozesse für Text- und Dokumentübersetzungen bereit, unterstützt Optionen wie Formalitätsstufen und Glossare und liefert Übersetzungen als Texte oder Dateien zurück.
 
 **Wichtigste Funktionen**
 
-- Übersetze Texte im Handumdrehen in zahlreiche Sprachen – direkt aus deinen Axon Ivy Prozessen.
-- Übersetze ganze Dokumente wie Word-, PDF- und PowerPoint-Dateien, während das ursprüngliche Layout erhalten bleibt.
-- Lass DeepL die Ausgangssprache automatisch erkennen oder lege sie selbst fest, wenn du die volle Kontrolle willst.
-- Stimme jede Übersetzung mit Optionen wie Förmlichkeit, Satztrennung und Glossaren genau ab.
-- Halte Markup sicher dank integrierter HTML- und XML-Tag-Behandlung für formatierte Inhalte.
-- Verbinde dich sicher mit deinem eigenen DeepL API-Schlüssel über einen vorkonfigurierten REST-Client.
+- Texte in Prozessen übersetzen: Sende Text an DeepL und erhalte Übersetzungen direkt in deinem Prozess.
+- Dokumente übersetzen: Lade Dokumente hoch und lade übersetzte Dateien herunter (z. B. DOCX, PDF, PPTX) mit Unterstützung für Formalitäts- und Glossareinstellungen.
+- Flexible API-Optionen: Konfiguriere Zielsprachen, Formalität und Tag-Handling für präzise Übersetzungen.
+- Batch- und Streaming-Unterstützung: Verarbeite mehrzeilige Texteingaben und Dateiuploads für umfangreichere Übersetzungen.
+- Nahtlose Axon Ivy-Integration: Verwende aufrufbare Unterprozesse (`text(...)`, `document(...)`), um Übersetzungen in Workflows einzubinden.
+- Zuverlässige REST-Client-Konfiguration: Wechsle einfach Endpunkte oder simuliere den DeepL-Dienst für Tests.
 
 ## Demo
 
-Möchtest du den DeepL Connector in Aktion sehen? Das mitgelieferte Demo-Projekt enthält zwei sofort lauffähige Dialoge, die zeigen, wie die Text- und Dokumentübersetzung von Anfang bis Ende funktioniert. Starte sie über die Axon Ivy Engine oder den Designer, um den Connector praktisch auszuprobieren. Mehr über den zugrunde liegenden Dienst erfährst du in der [DeepL API-Dokumentation](https://www.deepl.com/docs-api).
+Schau dir die Demo-Implementierungen im Demo-Modul an: [deepl-connector-demo](../deepl-connector-demo).
 
 ### Demo-Workflows
 
-##### Text übersetzen
+##### translateText
 
-1. Starte den Prozess „Text übersetzen" aus dem Demo-Menü.
-2. Du siehst ein Formular mit einem Eingabefeld für deinen Text und einer Auswahl für die Zielsprache.
-3. Gib den zu übersetzenden Text ein, wähle eine Zielsprache und passe bei Bedarf erweiterte Optionen wie Förmlichkeit oder Tag-Behandlung an.
-4. Klicke auf Übersetzen und beobachte, wie das übersetzte Ergebnis direkt neben deinem Originaltext erscheint.
+1. Starte die `translateText`-Demo über das Demo-Menü.
+2. Gib den Text ein, den du übersetzen möchtest.
+3. Klicke auf die Schaltfläche „Translate“, um den Text zu übermitteln.
+4. Die übersetzte Ausgabe wird angezeigt oder an den aufrufenden Prozess zurückgegeben.
 
-![Demo-Dialog zur Textübersetzung](img/txtTranslateDemo.png)
+##### translateFile
 
-##### Datei übersetzen
-
-1. Starte den Prozess „Datei übersetzen" aus dem Demo-Menü.
-2. Du siehst ein Formular, in dem du ein Dokument (zum Beispiel eine Word-, PDF- oder PowerPoint-Datei) hochladen und die Zielsprache wählen kannst.
-3. Lade deine Datei hoch, wähle die gewünschte Sprache und starte die Übersetzung.
-4. Der Connector lädt das Dokument zu DeepL hoch, wartet, bis es verarbeitet ist, und stellt die übersetzte Datei mit erhaltener Formatierung zum Download bereit.
-
-![Demo-Dialog zur Dateiübersetzung](img/docTranslationDemo.png)
+1. Starte die `translateFile`-Demo über das Demo-Menü.
+2. Lade ein Dokument hoch (z. B. DOCX, PDF, PPTX) über den Dateidialog.
+3. Klicke auf „Upload/Translate“ und warte auf die Verarbeitung.
+4. Lade die übersetzte Datei herunter oder bestätige, dass sie am konfigurierten Ort gespeichert wurde.
 
 ## Setup
 
-Um den DeepL Connector zu nutzen, verbinde ihn über einen persönlichen Authentifizierungsschlüssel mit deinem DeepL-Konto.
-
-- **Rollen:** Everybody (konfiguriert in `config/roles.xml`)
+- **Rollen:** Everybody (konfiguriert in config/roles.xml)
 - **OpenAPI:** https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml
-
-1. Erstelle ein DeepL-Konto und wähle einen Tarif, der zu deinen Anforderungen passt. Du kannst mit dem kostenlosen API-Tarif unter [DeepL Pro](https://www.deepl.com/pro-api) starten.
-2. Öffne deine DeepL-Kontoeinstellungen und kopiere deinen [API-Authentifizierungsschlüssel](https://www.deepl.com/docs-api/api-access/authentication/). Kostenlose Schlüssel enden mit `:fx`.
-3. Übergib den Schlüssel an den Connector, indem du die Variable `com.axonivy.connector.deepl.authKey` in deiner Anwendungskonfiguration setzt (siehe den Variablenblock unten).
-4. Führe einen der Demo-Prozesse aus und überprüfe im Runtime-Log, dass die Übersetzungsanfragen erfolgreich an DeepL gesendet werden.
 
 ### Variablen
 
@@ -55,47 +42,66 @@ Um den DeepL Connector zu nutzen, verbinde ihn über einen persönlichen Authent
 @variables.yaml@
 ```
 
+1. Starte den DeepL-Mock-Server (veröffentlicht und gepflegt von DeepLcom) entweder per Docker ([Anleitung](https://github.com/DeepLcom/deepl-mock?tab=readme-ov-file#using-docker)) oder manuell ([Anleitung](https://github.com/DeepLcom/deepl-mock?tab=readme-ov-file#manually)), je nach deinem Entwicklungsworkflow.
+2. Öffne den Dateimanager und navigiere in das Verzeichnis `configuration` deines Axon.ivy Designer.
+3. Erstelle eine Datei namens `app.yaml`, füge folgenden Inhalt ein und ersetze `{deepl-test-instance-url}` durch die URL deiner DeepL-Instanz (standardmäßig `localhost:3000`):
+
+```yaml
+# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/app.json
+RestClients:
+  deepl-connector:
+    Url: {deepl-test-instance-url}
+    Properties:
+      AUTH.deepLKey: notMyKey
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - org.glassfish.jersey.media.multipart.MultiPartFeature
+    - ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature
+```
+
+4. Führe einen startbaren Prozess im Demo-Projekt aus und prüfe im RuntimeLog, dass Anfragen an `localhost` statt an `deepl.com` gesendet werden.
+
 ## Komponenten
 
-### Aufrufbare Teilprozesse
+### Aufrufbare Unterprozesse
 
 #### translate.p.json
 
 - **Signature**: text(String text, com.deepl.api.v2.client.TargetLanguage targetLanguage) -> translation: String
     - Eingabe:
-        - `text` (String) - Der zu übersetzende Text
-        - `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) - Die gewünschte Zielsprache
+        - `text` (String) — Der zu übersetzende Text
+        - `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) — Gewünschte Zielsprache
     - Ergebnis:
         - `translation` (String)
 
 - **Signature**: document(File file, com.deepl.api.v2.client.TargetLanguage targetLanguage) -> translated: File
     - Eingabe:
-        - `file` (File) - Eine zu übersetzende Datei (z. B. docx, pdf, pptx)
-        - `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) - Die Sprache, in die übersetzt werden soll
+        - `file` (File) — Eine zu übersetzende Datei (z. B. docx, pdf, pptx)
+        - `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) — Gewünschte Zielsprache
     - Ergebnis:
         - `translated` (File)
 
 - **Signature**: text(String text, deepl.translate.Options options) -> translation: String
     - Eingabe:
-        - `text` (String) - Der zu übersetzende Text
-        - `options` (deepl.translate.Options) - Vollständige Optionen für den REST-Client
+        - `text` (String) — Der zu übersetzende Text
+        - `options` (deepl.translate.Options) — Vollständige Optionen für den REST-Client
     - Ergebnis:
         - `translation` (String)
 
 - **Signature**: document(File file, deepl.translate.Options options) -> translated: File
     - Eingabe:
-        - `file` (File) - Eine zu übersetzende Datei (z. B. docx, pdf, pptx)
-        - `options` (deepl.translate.Options) - Vollständige Optionen für den REST-Client
+        - `file` (File) — Eine zu übersetzende Datei (z. B. docx, pdf, pptx)
+        - `options` (deepl.translate.Options) — Vollständige Optionen für den REST-Client
     - Ergebnis:
         - `translated` (File)
 
-### Dialog-Komponenten
+### Dialogkomponenten
 
-- Für diese Markterweiterung stellen wir keine Dialog-Komponenten bereit.
+- Für diese Markterweiterung sind keine Dialogkomponenten vorgesehen.
 
-### Webdienste
+### Web Services
 
-- **OpenAPI-Spezifikation:** https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml
+- OpenAPI-Spezifikation: https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml
 
 ### Maven-Artefakte
 
@@ -109,7 +115,7 @@ Um den DeepL Connector zu nutzen, verbinde ihn über einen persönlichen Authent
 </dependency>
 ```
 
-2. deepl-connector-demo
+2. deepl-connector-demo *(optional)*
 
 ```xml
 <dependency>

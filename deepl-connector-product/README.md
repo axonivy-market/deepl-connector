@@ -1,59 +1,65 @@
 # DeepL Connector
 
-The DeepL Connector brings the power of [DeepL](https://www.deepl.com/), one of the world's most accurate machine translation services, straight into your Axon Ivy processes. Whether you need to translate a short piece of text or a complete document, the connector lets your applications speak your customers' language without any manual copy-and-paste work.
-
-With a ready-to-use REST client and easy-to-call subprocesses, you can add high-quality, automated translations to your workflows in minutes. Just bring your own DeepL API key and let your processes communicate across language barriers.
+The DeepL Connector integrates DeepL's machine translation services into Axon Ivy, allowing you to translate text and documents directly within your processes. It provides callable subprocesses for text and document translation, supports formality and glossary options, and returns translations as strings or files.
 
 **Key features**
 
-- Translate text on the fly into a wide range of languages directly from your Axon Ivy processes.
-- Translate whole documents such as Word, PDF, and PowerPoint files while keeping their original layout intact.
-- Let DeepL detect the source language automatically or set it yourself for full control.
-- Fine-tune every translation with options like formality, sentence splitting, and glossaries.
-- Keep markup safe with built-in HTML and XML tag handling for formatted content.
-- Connect securely using your own DeepL API key through a preconfigured REST client.
+- Translate text within processes: Send text to DeepL and receive translations directly in your process.
+- Translate documents: Upload and download translated document files (e.g., DOCX, PDF, PPTX) with formality and glossary support.
+- Flexible API options: Configure target languages, formality, and tag handling for precise translations.
+- Batch and streaming support: Handle multi-line text inputs and document uploads for larger translations.
+- Seamless Axon Ivy integration: Use callable subprocesses (`text(...)`, `document(...)`) to add translations to workflows.
+- Reliable REST client configuration: Easily switch endpoints or mock the DeepL service for testing.
 
 ## Demo
 
-Want to see the DeepL Connector in action? The bundled demo project ships with two ready-to-run dialogs that show how text and document translation work end to end. Launch them from the Axon Ivy Engine or Designer to explore the connector hands-on. Learn more about the underlying service in the [DeepL API documentation](https://www.deepl.com/docs-api).
+Check the demo implementations provided in the demo module: [deepl-connector-demo](../deepl-connector-demo).
 
 ### Demo Workflows
 
-##### Translate Text
+##### translateText
 
-1. Launch the Translate Text process from the demo menu.
-2. You'll see a form with an input field for your text and a selector for the target language.
-3. Enter the text you want to translate, pick a target language, and optionally adjust advanced options like formality or tag handling.
-4. Click translate and watch the translated result appear right next to your original text.
+1. Launch the translateText demo from the demo menu.
+2. Enter the text you want to translate into the dialog.
+3. Click the Translate button to submit the text.
+4. The translated text is displayed or returned to the calling process.
 
-![Translate text demo dialog](img/txtTranslateDemo.png)
+##### translateFile
 
-##### Translate File
-
-1. Launch the Translate File process from the demo menu.
-2. You'll see a form where you can upload a document (for example a Word, PDF, or PowerPoint file) and choose the target language.
-3. Upload your file, select the language you want, and start the translation.
-4. The connector uploads the document to DeepL, waits until it is processed, and provides the translated file for download with its formatting preserved.
-
-![Translate file demo dialog](img/docTranslationDemo.png)
+1. Launch the translateFile demo from the demo menu.
+2. Upload a document (e.g., DOCX, PDF, PPTX) using the file dialog.
+3. Click Upload/Translate and wait for processing.
+4. Download the translated file or confirm it is saved to the configured location.
 
 ## Setup
 
-To use the DeepL Connector, connect it to your DeepL account with a personal authentication key.
-
-- **Roles:** Everybody (configured in `config/roles.xml`)
+- **Roles:** Everybody (configured in config/roles.xml)
 - **OpenAPI:** https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml
-
-1. Create a DeepL account and subscribe to a plan that fits your needs. You can start with the free API plan at [DeepL Pro](https://www.deepl.com/pro-api).
-2. Open your DeepL account settings and copy your [API authentication key](https://www.deepl.com/docs-api/api-access/authentication/). Free keys end with `:fx`.
-3. Provide the key to the connector by setting the `com.axonivy.connector.deepl.authKey` variable in your application configuration (see the variables block below).
-4. Run any of the demo processes and verify in the Runtime Log that translation requests are sent successfully to DeepL.
 
 ### Variables
 
 ```
 @variables.yaml@
 ```
+
+1. Start the DeepL mock server (published and maintained by DeepLcom) either by [using docker](https://github.com/DeepLcom/deepl-mock?tab=readme-ov-file#using-docker) or by running it [manually](https://github.com/DeepLcom/deepl-mock?tab=readme-ov-file#manually), depending on your development workflow.
+2. Use your File Manager to navigate into the `configuration` directory of your Axon.ivy Designer.
+3. Create a file called `app.yaml`, add the following contents with an editor and replace `{deepl-test-instance-url}` with the url of your deepl instance (by default, it will be localhost:3000):
+
+```yaml
+# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/app.json
+RestClients:
+  deepl-connector:
+    Url: {deepl-test-instance-url}
+    Properties:
+      AUTH.deepLKey: notMyKey
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - org.glassfish.jersey.media.multipart.MultiPartFeature
+    - ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature
+```
+
+4. Run any startable Process in the Demo project and verify in the RuntimeLog view that requests are being sent to localhost rather than deepl.com.
 
 ## Components
 
@@ -63,29 +69,29 @@ To use the DeepL Connector, connect it to your DeepL account with a personal aut
 
 - **Signature**: text(String text, com.deepl.api.v2.client.TargetLanguage targetLanguage) -> translation: String
     - Input:
-        - `text` (String) - The text to translate
-        - `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) - The wished target language
+        - `text` (String) — The text to translate
+        - `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) — The wished target language
     - Result:
         - `translation` (String)
 
 - **Signature**: document(File file, com.deepl.api.v2.client.TargetLanguage targetLanguage) -> translated: File
     - Input:
-        - `file` (File) - A file to translate (e.g. docx, pdf, pptx)
-        - `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) - The language to translate to
+        - `file` (File) — A file to translate (e.g. docx, pdf, pptx)
+        - `targetLanguage` (com.deepl.api.v2.client.TargetLanguage) — The wished target language
     - Result:
         - `translated` (File)
 
 - **Signature**: text(String text, deepl.translate.Options options) -> translation: String
     - Input:
-        - `text` (String) - The text to translate
-        - `options` (deepl.translate.Options) - Full options for rest client
+        - `text` (String) — The text to translate
+        - `options` (deepl.translate.Options) — Full options for rest client
     - Result:
         - `translation` (String)
 
 - **Signature**: document(File file, deepl.translate.Options options) -> translated: File
     - Input:
-        - `file` (File) - A file to translate (e.g. docx, pdf, pptx)
-        - `options` (deepl.translate.Options) - Full options for rest client
+        - `file` (File) — A file to translate (e.g. docx, pdf, pptx)
+        - `options` (deepl.translate.Options) — Full options for rest client
     - Result:
         - `translated` (File)
 
@@ -95,7 +101,7 @@ To use the DeepL Connector, connect it to your DeepL account with a personal aut
 
 ### Web Services
 
-- **OpenAPI specification:** https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml
+- OpenAPI Spec: https://raw.githubusercontent.com/DeepLcom/openapi/main/openapi.yaml
 
 ### Maven Artifacts
 
@@ -109,7 +115,7 @@ To use the DeepL Connector, connect it to your DeepL account with a personal aut
 </dependency>
 ```
 
-2. deepl-connector-demo
+2. deepl-connector-demo *(optional)*
 
 ```xml
 <dependency>
