@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process-1.json",
   "id" : "1865BA0763310472",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -87,7 +87,7 @@
             "ignore_tags" : [ "in.options.ignoreTags" ]
           },
           "entity" : {
-            "type" : "javax.ws.rs.core.MultivaluedMap",
+            "type" : "jakarta.ws.rs.core.MultivaluedMap",
             "code" : [
               "import com.axonivy.connector.deepl.TranslateBodyBuilder;",
               "param = TranslateBodyBuilder.buildFormBodyByOptions(in.options);",
