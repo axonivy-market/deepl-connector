@@ -97,8 +97,8 @@
         },
         "response" : {
           "entity" : {
-            "type" : "com.fasterxml.jackson.databind.JsonNode",
-            "code" : "out.output = result.get(\"translations\").get(0).get(\"text\").asText();"
+            "type" : "tools.jackson.databind.JsonNode",
+            "code" : "out.output = result.get(\"translations\").get(0).get(\"text\").asString();"
           }
         }
       },

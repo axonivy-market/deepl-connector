@@ -20,7 +20,7 @@ import com.github.dockerjava.api.model.HostConfig;
 import com.github.dockerjava.api.model.PortBinding;
 import com.github.dockerjava.api.model.Ports;
 
-import ch.ivyteam.ivy.application.IApplication;
+import ch.ivyteam.ivy.application.app.Application;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
@@ -81,7 +81,7 @@ public class DeepLTest {
   }
 
   @BeforeEach
-  void setup(AppFixture fixture, IApplication app) {
+  void setup(AppFixture fixture, Application app) {
     fixture.config("RestClients.deepl-connector.Url", DEFAULT_TEST_INSTANCE_URL);
     fixture.var("deepl-connector.apiKey", DEFAULT_TEST_INSTANCE_KEY);
     RestClients clients = RestClients.of(app);
