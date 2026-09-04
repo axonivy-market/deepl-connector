@@ -87,7 +87,7 @@
             "ignore_tags" : [ "in.options.ignoreTags" ]
           },
           "entity" : {
-            "type" : "javax.ws.rs.core.MultivaluedMap",
+            "type" : "jakarta.ws.rs.core.MultivaluedMap",
             "code" : [
               "import com.axonivy.connector.deepl.TranslateBodyBuilder;",
               "param = TranslateBodyBuilder.buildFormBodyByOptions(in.options);",
