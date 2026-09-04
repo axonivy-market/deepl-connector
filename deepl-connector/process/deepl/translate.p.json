@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process-2.json",
   "id" : "1865BA0763310472",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -97,7 +97,7 @@
         },
         "response" : {
           "entity" : {
-            "type" : "com.fasterxml.jackson.databind.JsonNode",
+            "type" : "tools.jackson.databind.JsonNode",
             "code" : "out.output = result.get(\"translations\").get(0).get(\"text\").asText();"
           }
         }
