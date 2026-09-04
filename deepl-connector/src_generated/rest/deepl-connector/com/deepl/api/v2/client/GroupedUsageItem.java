@@ -23,7 +23,7 @@ import java.time.OffsetDateTime;
 /**
  * Usage statistics for a specific API key and optionally a specific date.
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2025-12-25T10:19:09.709120500+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2025-12-25T10:19:09.709120500+07:00[Asia/Bangkok]")
 
 public class GroupedUsageItem {
   @JsonProperty("api_key")

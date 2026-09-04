@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
+import com.axonivy.connector.deepl.DeepLAuthFeature;
 import com.deepl.api.v2.client.SourceLanguage;
 import com.deepl.api.v2.client.TargetLanguage;
 import com.github.dockerjava.api.model.ExposedPort;
@@ -20,16 +22,12 @@ import com.github.dockerjava.api.model.HostConfig;
 import com.github.dockerjava.api.model.PortBinding;
 import com.github.dockerjava.api.model.Ports;
 
-import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmProcess;
 import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
 import ch.ivyteam.ivy.environment.AppFixture;
-import ch.ivyteam.ivy.rest.client.RestClient;
-import ch.ivyteam.ivy.rest.client.RestClients;
-import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 import ch.ivyteam.ivy.scripting.objects.File;
 import deepl.translate.Options;
 
@@ -81,25 +79,20 @@ public class DeepLTest {
   }
 
   @BeforeEach
-  void setup(AppFixture fixture, IApplication app) {
-    fixture.config("RestClients.deepl-connector.Url", DEFAULT_TEST_INSTANCE_URL);
+  void setup(AppFixture fixture) {
     fixture.var("deepl-connector.apiKey", DEFAULT_TEST_INSTANCE_KEY);
-    RestClients clients = RestClients.of(app);
-    RestClient deepL = clients.find("deepl-connector");
-    var testClient = deepL.toBuilder()
-      .feature(CsrfHeaderFeature.class.getName())
-      .property("AUTH.deepLKey", DEFAULT_TEST_INSTANCE_KEY)
-      .toRestClient();
-    clients.set(testClient);
+    fixture.config("RestClients.deepl-connector.Url", DEFAULT_TEST_INSTANCE_URL);
+    fixture.config("RestClients.deepl-connector.Features", List.of(DeepLAuthFeature.class.getName()));
+    fixture.config("RestClients.deepl-connector.Properties.AUTH.deepLKey", DEFAULT_TEST_INSTANCE_KEY);
   }
 
   @Test
   public void translate(BpmClient bpmClient) {
     ExecutionResult result = bpmClient.start()
-      .subProcess(Start.TRANSLATE)
-      .withParam("text", TEST_TEXT_IN_ENGLISH)
-      .withParam("targetLanguage", TargetLanguage.DE)
-      .execute();
+        .subProcess(Start.TRANSLATE)
+        .withParam("text", TEST_TEXT_IN_ENGLISH)
+        .withParam("targetLanguage", TargetLanguage.DE)
+        .execute();
     deepl.translate.Data data = result.data().last();
     assertThat(data.getOutput()).isEqualTo(RESULT_TEXT_IN_GERMAN);
   }
@@ -109,10 +102,10 @@ public class DeepLTest {
     File original = new File(TEST_FILE_NAME);
     original.write(TEST_TEXT_IN_ENGLISH);
     ExecutionResult result = bpmClient.start()
-      .subProcess(Start.DOCUMENT)
-      .withParam("file", original)
-      .withParam("targetLanguage", TargetLanguage.DE)
-      .execute();
+        .subProcess(Start.DOCUMENT)
+        .withParam("file", original)
+        .withParam("targetLanguage", TargetLanguage.DE)
+        .execute();
     deepl.translate.Data data = result.data().last();
     File translated = data.getTranslated();
     assertThat(translated).isNotNull();
@@ -122,10 +115,10 @@ public class DeepLTest {
   @Test
   public void translateAdvanced(BpmClient bpmClient) {
     ExecutionResult result = bpmClient.start()
-      .subProcess(Start.TRANSLATE_ADVANCED)
-      .withParam("text", TEST_TEXT_IN_ENGLISH)
-      .withParam("options", getDefaultOptions())
-      .execute();
+        .subProcess(Start.TRANSLATE_ADVANCED)
+        .withParam("text", TEST_TEXT_IN_ENGLISH)
+        .withParam("options", getDefaultOptions())
+        .execute();
     deepl.translate.Data data = result.data().last();
     assertThat(data.getOutput()).isEqualTo(RESULT_TEXT_IN_GERMAN);
   }
@@ -135,10 +128,10 @@ public class DeepLTest {
     File original = new File(TEST_FILE_NAME);
     original.write(TEST_TEXT_IN_ENGLISH);
     ExecutionResult result = bpmClient.start()
-      .subProcess(Start.DOCUMENT_ADVANCED)
-      .withParam("file", original)
-      .withParam("options", getDefaultOptions())
-      .execute();
+        .subProcess(Start.DOCUMENT_ADVANCED)
+        .withParam("file", original)
+        .withParam("options", getDefaultOptions())
+        .execute();
     deepl.translate.Data data = result.data().last();
     File translated = data.getTranslated();
     assertThat(translated).isNotNull();
