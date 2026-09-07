@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * List of target languages for translation. The stream will emit translations for each language. Maximum 5 target languages per stream. Language identifiers must comply with IETF BCP 47.
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2025-12-25T10:19:09.709120500+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2025-12-25T10:19:09.709120500+07:00[Asia/Bangkok]")
 
 public class VoiceTargetLanguages extends ArrayList<String> {
 

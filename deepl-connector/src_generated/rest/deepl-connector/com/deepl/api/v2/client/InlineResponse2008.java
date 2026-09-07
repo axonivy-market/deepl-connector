@@ -26,7 +26,7 @@ import java.util.List;
  * InlineResponse2008
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2025-12-25T10:19:09.709120500+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2025-12-25T10:19:09.709120500+07:00[Asia/Bangkok]")
 
 public class InlineResponse2008 {
   @JsonProperty("character_count")

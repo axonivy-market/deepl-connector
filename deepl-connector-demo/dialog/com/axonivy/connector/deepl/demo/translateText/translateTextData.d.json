@@ -1,12 +1,11 @@
 {
   "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
-  "simpleName" : "translateFileData",
-  "namespace" : "com.axonivy.connector.deepl.demo.translateFile",
+  "simpleName" : "translateTextData",
+  "namespace" : "com.axonivy.connector.deepl.demo.translateText",
   "fields" : [ {
-    "name" : "showContent",
-    "type" : "Boolean"
-  }, {
-    "name" : "filePath"
+    "name" : "data",
+    "type" : "com.axonivy.connector.deepl.demo.Data",
+    "modifiers" : [ ]
   }, {
     "name" : "languages",
     "type" : "java.util.List<com.axonivy.connector.deepl.LanguageInfo.Lang>",
@@ -24,21 +23,10 @@
     "type" : "com.axonivy.connector.deepl.LanguageInfo.SourceLang",
     "modifiers" : [ ]
   }, {
-    "name" : "ivyFile",
-    "type" : "File",
+    "name" : "inputText",
     "modifiers" : [ ]
   }, {
-    "name" : "file",
-    "type" : "File"
-  }, {
-    "name" : "translated",
-    "type" : "File"
-  }, {
-    "name" : "exampleFile",
-    "type" : "File"
-  }, {
-    "name" : "options",
-    "type" : "deepl.translate.Options",
+    "name" : "outputText",
     "modifiers" : [ ]
   } ]
 }
