@@ -8,7 +8,7 @@ import jakarta.ws.rs.client.ClientRequestFilter;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 
-import ch.ivyteam.ivy.rest.client.FeatureConfig;
+import ch.ivyteam.ivy.rest.client.feature.FeatureConfig;
 
 public class DeepLAuthFeature implements Feature {
 
