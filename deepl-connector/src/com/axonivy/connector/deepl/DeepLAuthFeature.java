@@ -2,13 +2,13 @@ package com.axonivy.connector.deepl;
 
 import java.io.IOException;
 
-import javax.ws.rs.Priorities;
-import javax.ws.rs.client.ClientRequestContext;
-import javax.ws.rs.client.ClientRequestFilter;
-import javax.ws.rs.core.Feature;
-import javax.ws.rs.core.FeatureContext;
+import jakarta.ws.rs.Priorities;
+import jakarta.ws.rs.client.ClientRequestContext;
+import jakarta.ws.rs.client.ClientRequestFilter;
+import jakarta.ws.rs.core.Feature;
+import jakarta.ws.rs.core.FeatureContext;
 
-import ch.ivyteam.ivy.rest.client.FeatureConfig;
+import ch.ivyteam.ivy.rest.client.feature.FeatureConfig;
 
 public class DeepLAuthFeature implements Feature {
 
@@ -22,7 +22,7 @@ public class DeepLAuthFeature implements Feature {
 
     @Override
     public void filter(ClientRequestContext ctxt) throws IOException {
-      var config = new FeatureConfig(ctxt.getConfiguration(), DeepLAuthFeature.class);
+      var config = FeatureConfig.of(ctxt.getConfiguration(), DeepLAuthFeature.class);
       String key = config.readMandatory("AUTH.deepLKey");
       ctxt.getHeaders().putSingle("Authorization", "DeepL-Auth-Key "+key);
     }
