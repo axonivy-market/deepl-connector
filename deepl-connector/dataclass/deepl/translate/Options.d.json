@@ -1,0 +1,45 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "Options",
+  "namespace" : "deepl.translate",
+  "fields" : [ {
+    "name" : "sourceLang",
+    "type" : "com.deepl.api.v2.client.SourceLanguage",
+    "modifiers" : [ ]
+  }, {
+    "name" : "targetLang",
+    "type" : "com.deepl.api.v2.client.TargetLanguage",
+    "modifiers" : [ ]
+  }, {
+    "name" : "splitSentences",
+    "modifiers" : [ ]
+  }, {
+    "name" : "preserveFormatting",
+    "modifiers" : [ ]
+  }, {
+    "name" : "formality",
+    "type" : "com.deepl.api.v2.client.Formality",
+    "modifiers" : [ ]
+  }, {
+    "name" : "glossaryId",
+    "modifiers" : [ ]
+  }, {
+    "name" : "tagHandling",
+    "comment" : "Sets which kind of tags should be handled. Options currently available: * `xml`: Enable XML tag handling; see [XML Handling](https://www.deepl.com/docs-api/xml). * `html`: Enable HTML tag handling; see [HTML Handling](https://www.deepl.com/docs-api/html).",
+    "modifiers" : [ ]
+  }, {
+    "name" : "nonSplittingTags",
+    "comment" : "Comma-separated list of XML tags which never split sentences",
+    "modifiers" : [ ]
+  }, {
+    "name" : "outlineDetection",
+    "modifiers" : [ ]
+  }, {
+    "name" : "splittingTags",
+    "comment" : "Comma-separated list of XML tags which always cause splits.",
+    "modifiers" : [ ]
+  }, {
+    "name" : "ignoreTags",
+    "modifiers" : [ ]
+  } ]
+}
